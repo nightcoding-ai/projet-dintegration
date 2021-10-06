@@ -1,0 +1,18 @@
+.home {
+  text-align: center;
+  background: linear-gradient(#399a53, white);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+}
+
+.hello {
+  font-size: 3rem;
+  margin: auto;
+  display: inline-flex;
+}
+
+.img {
+  max-width: 100%;
+  min-width: 100%;
+}

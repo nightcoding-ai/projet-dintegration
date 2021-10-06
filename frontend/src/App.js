@@ -1,7 +1,9 @@
-import logo from './logo.png';
+import logo from './img/Bangoo.png';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.css'
-import { Navbar, Nav } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.css';
+import { Navbar, Nav } from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap'
+import { NavLink } from 'react-router-dom';
 
 function App() {
   return (
@@ -12,23 +14,18 @@ function App() {
             </Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse>
-                <Nav className="me-auto mx-5">
-                    <Nav.Link className="Link px-3" href="Accueil">Accueil</Nav.Link>
-                    <Nav.Link className="Link px-3" href="Marché">Marché</Nav.Link>
-                    <Nav.Link className="Link px-3" href="Espace_Com">Espace commerçant</Nav.Link>
-                    <Nav.Link className="Link px-3" href="Scanner">Scanner</Nav.Link>
-                    <Nav.Link className="Link px-3" href="Contact">Nous contacter</Nav.Link>
+                <Nav className="me-auto mx-5 ">
+                  <Nav.Item><NavLink className="nav-link px-3" exact to={"/"}>Accueil</NavLink></Nav.Item>
+                  <Nav.Item><NavLink className="nav-link px-3" exact to={"/Marché"}>Marché</NavLink></Nav.Item>
+                  <Nav.Item><NavLink className="nav-link px-3" exact to={"/Vendeurs"}>Vendeurs</NavLink></Nav.Item>
+                  <Nav.Item><NavLink className="nav-link px-3" exact to={"/Contact"}>Contact</NavLink></Nav.Item>
                 </Nav>
                 <Nav className="mx-5">
-                     <Nav.Link className="Link  px-3" href="Panier">Panier</Nav.Link>
-                     <Nav.Link className="Link  px-3" href="Connexion">Connexion</Nav.Link>
+                  <Nav.Item><NavLink className="nav-link px-3" exact to={"/Panier"}>Panier</NavLink></Nav.Item>
+                  <Nav.Item><NavLink className="nav-link px-3" exact to={"/Connexion"}>Connexion</NavLink></Nav.Item>
                 </Nav>
-
             </Navbar.Collapse>
         </Navbar>
-        <div className="content">
-            On est sur bangoo!
-        </div>
     </div>
   );
 }

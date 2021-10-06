@@ -1,9 +1,13 @@
 .content {
-    padding-left: 0.5%;
-    padding-top: 1%;
-    height: 500%;
+  padding-left: 0.5%;
+  padding-top: 1%;
+  height: 500%;
 }
 
-.Link{
-    font-size:200%;
+.nav-link {
+  font-size: 200%;
+}
+
+.color-nav {
+  background-color: #399a53;
 }
