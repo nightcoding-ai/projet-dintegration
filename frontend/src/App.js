@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import logo from './img/Bangoo.png';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import { Navbar, Nav } from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap'
+import { NavLink } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Navbar bg="dark" variant="dark" sticky="top" expand="lg">
+            <Navbar.Brand>
+                <img src={logo} width="80%" alt="logo" className="mx-2" />
+            </Navbar.Brand>
+            <Navbar.Toggle />
+            <Navbar.Collapse>
+                <Nav className="me-auto mx-5 ">
+                  <Nav.Item><NavLink className="nav-link px-3" exact to={"/"}>Accueil</NavLink></Nav.Item>
+                  <Nav.Item><NavLink className="nav-link px-3" exact to={"/Marché"}>Marché</NavLink></Nav.Item>
+                  <Nav.Item><NavLink className="nav-link px-3" exact to={"/Vendeurs"}>Vendeurs</NavLink></Nav.Item>
+                  <Nav.Item><NavLink className="nav-link px-3" exact to={"/Contact"}>Contact</NavLink></Nav.Item>
+                </Nav>
+                <Nav className="mx-5">
+                  <Nav.Item><NavLink className="nav-link px-3" exact to={"/Panier"}>Panier</NavLink></Nav.Item>
+                  <Nav.Item><NavLink className="nav-link px-3" exact to={"/Connexion"}>Connexion</NavLink></Nav.Item>
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
     </div>
   );
 }
