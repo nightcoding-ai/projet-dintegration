@@ -6,6 +6,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './Components/Home/Home';
+import Login from './Components/Login/Login';
+import Register from './Components/Register/Register';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,8 +18,17 @@ ReactDOM.render(
         <Route path="/Marché" component={Home} />
         <Route path="/Vendeurs" component={Home} />
         <Route path="/Contact" component={Home} />
+
         <Route path="/Panier" component={Home} />
-        <Route path="/Connexion" component={Home} />
+        <div className="outer">
+        <div className="inner">
+          <Switch>
+            
+            <Route path="/Login" component={Login} />
+            <Route path="/Register" component={Register} />
+          </Switch>
+        </div>
+      </div>
       </Switch>
     </Router>
   </React.StrictMode>,

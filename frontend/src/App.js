@@ -2,7 +2,7 @@ import logo from './img/Bangoo.png';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Navbar, Nav } from 'react-bootstrap';
-import {LinkContainer} from 'react-router-bootstrap'
+//import {LinkContainer} from 'react-router-bootstrap'
 import { NavLink } from 'react-router-dom';
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
                 </Nav>
                 <Nav className="mx-5">
                   <Nav.Item><NavLink className="nav-link px-3" exact to={"/Panier"}>Panier</NavLink></Nav.Item>
-                  <Nav.Item><NavLink className="nav-link px-3" exact to={"/Connexion"}>Connexion</NavLink></Nav.Item>
+                  <Nav.Item><NavLink className="nav-link px-3" exact to={"/Login"}>Connexion</NavLink></Nav.Item>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
