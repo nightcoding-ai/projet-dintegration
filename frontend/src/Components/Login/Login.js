@@ -6,31 +6,32 @@ export default class Login extends Component {
         return (
             <form>
 
-                <h3>Log in</h3>
+                <h3>Connexion</h3>
 
                 <div className="form-group">
                     <label>Email</label>
-                    <input type="email" className="form-control" placeholder="Enter email" />
+                    <input type="email" className="form-control" placeholder="Votre email" />
                 </div>
 
                 <div className="form-group">
-                    <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" />
+                    <label>Mot de passe</label>
+                    <input type="password" className="form-control" placeholder="Votre mot de passe" />
                 </div>
 
                 <div className="form-group">
                     <div className="custom-control custom-checkbox">
                         <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                        <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
+                        <label className="custom-control-label" htmlFor="customCheck1">Se souvenir de moi</label>
                     </div>
                 </div>
 
-                <button type="submit" className="btn btn-dark btn-lg btn-block">Sign in</button>
-                <p className="forgot-password text-right">
-                    Forgot <a href="./ForgotPassword">password?</a>
+                <button type="submit" className="btn btn-dark btn-bg btn-block">Se connecter</button>
+
+                <p className="forpas-register text-right">
+                    Mot de passe perdu ? Récupérer le <a href="./ForgotPassword">ici</a>
                 </p>
-                <p className="forgot-password text-right">
-                    Need an account <a href="./Register">Register Here</a>
+                <p className="forpas-register text-right">
+                    Pas encore de compte ? Inscrivez-vous <a href="./Register">ici</a>
                 </p>
             </form>
         );

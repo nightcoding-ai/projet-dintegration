@@ -5,31 +5,31 @@ export default class SignUp extends Component {
     render() {
         return (
             <form>
-                <h3>Register</h3>
+                <h3>Inscription</h3>
 
                 <div className="form-group">
-                    <label>First name</label>
-                    <input type="text" className="form-control" placeholder="First name" />
+                    <label>Prénom</label>
+                    <input type="text" className="form-control" placeholder="Prénom" />
                 </div>
 
                 <div className="form-group">
-                    <label>Last name</label>
-                    <input type="text" className="form-control" placeholder="Last name" />
+                    <label>Nom</label>
+                    <input type="text" className="form-control" placeholder="Nom" />
                 </div>
 
                 <div className="form-group">
                     <label>Email</label>
-                    <input type="email" className="form-control" placeholder="Enter email" />
+                    <input type="email" className="form-control" placeholder="Votre email" />
                 </div>
 
                 <div className="form-group">
-                    <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" />
+                    <label>Mot de passe</label>
+                    <input type="password" className="form-control" placeholder="Votre mot de passe" />
                 </div>
 
-                <button type="submit" className="btn btn-dark btn-lg btn-block">Register</button>
-                <p className="forgot-password text-right">
-                    Already registered <a href="./Login">log in?</a>
+                <button type="submit" className="btn btn-dark btn-lg btn-block">S'inscrire</button>
+                <p className="need-account text-right">
+                    Vous avez déjà un compte ? Connectez-vous <a href="./Login">ici</a>
                 </p>
             </form>
         );

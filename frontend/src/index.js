@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -23,9 +24,9 @@ ReactDOM.render(
         <div className="outer">
         <div className="inner">
           <Switch>
-            
             <Route path="/Login" component={Login} />
             <Route path="/Register" component={Register} />
+            <Route path="/Forgotpassword" component={ForgotPassword}/>
           </Switch>
         </div>
       </div>

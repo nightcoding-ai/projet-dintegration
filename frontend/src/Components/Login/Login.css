@@ -29,17 +29,23 @@
 
 .custom-control-label {
     font-weight: 400;
+    margin-left : 10px;
 }
 
-.forgot-password,
-.forgot-password a {
-    text-align: right;
+.forpas-register,
+.forpas-register a{
+    text-align: center;
     font-size: 13px;
     padding-top: 10px;
     color: #7f7d7d;
     margin: 0;
 }
 
-.forgot-password a {
+.forpas-register a {
     color: #167bff;
+}
+
+button {
+    margin-top: 10px;
+    margin-right : 10px;
 }
