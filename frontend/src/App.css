@@ -5,9 +5,19 @@
 }
 
 .nav-link {
-  font-size: 200%;
+  font-size: 175%;
+  font-family: 'Oswald', sans-serif;
+  font-weight: bold;
 }
 
-.color-nav {
-  background-color: #399a53;
+.active {
+  border-bottom: 4px solid #5DB674;
 }
+
+.nav-item:hover .nav-link {
+    color: green;
+}
+
+
+
+
