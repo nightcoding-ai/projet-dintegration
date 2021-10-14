@@ -4,7 +4,7 @@ import './Login.css'
 export default class Login extends Component {
     render() {
         return (
-            <form>
+            <form className="">
 
                 <h3>Connexion</h3>
 
