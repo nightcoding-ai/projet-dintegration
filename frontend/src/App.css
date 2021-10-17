@@ -6,18 +6,16 @@
 
 .nav-link {
   font-size: 175%;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: bold;
+  display: inline-block;
 }
 
 .active {
-  border-bottom: 4px solid #5DB674;
+  border-bottom: 5px solid #5db674;
 }
 
-.nav-item:hover .nav-link {
-    color: green;
+.nav-link:hover {
+  border-bottom: 5px solid #5db674;
+  transition: all 0.2s ease;
 }
-
-
-
-

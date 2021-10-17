@@ -24,15 +24,14 @@ ReactDOM.render(
 
         <Route path="/Panier" component={Home} />
         <div className="outer">
-        <div className="inner">
-          <Switch>
-            <Route path="/Login" component={Login} />
-            <Route path="/Register" component={Register} />
-
-            <Route path="/Forgotpassword" component={ForgotPassword}/>
-          </Switch>
+          <div className="inner">
+            <Switch>
+              <Route path="/Login" component={Login} />
+              <Route path="/Register" component={Register} />
+              <Route path="/Forgotpassword" component={ForgotPassword}/>
+            </Switch>
+          </div>
         </div>
-      </div>
       </Switch>
     </Router>
   </React.StrictMode>,
