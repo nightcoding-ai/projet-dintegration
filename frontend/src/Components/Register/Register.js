@@ -1,7 +1,45 @@
 import React, { Component } from "react";
-import './Register.css'
-
+import './Register.css';
+import axios from 'axios';
 export default class SignUp extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            firstname: '',
+            name: '',
+            mail: '',
+            password: '',
+        };
+    }
+    
+    handleInputChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value,
+        });
+    };
+    
+    handleSubmit = e => {
+    e.preventDefault();
+    console.log('le lien a été cliqué');
+    const { firstname, name, mail, password } = this.state;
+
+    const user = {
+      firstname,
+      name,
+      mail,
+      password,
+    };
+    console.log(user);
+    axios
+      .post('http://localhost:5000/user', user)
+      .then(() => console.log('User Created'))
+      .catch(err => {
+        console.error(err);
+      });
+  };
+    
     render() {
         return (
             <form>
@@ -9,22 +47,42 @@ export default class SignUp extends Component {
 
                 <div className="form-group">
                     <label>Prénom</label>
-                    <input type="text" className="form-control" placeholder="Prénom" />
+                    <input 
+                    type="text" 
+                    className="form-control" 
+                    name="firstname"
+                    placeholder="Prénom" 
+                    onChange={this.handleInputChange}/>
                 </div>
 
                 <div className="form-group">
                     <label>Nom</label>
-                    <input type="text" className="form-control" placeholder="Nom" />
+                    <input 
+                    type="text" 
+                    className="form-control" 
+                    name="name"
+                    placeholder="Nom" 
+                    onChange={this.handleInputChange}/>
                 </div>
 
                 <div className="form-group">
                     <label>Email</label>
-                    <input type="email" className="form-control" placeholder="Votre email" />
+                    <input 
+                    type="email" 
+                    className="form-control" 
+                    name="mail"
+                    placeholder="Votre email" 
+                    onChange={this.handleInputChange}/>
                 </div>
 
                 <div className="form-group">
                     <label>Mot de passe</label>
-                    <input type="password" className="form-control" placeholder="Votre mot de passe" />
+                    <input 
+                    type="password" 
+                    className="form-control" 
+                    name="password"
+                    placeholder="Votre mot de passe" 
+                    onChange={this.handleInputChange}/>
                 </div>
 
                 <div className="form-group">
@@ -34,7 +92,12 @@ export default class SignUp extends Component {
                     </div>
                 </div>
 
-                <button type="submit" className="btn btn-dark btn-lg btn-block">S'inscrire</button>
+                <button 
+                type="submit" 
+                onClick={this.handleSubmit} 
+                className="btn btn-dark btn-lg btn-block">
+                    S'inscrire
+                </button>
                 <p className="need-account text-right">
                     Vous avez déjà un compte ? Connectez-vous <a href="./Login">ici</a>
                 </p>

@@ -1,5 +1,6 @@
 const express = require('express');
 const Thing = require('./models/thing');
+const User = require('./models/user');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
 
@@ -12,8 +13,6 @@ mongoose
 
 const app = express();
 
-
-
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -22,16 +21,25 @@ app.use((req, res, next) => {
   });
 
   app.use(bodyParser.json());
-  
-  app.post('/api/stuff', (req, res, next) => {
+  app.post('/user', (req, res, next) => {
     delete req.body._id;
-    const thing = new Thing({
-      ...req.body
-    });
-    thing.save()
+    const user = new User({
+      "firstname": req.body.firstname,
+      "name": req.body.name,
+      "mail": req.body.mail,
+      "password": req.body.password
+  });
+  app.get('/users',(req, res, next) => {
+    User.find()
+    .then(users => res.status(200).json(users))
+    .catch(error => res.status(400).json({ error }));
+  })
+
+    user.save()
       .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
       .catch(error => res.status(400).json({ error }));
   });
+
 
 
 module.exports = app;
