@@ -9,7 +9,7 @@ import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
-import GPU from './Components/GPU/GPU';
+import GPU from './Components/GPU/Gpu';
 
 ReactDOM.render(
   <React.StrictMode>

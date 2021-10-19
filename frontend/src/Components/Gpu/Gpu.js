@@ -1,6 +1,6 @@
 /** Page des CGU */
 import React, { Component } from "react";
-import './GPU.css';
+import './Gpu.css';
 
 export default class GPU extends Component {
     render () {
