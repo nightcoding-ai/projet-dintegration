@@ -1,6 +1,7 @@
 const http = require('http');
 const app = require('./app');
 const userRoutes = require('./routes/user.routes');
+const productRoutes = require('./routes/product.routes');
 
 // server 
 const normalizePort = val => {
@@ -51,3 +52,4 @@ server.listen(port);
 // routes
 
 app.use('/api/user', userRoutes);
+app.use('/api/product', productRoutes);

@@ -14,7 +14,7 @@ export default class BarNav extends Component {
                 <Navbar bg="transparent" variant="light" sticky="top" expand="lg">
                     <Navbar.Brand>
                         <Link to="/">
-                        <img src={logo} width="60%" alt="logo" className="mx-3" />
+                            <img src={logo} width="60%" alt="logo" className="mx-3" />
                         </Link>
                     </Navbar.Brand>
                     <Navbar.Toggle />
@@ -22,6 +22,7 @@ export default class BarNav extends Component {
                         <Nav className="me-auto">
                         <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/"}>Accueil</NavLink></Nav.Item>
                         <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/Marché"}>Marché</NavLink></Nav.Item>
+                        <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/Boutique"}>Boutique</NavLink></Nav.Item>
                         <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/Vendeurs"}>Vendeurs</NavLink></Nav.Item>
                         <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/Contact"}>Contact</NavLink></Nav.Item>
                         </Nav>
