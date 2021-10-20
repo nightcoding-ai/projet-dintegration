@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -9,7 +8,10 @@ import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
-import GPU from './Components/GPU/GPU';
+import GPU from './Components/Gpu/Gpu';
+import Footer from './Components/Footer/Footer';
+import Cart from './Components/Cart/Cart';
+import Shop from './Components/Shop/Shop';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,22 +20,22 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/Marché" component={Home} />
+        <Route path="/Boutique" component={Shop} />
         <Route path="/Vendeurs" component={Home} />
         <Route path="/Contact" component={Home} />
         <Route path="/GPU" component={GPU}/>
-
-        <Route path="/Panier" component={Home} />
+        <Route path="/Panier" component={Cart} />
         <div className="outer">
-        <div className="inner">
-          <Switch>
-            <Route path="/Login" component={Login} />
-            <Route path="/Register" component={Register} />
-
-            <Route path="/Forgotpassword" component={ForgotPassword}/>
-          </Switch>
+          <div className="inner">
+            <Switch>
+              <Route path="/Login" component={Login} />
+              <Route path="/Register" component={Register} />
+              <Route path="/Forgotpassword" component={ForgotPassword}/>
+            </Switch>
+          </div>
         </div>
-      </div>
       </Switch>
+      <Footer className="footer"/>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

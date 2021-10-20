@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import './Login.css'
 
+
 export default class Login extends Component {
     render() {
         return (
+            <div className="container-fluid">
             <form className="">
 
                 <h3>Connexion</h3>
@@ -34,6 +36,7 @@ export default class Login extends Component {
                     Pas encore de compte ? Inscrivez-vous <a href="./Register">ici</a>
                 </p>
             </form>
+            </div>
         );
     }
 }

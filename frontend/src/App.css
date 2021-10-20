@@ -3,21 +3,3 @@
   padding-top: 1%;
   height: 500%;
 }
-
-.nav-link {
-  font-size: 175%;
-  font-family: 'Oswald', sans-serif;
-  font-weight: bold;
-}
-
-.active {
-  border-bottom: 4px solid #5DB674;
-}
-
-.nav-item:hover .nav-link {
-    color: green;
-}
-
-
-
-

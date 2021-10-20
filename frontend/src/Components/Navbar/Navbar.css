@@ -1,0 +1,27 @@
+.content {
+  padding-left: 0.5%;
+  padding-top: 1%;
+  height: 500%;
+}
+
+.nav-link {
+  font-size: 175%;
+  font-family: "Oswald", sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+.active {
+  border-bottom: 5px solid #5db674;
+  align-items: center;
+  color: #5db674;
+}
+
+.nav-link:hover {
+  border-bottom: 5px solid #5db674;
+  transition: all 0.2s ease;
+}
+
+.navbar-collapse {
+  align-items: baseline !important;
+}

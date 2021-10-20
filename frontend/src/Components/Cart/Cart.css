@@ -1,0 +1,12 @@
+.title {
+  text-align: center;
+}
+.product {
+  width: 150px;
+}
+
+input[type="checkbox"] {
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
