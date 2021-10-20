@@ -32,7 +32,7 @@ ReactDOM.render(
           </div>
         </div>
       </Switch>
-      <Footer/>
+      <Footer className="footer"/>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
