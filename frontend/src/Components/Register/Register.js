@@ -33,7 +33,7 @@ export default class SignUp extends Component {
     };
     console.log(user);
     axios
-      .post('http://localhost:5000/user', user)
+      .post('http://localhost:5000/api/user/register', user)
       .then(() => console.log('User Created'))
       .catch(err => {
         console.error(err);

@@ -1,6 +1,10 @@
 const http = require('http');
 const app = require('./app');
+const userRoutes = require('./routes/user.routes');
 
+
+
+// server 
 const normalizePort = val => {
   const port = parseInt(val, 10);
 
@@ -45,3 +49,7 @@ server.on('listening', () => {
 });
 
 server.listen(port);
+
+// routes
+
+app.use('/api/user', userRoutes);
