@@ -1,0 +1,38 @@
+.footer-container {
+  background-color: #242424;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+#legalMentions,
+#contact {
+  color: #fff;
+  float: left;
+  margin-right: 30px;
+}
+
+a:hover {
+  left: 0;
+  opacity: 1;
+  transition: all 0.5s ease;
+  z-index: 1;
+  color: #5db674;
+}
+
+a:active {
+  color: #5db674;
+}
+
+@media screen and (max-width: 960px) {
+  .footer-container {
+    display: none;
+  }
+}
+
+a {
+  color: grey;
+  text-decoration: none;
+}

@@ -224,10 +224,7 @@ export default class GPU extends Component {
                     <p>Le présent contrat dépend de la législation belge. </p>
                     <p>En cas de litige non résolu à l’amiable entre l’Utilisateur et l’Éditeur, les tribunaux de Bruxelles sont compétents pour régler le contentieux.</p>
                 </div>
-
             </div>
-
-
         )
     };
 };

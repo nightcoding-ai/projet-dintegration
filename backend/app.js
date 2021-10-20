@@ -1,8 +1,6 @@
 const express = require('express');
 const mongoose = require("mongoose");
 
-
-
 mongoose
 .connect('mongodb+srv://osaNight:adminOSA@osacluster.ynpg7.mongodb.net/osacluster')
 

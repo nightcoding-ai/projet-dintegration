@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -10,6 +9,7 @@ import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
 import GPU from './Components/Gpu/Gpu';
+import Footer from './Components/Footer/Footer';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,7 +21,6 @@ ReactDOM.render(
         <Route path="/Vendeurs" component={Home} />
         <Route path="/Contact" component={Home} />
         <Route path="/GPU" component={GPU}/>
-
         <Route path="/Panier" component={Home} />
         <div className="outer">
           <div className="inner">
@@ -33,6 +32,7 @@ ReactDOM.render(
           </div>
         </div>
       </Switch>
+      <Footer/>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
