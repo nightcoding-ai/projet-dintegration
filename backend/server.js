@@ -52,4 +52,4 @@ server.listen(port);
 // routes
 
 app.use('/api/user', userRoutes);
-app.use('/api/product', productRoutes);
+app.use('/api/products', productRoutes);

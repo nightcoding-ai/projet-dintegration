@@ -1,0 +1,55 @@
+const ProductModel = require('../models/Product')
+
+const productCtrl = {
+    getProducts : async(req, res, next) =>{
+        try {
+            const products = await ProductModel.find()
+            console.log(products)
+            res.json(products)
+        } catch(err){
+            return res.status(500).json({msg : err.message})
+        }
+    },
+    createProduct : async(req, res,) =>{
+        try {
+            const {product_id,brand, name, description, stock, price, time, image} = req.body;
+            if(!image) return res.status(400).json({msg : "No image uploaded"})
+
+            const product = await ProductModel.findOne({product_id})
+            if(product) return res.status(400).json({msg : "This product already exists."})
+
+            const newProduct = new ProductModel({
+                product_id, name, description: description.toLowerCase(), stock, price, time, image
+            })
+
+            res.json(newProduct)
+        } catch(err) {
+            return res.status(500).json({msg : err.message})
+        }
+    },
+    deleteProduct : async(req,res) =>{
+        try {
+            await ProductModel.findByIdAndDelete(req.params.id)
+            res.json({msg : "Deleted a Product"})
+        } catch(err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
+    updateProduct : async(req,res) =>{
+        try {
+            const {product_id,brand, name, description, stock, price, time, image} = req.body;
+            if(!image) return res.status(400).json({msg : "No image uploaded"})
+
+            await Products.findOneAndUpdate({_id : req.params.id}, {
+                brand, name, description: description.toLowerCase(), stock, price, time, image
+            })
+
+            res.json({msg: "Updated a Product"})
+        }catch(err){
+            return res.status(500).json({msg: err.message})
+        }
+    }
+}
+
+module.exports = productCtrl
+  
