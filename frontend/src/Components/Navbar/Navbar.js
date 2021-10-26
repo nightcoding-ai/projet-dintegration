@@ -21,9 +21,9 @@ export default class BarNav extends Component {
                     <Navbar.Collapse>
                         <Nav className="me-auto">
                         <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/"}>Accueil</NavLink></Nav.Item>
-                        <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/Marché"}>Marché</NavLink></Nav.Item>
-                        <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/Boutique"}>Boutique</NavLink></Nav.Item>
-                        <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/Vendeurs"}>Vendeurs</NavLink></Nav.Item>
+                        {/*<Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/MarchÃ©"}>MarchÃ©</NavLink></Nav.Item>*/}
+                        <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/Boutique"}>Offres</NavLink></Nav.Item>
+                        <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/Vendeurs"}>Partenaires</NavLink></Nav.Item>
                         <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/Contact"}>Contact</NavLink></Nav.Item>
                         </Nav>
                         <Nav className="mx-5">
