@@ -10,6 +10,14 @@ const productCtrl = {
             return res.status(500).json({msg : err.message})
         }
     },
+    getProduct : async(req, res, next) =>{
+        try {
+            const product = await ProductModel.findById(req.params.id)
+            res.json(product)
+        } catch(err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
     createProduct : async(req, res,) =>{
         try {
             const {product_id,brand, name, description, stock, price, time, image} = req.body;
