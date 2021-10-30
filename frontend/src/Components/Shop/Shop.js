@@ -1,33 +1,66 @@
-import React, { useState, useEffect ,Component} from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
-import { NavLink, Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import './Shop.css';
 
-export default function Shop() {
-    const [products, updateProducts] = useState([]);
-    
-    
-
-    useEffect(() => {
+class Shop extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          items: [],
+          isLoaded: false,
+        };
+    }
+    componentDidMount() {
         axios.get('http://localhost:5000/api/products')
-        .then((response) => {
-            updateProducts(response.data)
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-    }, []);
-
-    return (
-        <div>
-            <h1 className='title'>Articles</h1>
-            <table className="table table-image">
-            <tbody id="productList">
-            </tbody>
-            {products.map((product) => (
-                    <td><Link to="/"><img className="product" src={product.image} alt={product.name}/>{product.name}</Link></td>   
-            ))}
-            </table>
-        </div>
-    )
+            .then((result) => {
+            this.setState({
+                isLoaded: true,
+                items: result.data
+            });
+        });
+    }
+    render() {
+        const { items } = this.state;
+        if (!this.state.isLoaded) {
+          return <div>Chargement ... </div>;
+        } else {
+          return (
+            <div class="container py-5">
+                <div className="mb-5">
+                    <h1 className='title'>Articles</h1>
+                </div>
+                <div class="row">
+                    <div class="col-lg-7 mx-auto">
+                    <ul className="list-group shadow">
+                    {items.map((product) => (
+                        <li className="list-group-item">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h3 className="mt-4 font-weight-bold mb-2">{product.name}</h3>
+                                    <p className="text-muted">{product.description}</p>
+                                    <h5 className="font-weight-bold my-2">{product.price}€</h5>
+                                </div>
+                                <div className="col-lg-6 text-center">
+                                       <img src={product.image} alt={product.name} width="150"/>
+                                        <div className="text-center mx-0 my-2">
+                                            <button type="button" className="btn btn-outline-success">Ajouter au panier</button>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    ))}
+                    </ul>
+                    </div>
+                </div>
+            </div>
+          );
+        }
+    }
 }
+
+export default Shop;
+
+
