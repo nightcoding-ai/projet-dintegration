@@ -6,7 +6,7 @@ export default function Cart() {
     const [products, updateProducts] = useState([]);
     
     useEffect(() => {
-        axios.get('http://localhost:5000/api/product/products')
+        axios.get('http://localhost:5000/api/products')
         .then((response) => {
             updateProducts(response.data)
         })

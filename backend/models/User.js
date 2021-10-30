@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
+  user_id : {
+    type: String,
+    unique: true,
+    trim: true,
+  },
   firstname : {
     type: String,
     required: true,
@@ -15,7 +20,7 @@ const userSchema = new mongoose.Schema({
     maxLength: 50,
     unique: true,
   },
-  email: {
+  mail: {
     type: String,
     required: true,
     lowercase: true,
@@ -34,7 +39,8 @@ const userSchema = new mongoose.Schema({
   command : {
     type: Object,
     required: false,
-  }
+  },
+  
     
 });
 
