@@ -24,8 +24,8 @@ const productCtrl = {
             console.log(req.body);
             if(!image) return res.status(400).json({msg : "No image uploaded"})
 
-            const product = await ProductModel.findOne({product_id})
-            if(product) return res.status(400).json({msg : "This product already exists."})
+            /*const product = await ProductModel.findOne({product_id})
+            if(product) return res.status(400).json({msg : "This product already exists."})*/
 
             const newProduct = new ProductModel({
                 product_id,brand, name, description: description.toLowerCase(), stock, price, image
