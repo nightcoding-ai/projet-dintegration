@@ -19,6 +19,14 @@ class Product extends Component {
             price: "",
             urlImage: ""}
         };
+        /*this.nameChange = this.nameChange.bind(this);
+        this.descriptionChange = this.descriptionChange.bind(this);
+        this.brandChange = this.brandChange.bind(this);
+        this.stockChange = this.stockChange.bind(this);
+        this.priceChange = this.priceChange.bind(this);
+        this.urlImageChange = this.urlImageChange.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);*/
+        this.sendProduct = this.sendProduct.bind(this);
     }
 
     cleanFields() {
@@ -28,6 +36,15 @@ class Product extends Component {
         gid("price").value = "";
         gid("urlImage").value = "";
         gid("brand").value = "";
+    }
+
+    handleInputChange = (event) => {
+        const target = event.target;
+        this.setState({
+            addItem: {
+                [target.name]: target.value
+            }
+        });
     }
 
     nameChange = (event) => {
@@ -62,9 +79,20 @@ class Product extends Component {
     hideModal = () => {
         this.setState({ show: false });
     }
-    
-    componentDidMount() {
-        axios.post('http://localhost:5000/api/products', this.addItem)
+
+    getData() {
+        let namex = gid("name").value;
+        let desc = gid("description").value;
+        let stockx = gid("stock").value;
+        let pricex = gid("price").value;
+        let image = gid("urlImage").value;
+        let brandx = gid("brand").value; 
+        return {name: namex, description: desc, stock: stockx, price: pricex, urlImage : image, brand: brandx};
+    }    
+    sendProduct() {
+        let data = {};
+        data = this.getData();
+        axios.post('http://localhost:5000/api/products', data)
             .then(function (response) {
                 console.log(response);
             })
@@ -76,8 +104,8 @@ class Product extends Component {
     render() {
         return (
             <div>
-                <Modal show={this.state.show} handleClose={this.hideModal} name={this.nameChange} description={this.descriptionChange} 
-                    stock={this.stockChange} price={this.priceChange} urlImage={this.urlImageChange} brand={this.brandChange}>
+                <Modal show={this.state.show} handleClose={this.hideModal} /*onChange={this.handleInputChange} name={this.nameChange} description={this.descriptionChange} 
+                    stock={this.stockChange} price={this.priceChange} urlImage={this.urlImageChange} brand={this.brandChange}*/ send={this.sendProduct}>
                 </Modal>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_Product" onClick={this.showModal}>
                     Add product

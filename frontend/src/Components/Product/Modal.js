@@ -1,7 +1,7 @@
 import './Product.css';
 
 
-const Modal = ({ handleClose, show, name, description, brand, stock, price, urlImage }) => {
+const Modal = ({ handleClose, show/*, onChange, name, description, brand, stock, price, urlImage*/, send }) => {
     const showHideClassName = show ? "modal display-block" : "modal display-none";
 
     return (
@@ -18,33 +18,33 @@ const Modal = ({ handleClose, show, name, description, brand, stock, price, urlI
                         <form id="addProduct-id">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Name</label>
-                                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name's product" onChange={name}></input>
+                                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name's product"></input>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Description</label>
-                                <input type="text" class="form-control" id="description" placeholder="Enter description" onChange={description}></input>
+                                <input type="text" class="form-control" id="description" placeholder="Enter description"></input>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Brand</label>
-                                <input type="text" class="form-control" id="brand" placeholder="Enter brand's product" onChange={brand}></input>
+                                <input type="text" class="form-control" id="brand" placeholder="Enter brand's product"></input>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Stock</label>
-                                <input type="text" class="form-control" id="stock" placeholder="Enter stock" onChange={stock}></input>
+                                <input type="text" class="form-control" id="stock" placeholder="Enter stock"></input>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Price</label>
-                                <input type="text" class="form-control" id="price" placeholder="Enter price" onChange={price}></input>
+                                <input type="text" name="price" class="form-control" id="price" placeholder="Enter price"></input>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Url image</label>
-                                <input type="text" class="form-control" id="urlImage" placeholder="Enter url image" onChange={urlImage}></input>
+                                <input type="text" name="urlImage" class="form-control" id="urlImage" placeholder="Enter url image"></input>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" onClick={handleClose}>Close</button>
-                        <button type="button" class="btn btn-primary">Add product</button>
+                        <button type="button" class="btn btn-primary" onClick={send}>Add product</button>
                     </div>
                 </div>
             </div>
