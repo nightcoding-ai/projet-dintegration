@@ -19,13 +19,6 @@ class Product extends Component {
             price: "",
             urlImage: ""}
         };
-        /*this.nameChange = this.nameChange.bind(this);
-        this.descriptionChange = this.descriptionChange.bind(this);
-        this.brandChange = this.brandChange.bind(this);
-        this.stockChange = this.stockChange.bind(this);
-        this.priceChange = this.priceChange.bind(this);
-        this.urlImageChange = this.urlImageChange.bind(this);
-        this.handleInputChange = this.handleInputChange.bind(this);*/
         this.sendProduct = this.sendProduct.bind(this);
     }
 
@@ -45,30 +38,6 @@ class Product extends Component {
                 [target.name]: target.value
             }
         });
-    }
-
-    nameChange = (event) => {
-        this.setState({addItem: {name: event.target.value}});
-    }
-
-    descriptionChange = (event) => {
-        this.setState({addItem: {description: event.target.value}});
-    }
-
-    stockChange = (event) => {
-        this.setState({addItem: {stock: event.target.value}});
-    }
-
-    priceChange = (event) => {
-        this.setState({addItem: {price: event.target.value}});
-    }
-
-    urlImageChange = (event) => {
-        this.setState({addItem: {urlImage: event.target.value}});
-    }
-
-    brandChange = (event) => {
-        this.setState({addItem: {brand: event.target.value}});
     }
 
     showModal = () => {
@@ -92,12 +61,13 @@ class Product extends Component {
 
     verifyData(object) {
         if(!object.name || !object.description || !object.stock || !object.price || !object.image || !object.brand) return false;
+        else if(isNaN(parseInt(object.stock)) || isNaN(parseInt(object.price))) return false;
     }
 
     sendProduct() {
         let data = {};
         data = this.getData();
-        //if(this.verifyData(data) == false) return console.log("A field is wrong !");
+        if(this.verifyData(data) == false) return console.log("A field is wrong !");
         axios.post('http://localhost:5000/api/products/', data)
             .then(function (response) {
                 console.log(response);
