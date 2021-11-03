@@ -85,14 +85,20 @@ class Product extends Component {
         let desc = gid("description").value;
         let stockx = gid("stock").value;
         let pricex = gid("price").value;
-        let image = gid("urlImage").value;
+        let urlImage = gid("urlImage").value;
         let brandx = gid("brand").value; 
-        return {name: namex, description: desc, stock: stockx, price: pricex, urlImage : image, brand: brandx};
-    }    
+        return {name: namex, description: desc, stock: stockx, price: pricex, image : urlImage, brand: brandx};
+    }
+
+    verifyData(object) {
+        if(!object.name || !object.description || !object.stock || !object.price || !object.image || !object.brand) return false;
+    }
+
     sendProduct() {
         let data = {};
         data = this.getData();
-        axios.post('http://localhost:5000/api/products', data)
+        //if(this.verifyData(data) == false) return console.log("A field is wrong !");
+        axios.post('http://localhost:5000/api/products/', data)
             .then(function (response) {
                 console.log(response);
             })
