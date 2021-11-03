@@ -67,7 +67,7 @@ class Product extends Component {
     sendProduct() {
         let data = {};
         data = this.getData();
-        if(this.verifyData(data) == false) return console.log("A field is wrong !");
+        if(this.verifyData(data) === false) return console.log("A field is wrong !");
         axios.post('http://localhost:5000/api/products/', data)
             .then(function (response) {
                 console.log(response);

@@ -43,10 +43,12 @@ class Shop extends Component {
                                     <h5 className="font-weight-bold my-2">{product.price}€</h5>
                                 </div>
                                 <div className="col-lg-6 text-center">
-                                       <img src={product.image} alt={product.name} width="150"/>
-                                        <div className="text-center mx-0 my-2">
-                                            <button type="button" className="btn btn-outline-success">Ajouter au panier</button>
-                                        </div>
+                                    <div className='box'>
+                                        <img src={product.image} alt={product.name} width="150" className='picture'/>
+                                    </div>
+                                    <div className="text-center mx-0 my-2">
+                                        <button type="button" className="btn btn-outline-success">Ajouter au panier</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
