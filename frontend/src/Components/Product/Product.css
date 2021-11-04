@@ -5,3 +5,17 @@
 .display-none {
     display: none;
 }
+
+div#product {
+    text-align: right;
+    padding-right: 2%;
+}
+
+#deleteButton {
+    margin-left: 20%;
+    margin-top: 0%;
+}
+
+#list {
+    vertical-align: middle;
+}
