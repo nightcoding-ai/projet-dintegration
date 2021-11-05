@@ -11,7 +11,7 @@ div#product {
     padding-right: 2%;
 }
 
-#deleteButton {
+.deleteButton {
     margin-left: 20%;
     margin-top: 0%;
 }

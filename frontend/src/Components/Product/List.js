@@ -27,8 +27,9 @@ class ListCommerce extends Component {
             });
     }
 
-    deleteProduct() {
-
+    deleteProduct(id) {
+        axios.delete("http://localhost:5000/api/products/" + id)
+            .then(this.componentDidMount());
     }
 
     render() {
@@ -54,7 +55,7 @@ class ListCommerce extends Component {
                             <tr>
                                 <td id="list">{product.name}</td>
                                 <td id="list">{product.stock}</td>
-                                <td id="list">{product.price} <Button id="deleteButton" onClick={this.deleteProduct}>Delete</Button></td>
+                                <td id="list">{product.price} <Button className="deleteButton" id={product._id} onClick={() => this.deleteProduct(product._id)}>Delete</Button></td>
                             </tr>
                         ))}
                         </tbody>
