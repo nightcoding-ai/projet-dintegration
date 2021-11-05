@@ -12,7 +12,7 @@ import GPU from './Components/Gpu/Gpu';
 import Footer from './Components/Footer/Footer';
 import Cart from './Components/Cart/Cart';
 import Shop from './Components/Shop/Shop';
-import Product from './Components/Product/Product';
+import ListCommerce from './Components/Product/List';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -26,7 +26,7 @@ ReactDOM.render(
         <Route path="/Contact" component={Home} />
         <Route path="/GPU" component={GPU}/>
         <Route path="/Panier" component={Cart} />
-        <Route path='/Produit' component={Product} />
+        <Route path='/ListeCommerce' component={ListCommerce} />
         <div className="outer">
           <div className="inner">
             <Switch>

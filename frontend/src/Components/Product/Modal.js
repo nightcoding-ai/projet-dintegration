@@ -1,7 +1,7 @@
 import './Product.css';
 
 
-const Modal = ({ handleClose, show/*, onChange, name, description, brand, stock, price, urlImage*/, send }) => {
+const Modal = ({ handleClose, show, send }) => {
     const showHideClassName = show ? "modal display-block" : "modal display-none";
 
     return (
@@ -43,6 +43,7 @@ const Modal = ({ handleClose, show/*, onChange, name, description, brand, stock,
                         </form>
                     </div>
                     <div class="modal-footer">
+                        <p id="warning"></p>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" onClick={handleClose}>Close</button>
                         <button type="button" class="btn btn-primary" onClick={send}>Add product</button>
                     </div>
