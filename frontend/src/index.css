@@ -15,6 +15,6 @@ code {
 .outer {
   text-align: center;
   background: #ffffff;
-  min-height: 50vh;
+  min-height: 66vh;
   display: flex;
 }

@@ -27,7 +27,7 @@ class Shop extends Component {
           return <div>Chargement ... </div>;
         } else {
           return (
-            <div class="container py-5">
+            <div class="container py-5 my-5">
                 <div className="mb-5">
                     <h1 className='title'>Articles</h1>
                 </div>
