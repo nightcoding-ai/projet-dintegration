@@ -10,10 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@shelf/jest-mongodb": "^2.1.0",
     "argon2": "^0.28.2",
     "body-parser": "^1.19.0",
-    "chai": "^4.3.4",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
