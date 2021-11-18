@@ -13,32 +13,36 @@ import Footer from './Components/Footer/Footer';
 import Cart from './Components/Cart/Cart';
 import Shop from './Components/Shop/Shop';
 import Product from './Components/Product/Product';
+import userContext from './Components/Context/userContext';
+import Default from './Components/Default/Default';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <App />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/Marché" component={Home} />
-        <Route path="/Boutique" component={Shop} />
-        <Route path="/Vendeurs" component={Home} />
-        <Route path="/Contact" component={Home} />
-        <Route path="/GPU" component={GPU}/>
-        <Route path="/Panier" component={Cart} />
-        <Route path='/Produit' component={Product} />
-        <div className="outer">
-          <div className="inner">
-            <Switch>
-              <Route path="/Login" component={Login} />
-              <Route path="/Register" component={Register} />
-              <Route path="/Forgotpassword" component={ForgotPassword}/>
-            </Switch>
+    <userContext.Provider value="this is a test">
+      <Router>
+        <App />
+        <Switch>
+          <Route exact path="/" component={Default} />
+          <Route path="/Marché" component={Home} />
+          <Route path="/Boutique" component={Shop} />
+          <Route path="/Vendeurs" component={Home} />
+          <Route path="/Contact" component={Home} />
+          <Route path="/GPU" component={GPU}/>
+          <Route path="/Panier" component={Cart} />
+          <Route path='/Produit' component={Product} />
+          <div className="outer">
+            <div className="inner">
+              <Switch>
+                <Route path="/Login" component={Login} />
+                <Route path="/Register" component={Register} />
+                <Route path="/Forgotpassword" component={ForgotPassword}/>
+              </Switch>
+            </div>
           </div>
-        </div>
-      </Switch>
-      <Footer className="footer"/>
-    </Router>
+        </Switch>
+        <Footer className="footer"/>
+      </Router>
+    </userContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

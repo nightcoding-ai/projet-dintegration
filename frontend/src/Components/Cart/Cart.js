@@ -21,6 +21,9 @@ class Cart extends Component {
             });
         });
     }
+    deleteArticle = (e) => {
+        alert("l'id du produit : "+ e.currentTarget.id);
+    }
     render() {
         const { items } = this.state;
         if (!this.state.isLoaded) {
@@ -50,7 +53,7 @@ class Cart extends Component {
                             <td className="w-25">{product.name}</td>
                             <td className="w-25">{product.price}€</td>
                             <td className="w-25">{product.description}</td>
-                            <td className="w-25"><FontAwesomeIcon icon={faTrashAlt} size="3x" /></td>
+                            <td className="w-25"><button id={product._id} onClick={this.deleteArticle}><FontAwesomeIcon icon={faTrashAlt} size="3x"/></button></td>
                         </tr>
                     ))}
                     </table>
