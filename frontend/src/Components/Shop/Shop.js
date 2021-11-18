@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import axios from 'axios'
 //import { Link } from 'react-router-dom';
 import './Shop.css';
-//import './Toast.js';
+import {Button} from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 class Shop extends Component {
     constructor(props) {
@@ -23,6 +26,16 @@ class Shop extends Component {
     }
     render() {
         const { items } = this.state;
+        const notify = (e) =>toast('L\'article : '+e.currentTarget.id+' a été ajouté au panier !', {
+                                        position: "top-center",
+                                        autoClose: 2000,
+                                        hideProgressBar: true,
+                                        closeOnClick: true,
+                                        pauseOnHover: true,
+                                        draggable: true,
+                                        progress: undefined,
+
+                                        });
         if (!this.state.isLoaded) {
           return <div>Chargement ... </div>;
         } else {
@@ -48,7 +61,8 @@ class Shop extends Component {
                                         <img src={product.image} alt={product.name} width="150" className='picture'/>
                                     </div>
                                     <div className="my-3">
-                                        <button type="button" className="btn btn-outline-success">Ajouter au panier</button>
+                                        <Button type="button" id={product.name} variant="btn btn-outline-success"  onClick={notify}>Ajouter au panier</Button>
+                                       <ToastContainer/>
                                     </div>
                                 </div>
                             </div>

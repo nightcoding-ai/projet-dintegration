@@ -45,7 +45,7 @@
   color: #167bff;
 }
 
-button {
+.btn btn-dark btn-bg btn-block {
   margin-top: 10px;
   margin-right: 10px;
 }

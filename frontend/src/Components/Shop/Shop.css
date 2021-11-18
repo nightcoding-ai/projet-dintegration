@@ -9,7 +9,7 @@
   background-color: #5db674;
 }
 
-.btn {
+.btn btn-outline-success {
   margin: 0 auto;
 }
 
@@ -26,10 +26,4 @@
   max-height: 100%;
   object-fit: contain;
   display: block;
-}
-
-.toast{
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
 }
