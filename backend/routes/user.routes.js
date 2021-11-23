@@ -15,7 +15,7 @@ router.get('/logout', authController.logout)
 router.get('/infor', auth, authController.getUser)
 
 
-router.patch('/add_to_cart', auth, authController.addToCart)
+router.post('/add_to_cart', auth, authController.addToCart)
 
 
 router.patch('/add_points', auth, authController.addPoints)

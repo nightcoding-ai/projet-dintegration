@@ -1,8 +1,41 @@
 import React, { Component } from "react";
-import './Login.css'
-
+import './Login.css';
+import axios from "axios";
 
 export default class Login extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            mail: '',
+            password: '',
+        };
+    }
+    
+    handleInputChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value,
+        });
+    };
+    
+    handleSubmit = e => {
+    e.preventDefault();
+    const { mail, password } = this.state;
+
+    const user = {
+      mail,
+      password,
+    };
+    console.log(user);
+    axios
+      .post('http://localhost:5000/api/user/login', user)
+      .then(() => console.log('User Connected'))
+      .catch(err => {
+        console.error(err);
+      });
+  };
+
     render() {
         return (
             <div className="container-fluid">
@@ -12,12 +45,21 @@ export default class Login extends Component {
 
                 <div className="form-group">
                     <label>Email</label>
-                    <input type="email" className="form-control" placeholder="Votre email" />
+                    <input 
+                    type="email" 
+                    className="form-control" 
+                    placeholder="Votre email"
+                    name="mail" 
+                    onChange={this.handleInputChange}/>
                 </div>
 
                 <div className="form-group">
                     <label>Mot de passe</label>
-                    <input type="password" className="form-control" placeholder="Votre mot de passe" />
+                    <input type="password" 
+                    className="form-control" 
+                    placeholder="Votre mot de passe" 
+                    name="password"
+                    onChange={this.handleInputChange}/>
                 </div>
 
                 <div className="form-group">
@@ -27,7 +69,12 @@ export default class Login extends Component {
                     </div>
                 </div>
 
-                <button type="submit" className="btn btn-dark btn-bg btn-block">Se connecter</button>
+                <button 
+                type="submit" 
+                className="btn btn-dark btn-bg btn-block"
+                onClick={this.handleSubmit}>
+                    Se connecter
+                </button>
 
                 <p className="forpas-register text-right">
                     Mot de passe perdu ? Récupérer le <a href="./ForgotPassword">ici</a>
