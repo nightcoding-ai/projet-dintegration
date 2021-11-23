@@ -5,17 +5,25 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "None"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "argon2": "^0.28.2",
     "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "install": "^0.13.0",
     "jsonwebtoken": "^8.5.1",
+    "mockgoose": "^8.0.4",
     "mongoose": "^6.0.11",
     "nodemon": "^2.0.14",
+    "start": "^5.1.0",
+    "supertest": "^6.1.6",
     "validator": "^13.6.0"
   },
   "proxy": "http://localhost:5000"

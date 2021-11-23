@@ -12,6 +12,7 @@ import GPU from './Components/Gpu/Gpu';
 import Footer from './Components/Footer/Footer';
 import Cart from './Components/Cart/Cart';
 import Shop from './Components/Shop/Shop';
+import ListCommerce from './Components/Product/List';
 import Product from './Components/Product/Product';
 import userContext from './Components/Context/userContext';
 import Default from './Components/Default/Default';
@@ -29,6 +30,7 @@ ReactDOM.render(
           <Route path="/Contact" component={Home} />
           <Route path="/GPU" component={GPU}/>
           <Route path="/Panier" component={Cart} />
+          <Route path='/ListeCommerce' component={ListCommerce} />
           <Route path='/Produit' component={Product} />
           <div className="outer">
             <div className="inner">

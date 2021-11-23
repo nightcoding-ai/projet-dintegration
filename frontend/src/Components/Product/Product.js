@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-//import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import axios from 'axios';
 import './Product.css';
 import Modal from './Modal.js';
 
@@ -8,16 +7,7 @@ class Product extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          items: [],
-          isLoaded: false,
-          show: false,
-          addItem: {
-            name:"",
-            description: "",
-            brand: "",
-            stock: "",
-            price: "",
-            urlImage: ""}
+          show: false
         };
         this.sendProduct = this.sendProduct.bind(this);
     }
@@ -29,15 +19,6 @@ class Product extends Component {
         gid("price").value = "";
         gid("urlImage").value = "";
         gid("brand").value = "";
-    }
-
-    handleInputChange = (event) => {
-        const target = event.target;
-        this.setState({
-            addItem: {
-                [target.name]: target.value
-            }
-        });
     }
 
     showModal = () => {
@@ -62,14 +43,21 @@ class Product extends Component {
     verifyData(object) {
         if(!object.name || !object.description || !object.stock || !object.price || !object.image || !object.brand) return false;
         else if(isNaN(parseInt(object.stock)) || isNaN(parseInt(object.price))) return false;
+        else return true;
     }
 
     sendProduct() {
+        gid("warning").innerHTML = "";
         let data = {};
         data = this.getData();
-        if(this.verifyData(data) === false) return console.log("A field is wrong !");
+      
+        if(this.verifyData(data) == false) {
+            gid("warning").innerHTML = "A field is wrong or empty !";
+            return false;
+        }
+      
         axios.post('http://localhost:5000/api/products/', data)
-            .then(function (response) {
+            .then(function response) {
                 console.log(response);
             })
             .catch(function (error) {
@@ -80,8 +68,7 @@ class Product extends Component {
     render() {
         return (
             <div>
-                <Modal show={this.state.show} handleClose={this.hideModal} /*onChange={this.handleInputChange} name={this.nameChange} description={this.descriptionChange} 
-                    stock={this.stockChange} price={this.priceChange} urlImage={this.urlImageChange} brand={this.brandChange}*/ send={this.sendProduct}>
+                <Modal show={this.state.show} handleClose={this.hideModal} send={this.sendProduct}>
                 </Modal>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_Product" onClick={this.showModal}>
                     Add product
