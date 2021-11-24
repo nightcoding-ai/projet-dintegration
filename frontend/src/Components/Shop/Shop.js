@@ -26,7 +26,7 @@ class Shop extends Component {
     }
     render() {
         const { items } = this.state;
-        const notify = (e) =>toast('L\'article : '+e.currentTarget.id+' a été ajouté au panier !', {
+        const notify = (e) =>toast('L\'article : '+e.currentTarget.name+' a été ajouté au panier !', {
                                         position: "top-center",
                                         autoClose: 2000,
                                         hideProgressBar: true,
@@ -61,7 +61,7 @@ class Shop extends Component {
                                         <img src={product.image} alt={product.name} width="150" className='picture'/>
                                     </div>
                                     <div className="my-3">
-                                        <Button type="button" id={product.name} variant="btn btn-outline-success"  onClick={notify}>Ajouter au panier</Button>
+                                        <Button type="button" name={product.name} id={product._id} variant="btn btn-outline-success"  onClick={notify}>Ajouter au panier</Button>
                                        <ToastContainer/>
                                     </div>
                                 </div>

@@ -38,11 +38,11 @@ class Cart extends Component {
                         <th>Photo</th>
                         <th>Nom</th>
                         <th>Prix</th>
+                        <th>Quantité</th>
                         <th>Description</th>
+                        <th>Supprimer</th>
                         </tr>
                     </thead>
-                    <tbody id="productList">
-                    </tbody>
                     {items.map((product) => (
                         <tr className="text-center">
                             <td>
@@ -52,8 +52,9 @@ class Cart extends Component {
                             </td>
                             <td className="w-25">{product.name}</td>
                             <td className="w-25">{product.price}€</td>
+                            <td className="w-25">1</td>
                             <td className="w-25">{product.description}</td>
-                            <td className="w-25"><button id={product._id} onClick={this.deleteArticle}><FontAwesomeIcon icon={faTrashAlt} size="3x"/></button></td>
+                            <td className="w-25"><button id={product._id} onClick={this.deleteArticle}><FontAwesomeIcon icon={faTrashAlt} size="2x"/></button></td>
                         </tr>
                     ))}
                     </table>

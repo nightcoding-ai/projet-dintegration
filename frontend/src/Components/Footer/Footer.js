@@ -41,27 +41,27 @@ function Footer() {
             </div>
         </div>
         <div className="content-footer">
-        <div id="Youtube" class="social-container">
+        <div id="Youtube" className="social-container">
                 <a  href="https://www.youtube.com/channel/UC68ss1nWAGTLxX1F334xnLw" 
                     target="_blank" rel='noreferrer'
                     className="youtube social">
                     <FontAwesomeIcon icon={faYoutube} size="1x" />
                 </a>
             </div>
-            <div id="Facebook" class="social-container">
+            <div id="Facebook" className="social-container">
                 <a href="https://www.facebook.com/Bangoo-SRL-112043194595183" 
                     target="_blank" rel='noreferrer'
                     className="facebook social">
                     <FontAwesomeIcon icon={faFacebook} size="1x" />
                 </a>
             </div>
-            <div id="Google" class="social-container">
+            <div id="Google" className="social-container">
                 <a href="/"
                     className="google social">
                     <FontAwesomeIcon icon={faGoogle} size="1x" />
                 </a>
             </div>
-            <div id="Instagram" class="social-container">
+            <div id="Instagram" className="social-container">
                 <a href="https://www.instagram.com/bangoosrl/"
                     className="google social">
                     <FontAwesomeIcon icon={faInstagram} size="1x" />

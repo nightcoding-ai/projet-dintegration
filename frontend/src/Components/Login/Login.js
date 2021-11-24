@@ -27,10 +27,9 @@ export default class Login extends Component {
       mail,
       password,
     };
-    console.log(user);
     axios
       .post('http://localhost:5000/api/user/login', user)
-      .then(() => console.log('User Connected'))
+      .then((res) => console.log('User Connected', res.data))
       .catch(err => {
         console.error(err);
       });

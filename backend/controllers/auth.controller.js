@@ -23,7 +23,6 @@ const userCtrl = {
 
             await newUser.save()
 
-
             //Token d'identification
 
             const accesstoken = createAccessToken({id: newUser._id})
