@@ -16,6 +16,7 @@ import ListCommerce from './Components/Product/List';
 import Product from './Components/Product/Product';
 import userContext from './Components/Context/userContext';
 import Default from './Components/Default/Default';
+import Contact from './Components/Contact/Contact';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,11 +28,11 @@ ReactDOM.render(
           <Route path="/Marché" component={Home} />
           <Route path="/Boutique" component={Shop} />
           <Route path="/Vendeurs" component={Home} />
-          <Route path="/Contact" component={Home} />
           <Route path="/GPU" component={GPU}/>
           <Route path="/Panier" component={Cart} />
           <Route path='/ListeCommerce' component={ListCommerce} />
           <Route path='/Produit' component={Product} />
+          <Route path='/Contact' component={Contact} />
           <div className="outer">
             <div className="inner">
               <Switch>
