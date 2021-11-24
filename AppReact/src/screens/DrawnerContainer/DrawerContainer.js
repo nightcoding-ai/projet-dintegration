@@ -35,9 +35,17 @@ export default function DrawerContainer(props) {
         />
         <MenuButton
           title="Login/Register"
-          source={require("../../../assets/icons/home.png")}
+          source={require("../../../assets/icons/icons8-utilisateur-50.png")}
           onPress={() => {
             navigation.navigate("LoginRegister");
+            navigation.closeDrawer();
+          }}
+        />
+        <MenuButton
+          title="Cart"
+          source={require("../../../assets/icons/icons8-panier-50.png")}
+          onPress={() => {
+            navigation.navigate("Cart");
             navigation.closeDrawer();
           }}
         />
