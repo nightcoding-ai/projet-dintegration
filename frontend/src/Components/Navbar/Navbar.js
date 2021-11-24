@@ -11,7 +11,7 @@ export default class BarNav extends Component {
     render() {
         return (
             <div>
-                <Navbar bg="transparent" variant="light" sticky="top" expand="lg">
+                <Navbar bg="white" variant="light" fixed="top" expand="lg">
                     <Navbar.Brand>
                         <Link to="/">
                             <img src={logo} width="60%" alt="logo" className="mx-3" />

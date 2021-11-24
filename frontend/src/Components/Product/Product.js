@@ -50,12 +50,14 @@ class Product extends Component {
         gid("warning").innerHTML = "";
         let data = {};
         data = this.getData();
+      
         if(this.verifyData(data) == false) {
             gid("warning").innerHTML = "A field is wrong or empty !";
             return false;
         }
+      
         axios.post('http://localhost:5000/api/products/', data)
-            .then(function (response) {
+            .then(function response) {
                 console.log(response);
             })
             .catch(function (error) {

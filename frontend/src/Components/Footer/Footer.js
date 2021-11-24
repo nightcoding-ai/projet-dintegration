@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faYoutube,
     faFacebook,
-    faTwitter,
     faInstagram,
     faGoogle
   } from "@fortawesome/free-brands-svg-icons";
@@ -43,13 +42,15 @@ function Footer() {
         </div>
         <div className="content-footer">
         <div id="Youtube" class="social-container">
-                <a  href="https://www.youtube.com/channel/UC68ss1nWAGTLxX1F334xnLw" target="_blank"
+                <a  href="https://www.youtube.com/channel/UC68ss1nWAGTLxX1F334xnLw" 
+                    target="_blank" rel='noreferrer'
                     className="youtube social">
                     <FontAwesomeIcon icon={faYoutube} size="1x" />
                 </a>
             </div>
             <div id="Facebook" class="social-container">
-                <a href="https://www.facebook.com/Bangoo-SRL-112043194595183" target="_blank"
+                <a href="https://www.facebook.com/Bangoo-SRL-112043194595183" 
+                    target="_blank" rel='noreferrer'
                     className="facebook social">
                     <FontAwesomeIcon icon={faFacebook} size="1x" />
                 </a>

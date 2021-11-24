@@ -31,7 +31,8 @@ const userCtrl = {
             
             res.cookie('refreshtoken', refreshtoken, {
                 httpOnly: true,
-                path: '/user/refresh_token'
+                path: '/user/refresh_token',
+                maxAge: 7*24*60*60*1000 // Equivalent à 7 jours
             })
 
             res.json({accesstoken})
@@ -58,7 +59,8 @@ const userCtrl = {
             
             res.cookie('refreshtoken', refreshtoken, {
                 httpOnly: true,
-                path: '/user/refresh_token'
+                path: 'api/user/refresh_token',
+                maxAge: 7*24*60*60*1000 // Equivalent à 7 jours
             })
 
             res.json({accesstoken})
@@ -69,7 +71,7 @@ const userCtrl = {
     },
     logout: async(req,res,next) =>{
         try{
-            res.clearCookie('refreshtoken', {path: '/user/refresh_token'})
+            res.clearCookie('refreshtoken', {path: 'api/user/refresh_token'})
             return res.json({msg: "Logged out."})
         }catch(err){
             return res.status(500).json({msg:err.message})
@@ -78,15 +80,22 @@ const userCtrl = {
 
     },
     refreshToken: (req,res,next) =>{
-        const rf_token = req.cookies.refreshtoken;
-        if(!rf_token)  {
-            console.log(rf_token)
-            return res.status(400).json({msg :"Please Login or Register"})
-        }
-        jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET), (err, user) =>{
-            if(err) return res.status(400).json({msg :"Please Login or Register"})
-            const accessToken = createAccessToken({id: user.id})
-            res.json({user, accessToken})
+        try{
+            const rf_token = req.cookies.refreshtoken;
+            console.log(req.cookies);
+            if(!rf_token) return res.status(400).json({msg :"Please login or register"})
+
+            jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) =>{
+                if(err) return res.status(400).json({msg :"Please login or register"})
+
+                const accesstoken = createAccessToken({id: user.id})
+
+                res.json({user, accesstoken})
+
+            })
+
+        }catch(err){
+            return res.status(500).json({msg: err.message})
         }
     },
     getUser: async(req,res,next) =>{
@@ -99,21 +108,23 @@ const userCtrl = {
             return res.status(500).json({msg: err.message})
         }
     },
-    /*
+    
     addToCart: async(req,res,next) =>{
         try {
             const user = await UserModel.findById(req.user.id)
+            console.log(user);
             if(!user) return res.status(400).json({msg: "User does not exist."})
 
             await UserModel.findOneAndUpdate({_id: req.user.id}, {
                 cart: req.body.cart
             })
-
+            console.log(user);
             return res.json({msg: "Added to cart"})
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
     },
+    
     addPoints: async(req,res,next) =>{
         try {
             const user = await UserModel.findById(req.user.id)
@@ -128,7 +139,7 @@ const userCtrl = {
             return res.status(500).json({msg: err.message})
         }
     }
-    */
+    
     
 }
 
