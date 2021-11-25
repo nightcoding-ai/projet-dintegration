@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 //import { Link } from 'react-router-dom';
-import './Shop.css';
-import {Button} from 'react-bootstrap';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import './Shop.css'
+import {Button} from 'react-bootstrap'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 class Shop extends Component {
@@ -27,11 +27,11 @@ class Shop extends Component {
     render() {
         const { items } = this.state;
         const notify = (e) =>toast('L\'article : '+e.currentTarget.name+' a été ajouté au panier !', {
-                                        position: "top-center",
-                                        autoClose: 2000,
-                                        hideProgressBar: true,
+                                        position: "top-right",
+                                        autoClose: 5000,
+                                        hideProgressBar: false,
                                         closeOnClick: true,
-                                        pauseOnHover: true,
+                                        pauseOnHover: false,
                                         draggable: true,
                                         progress: undefined,
 
@@ -61,9 +61,7 @@ class Shop extends Component {
                                         <img src={product.image} alt={product.name} width="150" className='picture'/>
                                     </div>
                                     <div className="my-3">
-                                        <Button type="button" name={product.name} id={product._id} variant="btn btn-outline-success"  onClick={notify}>Ajouter au panier</Button>
-                                       <ToastContainer/>
-                                    </div>
+                                        <Button type="button" name={product.name} id={product._id} variant="btn btn-outline-success"  onClick={notify}>Ajouter au panier</Button>                                    </div>
                                 </div>
                             </div>
                         </div>

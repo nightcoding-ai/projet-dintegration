@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import logo from '../../img/Bangoo.png';
 import account from '../../img/Account.png';
 import basket from '../../img/Basket.png';
@@ -7,7 +7,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink, Link } from 'react-router-dom';
 
+
 export default class BarNav extends Component {
+
     render() {
         return (
             <div>

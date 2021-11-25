@@ -14,16 +14,13 @@ import Cart from './Components/Cart/Cart';
 import Shop from './Components/Shop/Shop';
 import ListCommerce from './Components/Product/List';
 import Product from './Components/Product/Product';
-import userContext from './Components/Context/userContext';
-import Default from './Components/Default/Default';
 
 ReactDOM.render(
   <React.StrictMode>
-    <userContext.Provider value="this is a test">
       <Router>
         <App />
         <Switch>
-          <Route exact path="/" component={Default} />
+          <Route exact path="/" component={Home} />
           <Route path="/Marché" component={Home} />
           <Route path="/Boutique" component={Shop} />
           <Route path="/Vendeurs" component={Home} />
@@ -44,7 +41,7 @@ ReactDOM.render(
         </Switch>
         <Footer className="footer"/>
       </Router>
-    </userContext.Provider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );
