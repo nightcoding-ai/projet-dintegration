@@ -82,7 +82,7 @@ const userCtrl = {
     refreshToken: (req,res,next) =>{
         try{
             const rf_token = req.cookies.refreshtoken;
-            console.log(req.cookies);
+           
             if(!rf_token) return res.status(400).json({msg :"Please login or register"})
 
             jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) =>{
@@ -108,7 +108,15 @@ const userCtrl = {
             return res.status(500).json({msg: err.message})
         }
     },
-    
+    getAllUser : async(req,res,next) =>{
+        try{
+            const users = await UserModel.find().select('-password')
+            res.json(users)
+
+        }catch(err){
+            return res.statuts(500).json({msg:"Error 500 occured."})
+        }
+    },
     addToCart: async(req,res,next) =>{
         try {
             const user = await UserModel.findById(req.user.id)
