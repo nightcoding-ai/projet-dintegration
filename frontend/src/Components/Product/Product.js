@@ -57,7 +57,7 @@ class Product extends Component {
         }
       
         axios.post('http://localhost:5000/api/products/', data)
-            .then(function response) {
+            .then(function (response) {
                 console.log(response);
             })
             .catch(function (error) {
