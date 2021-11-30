@@ -28,11 +28,11 @@ ReactDOM.render(
           <Route path="/Marché" component={Home} />
           <Route path="/Boutique" component={Shop} />
           <Route path="/Vendeurs" component={Home} />
+          <Route path="/Contact" component={Contact} />
           <Route path="/GPU" component={GPU}/>
           <Route path="/Panier" component={Cart} />
           <Route path='/ListeCommerce' component={ListCommerce} />
           <Route path='/Produit' component={Product} />
-          <Route path='/Contact' component={Contact} />
           <div className="outer">
             <div className="inner">
               <Switch>
