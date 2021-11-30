@@ -17,6 +17,7 @@ import Product from './Components/Product/Product';
 import userContext from './Components/Context/userContext';
 import Default from './Components/Default/Default';
 import Contact from './Components/Contact/Contact';
+import ContactAdmin from './Components/Contact/ContactAdmin';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -33,6 +34,7 @@ ReactDOM.render(
           <Route path="/Panier" component={Cart} />
           <Route path='/ListeCommerce' component={ListCommerce} />
           <Route path='/Produit' component={Product} />
+          <Route path='/ContactAdmin' component={ContactAdmin} />
           <div className="outer">
             <div className="inner">
               <Switch>

@@ -34,19 +34,19 @@ class Contact extends Component {
                         <div class="col-md-6 wow animated fadeInRight" data-wow-delay=".2s">
                             <form class="shake" role="form" method="post" id="contactForm" name="contact-form" data-toggle="validator">
                                 <div class="form-group label-floating">
-                                <label class="control-label" for="name">Nom</label>
-                                <input class="form-control" id="name" type="text" name="name" required data-error="Please enter your name"></input>
-                                <div class="help-block with-errors"></div>
+                                    <label class="control-label" for="name">Nom</label>
+                                    <input class="form-control" id="name" type="text" name="name" required data-error="Please enter your name"></input>
+                                    <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group label-floating">
-                                <label class="control-label" for="email">Email</label>
-                                <input class="form-control" id="email" type="email" name="email" required data-error="Please enter your Email"></input>
-                                <div class="help-block with-errors"></div>
+                                    <label class="control-label" for="email">Email</label>
+                                    <input class="form-control" id="email" type="email" name="email" required data-error="Please enter your Email"></input>
+                                    <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group label-floating">
-                                <label class="control-label">Sujet</label>
-                                <input class="form-control" id="msg_subject" type="text" name="subject" required data-error="Please enter your message subject"></input>
-                                <div class="help-block with-errors"></div>
+                                    <label class="control-label">Sujet</label>
+                                    <input class="form-control" id="msg_subject" type="text" name="subject" required data-error="Please enter your message subject"></input>
+                                    <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group label-floating">
                                     <label for="message" class="control-label">Message</label>
