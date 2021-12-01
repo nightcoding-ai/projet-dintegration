@@ -10,6 +10,12 @@ class ContactAdmin extends Component {
         };
     }
 
+    show() {
+        this.setState((state) => {
+            return {hidden: this.state.hidden ? false : true}
+        });
+    }
+
     render() {
         return (
             <div>
@@ -26,7 +32,7 @@ class ContactAdmin extends Component {
                         <tbody>
                             <tr>
                                 <th scope="row">1</th>
-                                <td><span id="textObjet">Mark</span><button id="btnShow" className="btn btn-dark">Plus..</button></td>
+                                <td><span id="textObjet">Mark</span><button id="btnShow" className="btn btn-dark" onClick={this.show}>Plus..</button></td>
                                 <td id="statut">
                                     <select class="form-select" aria-label="Default select example">
                                         <option selected id="openSelect" value="open">Ouvert</option>
