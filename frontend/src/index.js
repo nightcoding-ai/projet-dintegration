@@ -14,6 +14,7 @@ import Cart from './Components/Cart/Cart';
 import Shop from './Components/Shop/Shop';
 import ListCommerce from './Components/Product/List';
 import Product from './Components/Product/Product';
+import Profile from './Components/Profile/Profile';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -33,6 +34,7 @@ ReactDOM.render(
             <div className="inner">
               <Switch>
                 <Route path="/Login" component={Login} />
+                <Route path="/Profile" component={Profile} />
                 <Route path="/Register" component={Register} />
                 <Route path="/Forgotpassword" component={ForgotPassword}/>
               </Switch>

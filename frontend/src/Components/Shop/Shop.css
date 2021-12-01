@@ -10,7 +10,7 @@
 }
 
 .btn-outline-success:active {
-  border-style:None;
+  border-style: None;
 }
 
 .btn btn-outline-success {
@@ -33,10 +33,10 @@
 }
 
 .Toastify__toast-container--top-right {
-    top: 5em;
-    right: 1.5em;
+  top: 5em;
+  right: 1.5em;
 }
 
 .Toastify__progress-bar-theme--light {
-    background:#5db674;
+  background: #5db674;
 }
