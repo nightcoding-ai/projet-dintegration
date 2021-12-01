@@ -14,10 +14,14 @@ class ContactAdmin extends Component {
     }
 
 <<<<<<< refs/remotes/origin/develop
+<<<<<<< refs/remotes/origin/develop
     show = () => {
 =======
     show() {
 >>>>>>> Correction du state
+=======
+    show = () => {
+>>>>>>> add specification but not finished
         this.setState((state) => {
             return {hidden: this.state.hidden ? false : true}
         });
@@ -159,9 +163,14 @@ class ContactAdmin extends Component {
                         <tbody>
                             <tr>
                                 <th scope="row">1</th>
-                                <td><span id="textObjet">Mark</span><button id="btnShow" className="btn btn-dark" onClick={this.show}>Plus..</button></td>
+                                <td>
+                                    <span className="float-start" id="textObjet">Mark</span>
+                                    <div className="float-end">
+                                        <button id="btnShow" className="btn btn-dark text-right" onClick={this.show}>Plus..</button>
+                                    </div>
+                                </td>
                                 <td id="statut">
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select className="form-select" aria-label="Default select example">
                                         <option selected id="openSelect" value="open">Ouvert</option>
                                         <option id="closeSelect" value="close">Fermé</option>
                                     </select>

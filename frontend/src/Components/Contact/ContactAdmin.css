@@ -30,4 +30,24 @@ table {
 
 #btn {
     margin-left: 1%;
+<<<<<<< refs/remotes/origin/develop
 }
+=======
+}
+
+textarea {
+    width: 40%;
+}
+/*
+#btnShow {
+    /*text-align: right;
+    float: right;
+}
+
+#textObjet {
+    /*float: left;
+    overflow: hidden;
+    clear: both;
+    max-width: 60%;
+}*/
+>>>>>>> add specification but not finished
