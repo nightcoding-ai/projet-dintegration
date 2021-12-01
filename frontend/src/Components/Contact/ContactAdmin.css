@@ -33,14 +33,15 @@ button#btn {
 textarea {
     width: 40%;
 }
-
+/*
 #btnShow {
-    text-align: right;
+    /*text-align: right;
     float: right;
 }
 
 #textObjet {
-    float: left;
-    display: flex;
+    /*float: left;
     overflow: hidden;
-}
+    clear: both;
+    max-width: 60%;
+}*/
