@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AuthService from "../Login/AuthService";
+import '../Login/Login.css';
 
 export default class Profile extends Component {
   constructor(props) {
@@ -8,6 +9,11 @@ export default class Profile extends Component {
     this.state = {
       currentUser: AuthService.getCurrentUser()
     };
+  }
+
+  disconnect() {
+    localStorage.clear()
+    window.location.href = "/";
   }
 
   render() {
@@ -22,7 +28,8 @@ export default class Profile extends Component {
         </header>
         <p>
           <strong>Token:</strong>{" "}
-          {currentUser.accessToken}
+          {currentUser.accessToken.substring(0, 20)} ...{" "}}
+          {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
         </p>
         <p>
           <strong>Id:</strong>{" "}
@@ -32,6 +39,14 @@ export default class Profile extends Component {
           <strong>Email:</strong>{" "}
           {currentUser.user.mail}
         </p>
+         <button
+                //type="submit"
+                className="btn btn-dark btn-bg"
+                id="Déconnexion"
+                onClick={this.disconnect}
+                >
+                    Déconnexion
+                </button>
       </div>
     );
   }

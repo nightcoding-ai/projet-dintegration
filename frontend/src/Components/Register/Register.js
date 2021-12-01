@@ -48,7 +48,7 @@ export default class SignUp extends Component {
                     type="text" 
                     className="form-control" 
                     name="name"
-                    placeholder="Nom" 
+                    placeholder="Nom"
                     onChange={this.handleInputChange}/>
                 </div>
 
@@ -58,7 +58,7 @@ export default class SignUp extends Component {
                     type="email" 
                     className="form-control" 
                     name="mail"
-                    placeholder="Votre email" 
+                    placeholder="Votre email"
                     onChange={this.handleInputChange}/>
                 </div>
 
@@ -68,7 +68,7 @@ export default class SignUp extends Component {
                     type="password" 
                     className="form-control" 
                     name="password"
-                    placeholder="Votre mot de passe" 
+                    placeholder="Votre mot de passe"
                     onChange={this.handleInputChange}/>
                 </div>
 
