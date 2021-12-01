@@ -17,3 +17,30 @@ table {
 #closeSelect {
     color: red;
 }
+
+select {
+    width: 40px;
+}
+
+#statut {
+    width: 150px;
+}
+
+button#btn {
+    margin-left: 1%;
+}
+
+textarea {
+    width: 40%;
+}
+
+#btnShow {
+    text-align: right;
+    float: right;
+}
+
+#textObjet {
+    float: left;
+    display: flex;
+    overflow: hidden;
+}
