@@ -117,22 +117,6 @@ const userCtrl = {
             return res.statuts(500).json({msg:"Error 500 occured."})
         }
     },
-    addToCart: async(req,res,next) =>{
-        try {
-            const user = await UserModel.findById(req.user.id)
-            console.log(user);
-            if(!user) return res.status(400).json({msg: "User does not exist."})
-
-            await UserModel.findOneAndUpdate({_id: req.user.id}, {
-                cart: req.body.cart
-            })
-            console.log(user);
-            return res.json({msg: "Added to cart"})
-        } catch (err) {
-            return res.status(500).json({msg: err.message})
-        }
-    },
-    
     addPoints: async(req,res,next) =>{
         try {
             const user = await UserModel.findById(req.user.id)
