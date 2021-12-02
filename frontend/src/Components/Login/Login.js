@@ -22,7 +22,7 @@ export default class Login extends Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onChangeMail = this.onChangeMail.bind(this);
-        this.onChangePassword = this.onChangePassword.bind(this);   
+        this.onChangePassword = this.onChangePassword.bind(this);
         this.state = {
             mail: '',
             password: '',
@@ -35,7 +35,7 @@ export default class Login extends Component {
           mail: e.target.value
         });
     }
-    
+
     onChangePassword(e) {
         this.setState({
             password: e.target.value
