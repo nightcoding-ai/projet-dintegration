@@ -5,6 +5,7 @@
 #btnShow {
     margin-top: 1px;
     position: relative;
+<<<<<<< refs/remotes/origin/develop
 }
 
 #closeTable {
@@ -33,16 +34,22 @@ table {
 <<<<<<< refs/remotes/origin/develop
 }
 =======
+=======
 }
 
-textarea {
-    width: 40%;
+#closeTable {
+    padding-top: 10em;
 }
-/*
-#btnShow {
-    /*text-align: right;
-    float: right;
+
+table {
+    border: solid lightgray 2px;
+>>>>>>> Change some css and js in contact page. And adding eslintcache to gitignore
 }
+
+.form-select  {
+    background-color: antiquewhite;
+}
+<<<<<<< refs/remotes/origin/develop
 
 #textObjet {
     /*float: left;
@@ -51,3 +58,5 @@ textarea {
     max-width: 60%;
 }*/
 >>>>>>> add specification but not finished
+=======
+>>>>>>> Change some css and js in contact page. And adding eslintcache to gitignore

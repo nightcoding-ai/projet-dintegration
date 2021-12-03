@@ -93,6 +93,9 @@ class Contact extends Component {
     }
 }
 
+<<<<<<< refs/remotes/origin/develop
 function gid(id) {return document.getElementById(id);}
 
+=======
+>>>>>>> Change some css and js in contact page. And adding eslintcache to gitignore
 export default Contact;
