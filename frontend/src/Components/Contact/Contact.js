@@ -20,7 +20,7 @@ class Contact extends Component {
                     <div class="row">
                         <div class="col-md-6 mt-3 contact-widget-section2 wow animated fadeInLeft" data-wow-delay=".2s">
                             <p>Nos équipes travaillent du mieux qu'il peuvent afin de régler vos problèmes ou de répondre à vos questions.</p>
-            
+
                             <div class="find-widget">
                             Entreprise:  <a href="https://hostriver.ro">Bangoo</a>
                             </div>

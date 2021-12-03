@@ -1,47 +1,20 @@
 #openTable {
-    padding-top: 8%;
+    padding-top: 9em;
+}
+
+#btnShow {
+    margin-top: 1px;
+    position: relative;
 }
 
 #closeTable {
-    padding-top: 10%;
+    padding-top: 10em;
 }
 
 table {
-    border: solid lightgray 1px;
+    border: solid lightgray 2px;
 }
 
-#openSelect {
-    color: green;
+.form-select  {
+    background-color: antiquewhite;
 }
-
-#closeSelect {
-    color: red;
-}
-
-select {
-    width: 40px;
-}
-
-#statut {
-    width: 150px;
-}
-
-button#btn {
-    margin-left: 1%;
-}
-
-textarea {
-    width: 40%;
-}
-/*
-#btnShow {
-    /*text-align: right;
-    float: right;
-}
-
-#textObjet {
-    /*float: left;
-    overflow: hidden;
-    clear: both;
-    max-width: 60%;
-}*/

@@ -34,14 +34,14 @@ class ContactAdmin extends Component {
                                 <th scope="row">1</th>
                                 <td>
                                     <span className="float-start" id="textObjet">Mark</span>
-                                    <div className="float-end">
-                                        <button id="btnShow" className="btn btn-dark text-right" onClick={this.show}>Plus..</button>
+                                    <div >
+                                        <button id="btnShow" className="float-end btn btn-dark text-right" onClick={this.show}>Plus..</button>
                                     </div>
                                 </td>
                                 <td id="statut">
                                     <select className="form-select" aria-label="Default select example">
-                                        <option selected id="openSelect" value="open">Ouvert</option>
-                                        <option id="closeSelect" value="close">Fermé</option>
+                                        <option className="open-select" selected id="openSelect" value="open">Ouvert</option>
+                                        <option   className="close-select" id="closeSelect" value="close">Fermé</option>
                                     </select>
                                 </td>
                             </tr>
