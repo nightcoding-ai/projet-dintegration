@@ -7,10 +7,14 @@ class ContactAdmin extends Component {
         super(props);
         this.state = {
 <<<<<<< refs/remotes/origin/develop
+<<<<<<< refs/remotes/origin/develop
+=======
+>>>>>>> Contact user fini + contact admin get ok, reste a terminer le reste
             openItems: [],
             closedItems: [],
             hidden: true,
             isLoaded: false
+<<<<<<< refs/remotes/origin/develop
 =======
             id: 0,
             object: "",
@@ -19,6 +23,8 @@ class ContactAdmin extends Component {
             status: true,
             hidden: true
 >>>>>>> Avancement contact user front + back mais pas fini
+=======
+>>>>>>> Contact user fini + contact admin get ok, reste a terminer le reste
         };
     }
 
@@ -49,6 +55,9 @@ class ContactAdmin extends Component {
     }
 
 <<<<<<< refs/remotes/origin/develop
+<<<<<<< refs/remotes/origin/develop
+=======
+>>>>>>> Contact user fini + contact admin get ok, reste a terminer le reste
     componentDidMount() {
         axios.get("http://localhost:5000/api/contact/open")
             .then((result) => {
@@ -67,6 +76,7 @@ class ContactAdmin extends Component {
         })
     }
 
+<<<<<<< refs/remotes/origin/develop
     handleChangeStatus = event => {
         let stat;
         if(event.target.value == "open") stat = true;
@@ -74,11 +84,20 @@ class ContactAdmin extends Component {
         let data = {status: stat};
         axios.put("http://localhost:5000/api/contact/status/" + event.target.id,
         data)
+=======
+    handleChange = event => {
+        let stat;
+        if(event.target.value == "open") stat = true;
+        else stat = false;
+        axios.post("http://localhost:5000/api/contact/" + event.target.id,
+        {status: stat})
+>>>>>>> Contact user fini + contact admin get ok, reste a terminer le reste
             .then(function(response) {
                 console.log(response);
                 window.location.reload(false);
             })
             .catch(function(err) {
+<<<<<<< refs/remotes/origin/develop
                 console.log(err.message);
             })
     }
@@ -216,6 +235,76 @@ class ContactAdmin extends Component {
                         </tbody>
                     </table>
 >>>>>>> Correction du state
+=======
+                console.log(err);
+            })
+    }
+
+    render() {
+        const { openItems } = this.state;
+        const { closedItems } = this.state;
+        if (!this.state.isLoaded) {
+            return <div>Chargement ... </div>;
+        } else {
+            return (
+                <div>
+                    <div id="openTable">
+                        <h3>Requêtes ouvertes</h3>
+                        <table className="table 5p">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Objet</th>
+                                    <th scope="col">Statut</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {openItems.map((request) => (
+                                <tr>
+                                    <td>
+                                        <span className="float-start" id="textObjet">{request.subject}</span>
+                                        <div >
+                                            <button id="btnShow" className="float-end btn btn-dark text-right" onClick={this.show}>Plus..</button>
+                                        </div>
+                                    </td>
+                                    <td id="statut">
+                                        <select id={request._id} onChange={this.handleChange} className="form-select" aria-label="Default select example">
+                                            <option className="open-select" selected id="openSelect" value="open">Ouvert</option>
+                                            <option className="close-select" id="closeSelect" value="close">Fermé</option>
+                                        </select>
+                                    </td>
+                                </tr>))}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="closeTable">
+                    <h3>Requêtes fermées</h3>
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Objet</th>
+                                    <th scope="col">Statut</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {closedItems.map((request) => (
+                                <tr>
+                                    <td>
+                                        <span className="float-start" id="textObjet">{request.subject}</span>
+                                        <div >
+                                            <button id="btnShow" className="float-end btn btn-dark text-right" onClick={this.show}>Plus..</button>
+                                        </div>
+                                    </td>
+                                    <td id="statut">
+                                        <select id={request._id} onChange={this.handleChange} className="form-select" aria-label="Default select example">
+                                            <option className="open-select" id="openSelect" value="open">Ouvert</option>
+                                            <option selected className="close-select" id="closeSelect" value="close">Fermé</option>
+                                        </select>
+                                    </td>
+                                </tr>))}
+                            </tbody>
+                        </table>
+                    </div>
+>>>>>>> Contact user fini + contact admin get ok, reste a terminer le reste
                 </div>
             )
         }
