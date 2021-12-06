@@ -6,10 +6,19 @@ class ContactAdmin extends Component {
     constructor(props) {
         super(props);
         this.state = {
+<<<<<<< refs/remotes/origin/develop
             openItems: [],
             closedItems: [],
             hidden: true,
             isLoaded: false
+=======
+            id: 0,
+            object: "",
+            message: "",
+            response: "",
+            status: true,
+            hidden: true
+>>>>>>> Avancement contact user front + back mais pas fini
         };
     }
 
@@ -28,6 +37,9 @@ class ContactAdmin extends Component {
     }
 
 <<<<<<< refs/remotes/origin/develop
+<<<<<<< refs/remotes/origin/develop
+=======
+>>>>>>> Avancement contact user front + back mais pas fini
     verifyContact() {
         
     }
@@ -36,6 +48,7 @@ class ContactAdmin extends Component {
 
     }
 
+<<<<<<< refs/remotes/origin/develop
     componentDidMount() {
         axios.get("http://localhost:5000/api/contact/open")
             .then((result) => {
@@ -147,6 +160,8 @@ class ContactAdmin extends Component {
                         </table>
                     </div>
 =======
+=======
+>>>>>>> Avancement contact user front + back mais pas fini
     render() {
         return (
             <div>
@@ -178,7 +193,10 @@ class ContactAdmin extends Component {
                             </tr>
                             <tr className={this.state.hidden ? "d-none" : "d-default"} id="table1">
                                 <td></td>
-                                <td><textarea id="text1"></textarea><button className="btn btn-primary" id="btn">Envoyer</button></td>
+                                <td>
+                                    <td class="td-message"><h4>Message : </h4><p>Voila mon problème, il est difficile pour moi de venir comme cela dabc cet état</p></td>
+                                    <td><h4>Réponse : </h4><textarea id="text1"></textarea><button className="btn btn-primary" id="btn">Envoyer</button></td>
+                                </td>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -195,16 +213,6 @@ class ContactAdmin extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td id="statut">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option id="openSelect" value="open">Ouvert</option>
-                                        <option selected id="closeSelect" value="close">Fermé</option>
-                                    </select>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
 >>>>>>> Correction du state
