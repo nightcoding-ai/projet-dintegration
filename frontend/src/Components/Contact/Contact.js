@@ -31,9 +31,9 @@ class Contact extends Component {
         let data = this.getGid();
         if(this.verifyContact(data) == false) return false
         let mail, subject, message;
-        mail = gid("email").ariaValueMax;
-        subject = gid("msg_subject").ariaValueMax;
-        message = gid("message").ariaValueMax;
+        mail = gid("email").value;
+        subject = gid("msg_subject").value;
+        message = gid("message").value;
 
         axios.post("http://localhost:5000/api/contact/",
         {mail: mail, subject: subject, message: message, status: true, response: ""})

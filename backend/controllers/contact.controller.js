@@ -1,9 +1,18 @@
 const ContactModel = require('../models/Contact')
 
 const contactCtrl = {
-    getRequests : async(req, res, next) =>{
+    getOpenRequests : async(req, res, next) =>{
         try {
-            const requests = await ContactModel.find()
+            const requests = await ContactModel.find({status: true})
+            console.log(requests)
+            res.json(requests)
+        } catch(err){
+            return res.status(500).json({msg : err.message})
+        }
+    },
+    getClosedRequests : async(req, res, next) =>{
+        try {
+            const requests = await ContactModel.find({status: false})
             console.log(requests)
             res.json(requests)
         } catch(err){
@@ -12,12 +21,12 @@ const contactCtrl = {
     },
     createRequest : async(req, res,next) =>{
         try {
-            const {mail, object, message, status, response} = req.body;
+            const {mail, subject, message, status, response} = req.body;
 
-            const newProduct = new ProductModel({
-                mail, object, message, status, response
+            const newRequest = new ContactModel({
+                mail, subject, message, status, response
             })
-            await newProduct.save()
+            await newRequest.save()
             res.json({msg: "Created a request"})
             
         } catch(err) {
@@ -26,10 +35,10 @@ const contactCtrl = {
     },
     updateRequest : async(req,res, next) =>{
         try {
-            const {mail, object, message, status, response} = req.body;
+            const {mail, subject, message, status, response} = req.body;
 
-            await ProductModel.findOneAndUpdate({_id : req.params.id}, {
-                mail, object, message, status, response
+            await ContactModel.findOneAndUpdate({_id : req.params.id}, {
+                mail, subject, message, status, response
             })
 
             res.json({msg: "Updated a request"})
