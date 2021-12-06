@@ -17,4 +17,17 @@ table {
 
 .form-select  {
     background-color: antiquewhite;
+    max-width: 100px;
+}
+
+.td-message {
+    padding-right: 2%;
+}
+
+#text1 {
+    max-width: 100%;
+}
+
+#btn {
+    margin-left: 1%;
 }

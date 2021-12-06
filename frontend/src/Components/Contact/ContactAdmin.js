@@ -6,6 +6,11 @@ class ContactAdmin extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: 0,
+            object: "",
+            message: "",
+            response: "",
+            status: true,
             hidden: true
         };
     }
@@ -14,6 +19,14 @@ class ContactAdmin extends Component {
         this.setState((state) => {
             return {hidden: this.state.hidden ? false : true}
         });
+    }
+
+    verifyContact() {
+        
+    }
+
+    handleSubmit() {
+
     }
 
     render() {
@@ -47,7 +60,10 @@ class ContactAdmin extends Component {
                             </tr>
                             <tr className={this.state.hidden ? "d-none" : "d-default"} id="table1">
                                 <td></td>
-                                <td><textarea id="text1"></textarea><button className="btn btn-primary" id="btn">Envoyer</button></td>
+                                <td>
+                                    <td class="td-message"><h4>Message : </h4><p>Voila mon problème, il est difficile pour moi de venir comme cela dabc cet état</p></td>
+                                    <td><h4>Réponse : </h4><textarea id="text1"></textarea><button className="btn btn-primary" id="btn">Envoyer</button></td>
+                                </td>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -64,16 +80,6 @@ class ContactAdmin extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td id="statut">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option id="openSelect" value="open">Ouvert</option>
-                                        <option selected id="closeSelect" value="close">Fermé</option>
-                                    </select>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>

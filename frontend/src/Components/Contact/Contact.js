@@ -1,11 +1,44 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import './Contact.css';
-import {Button} from 'react-bootstrap';
 
 class Contact extends Component {
     constructor(props) {
         super(props);
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    verifyContact(array) {
+        if(!array[0] || !array[1] || !array[2]) {
+            gid("error-msg").innerText = "Champ manquant !";
+            return false;
+        }
+        else {
+            gid("error-msg").innerText = "";
+            return true
+        }
+    }
+
+    getGid() {
+        let mail, sub, msg;
+        mail = gid("email").value;
+        sub = gid("msg_subject").value;
+        msg = gid("message").value;
+        return [mail, sub, msg];
+    }
+
+    handleSubmit() {
+        let data = this.getGid();
+        if(this.verifyContact(data) == false) return false
+        let mail, subject, message;
+        mail = gid("email").ariaValueMax;
+        subject = gid("msg_subject").ariaValueMax;
+        message = gid("message").ariaValueMax;
+
+        axios.post("http://localhost:5000/api/contact/",
+        {mail: mail, subject: subject, message: message, status: true, response: ""})
+            .then(function(response) { console.log(response) })
+            .catch(function(err) { console.log(err)})
     }
 
     render() {
@@ -22,7 +55,7 @@ class Contact extends Component {
                             <p>Nos équipes travaillent du mieux qu'il peuvent afin de régler vos problèmes ou de répondre à vos questions.</p>
 
                             <div class="find-widget">
-                            Entreprise:  <a href="https://hostriver.ro">Bangoo</a>
+                            Entreprise:  <a href="">Bangoo</a>
                             </div>
                             <div class="find-widget">
                             Adresse: <a href="#">Rue du Bercaille 18, 1300 Wavre</a>
@@ -32,12 +65,6 @@ class Contact extends Component {
                             </div>
                         </div>
                         <div class="col-md-6 wow animated fadeInRight" data-wow-delay=".2s">
-                            <form class="shake" role="form" method="post" id="contactForm" name="contact-form" data-toggle="validator">
-                                <div class="form-group label-floating">
-                                    <label class="control-label" for="name">Nom</label>
-                                    <input class="form-control" id="name" type="text" name="name" required data-error="Please enter your name"></input>
-                                    <div class="help-block with-errors"></div>
-                                </div>
                                 <div class="form-group label-floating">
                                     <label class="control-label" for="email">Email</label>
                                     <input class="form-control" id="email" type="email" name="email" required data-error="Please enter your Email"></input>
@@ -54,11 +81,10 @@ class Contact extends Component {
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-submit mt-5">
-                                    <button class="btn btn-primary" type="submit" id="form-submit"><i class="material-icons mdi mdi-message-outline"></i> Envoyer message</button>
+                                    <button class="btn btn-primary" id="form-submit" onClick={this.handleSubmit}> Envoyer message</button>
                                     <div id="msgSubmit" class="h3 text-center hidden"></div>
-                                    <div class="clearfix"></div>
+                                    <div class="clearfix"><p id="error-msg"></p></div>
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -66,5 +92,7 @@ class Contact extends Component {
         )
     }
 }
+
+function gid(id) {return document.getElementById(id);}
 
 export default Contact;
