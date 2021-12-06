@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import './Login.css';
 //import axios from "axios";
-import AuthService from "./AuthService";
+import AuthService from "../services/auth.service";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
@@ -22,7 +22,7 @@ export default class Login extends Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onChangeMail = this.onChangeMail.bind(this);
-        this.onChangePassword = this.onChangePassword.bind(this);
+        this.onChangePassword = this.onChangePassword.bind(this);   
         this.state = {
             mail: '',
             password: '',
@@ -35,7 +35,7 @@ export default class Login extends Component {
           mail: e.target.value
         });
     }
-
+    
     onChangePassword(e) {
         this.setState({
             password: e.target.value

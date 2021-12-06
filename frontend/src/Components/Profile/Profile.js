@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AuthService from "../Login/AuthService";
+import AuthService from "../services/auth.service";
 import '../Login/Login.css';
 
 export default class Profile extends Component {
@@ -28,7 +28,7 @@ export default class Profile extends Component {
         </header>
         <p>
           <strong>Token:</strong>{" "}
-          {currentUser.accessToken.substring(0, 20)} ...{" "}}
+          {currentUser.accessToken.substring(0, 20)} ...{" "}
           {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
         </p>
         <p>
@@ -38,6 +38,10 @@ export default class Profile extends Component {
         <p>
           <strong>Email:</strong>{" "}
           {currentUser.user.mail}
+        </p>
+        <p>
+          <strong>Role:</strong>{" "}
+          {currentUser.user.role}
         </p>
          <button
                 //type="submit"

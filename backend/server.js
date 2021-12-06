@@ -10,6 +10,7 @@ const MongoStore = require('connect-mongo');
 const userRoutes = require('./routes/user.routes');
 const productRoutes = require('./routes/product.routes');
 const cartRoutes = require('./routes/cart.routes');
+const verifRoutes = require('./routes/verif.routes');
 
 const app = express()
 app.use(express.json())
@@ -50,6 +51,8 @@ app.listen(PORT, ()=>{
 
 app.use('/api/user', userRoutes);
 app.use('/api/products', productRoutes);
-app.use('api/cart', cartRoutes);
+app.use('/api/cart', cartRoutes);
+app.use('/api/verif', verifRoutes);
+
 
 

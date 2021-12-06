@@ -137,9 +137,23 @@ const userCtrl = {
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
-    }
+    },
+    verifUser: async(req,res,next) =>{
+        try{
+            const user = await UserModel.findById(req.user.id)
+            if(!user) {return res.status(400).json({msg: "User does not exist."})}
+
+            if (user.role === "user"){
+                console.log("Role Ok");
+                res.json({role: "user"})
+            }
+        } catch(err) {
+            return res.status(500).json({msg : err.message})
+        }
     
     
+    
+}
 }
 
 

@@ -15,6 +15,8 @@ import Shop from './Components/Shop/Shop';
 import ListCommerce from './Components/Product/List';
 import Product from './Components/Product/Product';
 import Profile from './Components/Profile/Profile';
+import BoardUser from "./Components/Boards/BoardUser";
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -26,6 +28,7 @@ ReactDOM.render(
           <Route path="/Boutique" component={Shop} />
           <Route path="/Vendeurs" component={Home} />
           <Route path="/Contact" component={Home} />
+          <Route path="/User" component={BoardUser} />
           <Route path="/GPU" component={GPU}/>
           <Route path="/Panier" component={Cart} />
           <Route path='/ListeCommerce' component={ListCommerce} />

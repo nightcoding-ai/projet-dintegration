@@ -27,19 +27,13 @@ const userSchema = new mongoose.Schema({
     required: false,
     default: 0
   },
-  cart : {
-    type: Array,
-    required: false,
-    default: [],
-  },
-  role : {
-    type: Number,
-    default: 0
-  }
+  role: {
+    type: String,
+    default: 'user',
+    enum: ["user", "admin", "seller"]
+   },
 }, {
   timestamps: true
-
-  
 });
 
 module.exports = mongoose.model('User', userSchema);
