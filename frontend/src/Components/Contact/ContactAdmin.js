@@ -45,18 +45,31 @@ class ContactAdmin extends Component {
         })
     }
 
-    handleChange = event => {
+    handleChangeStatus = event => {
         let stat;
         if(event.target.value == "open") stat = true;
         else stat = false;
-        axios.post("http://localhost:5000/api/contact/" + event.target.id,
-        {status: stat})
+        let data = {status: stat};
+        axios.put("http://localhost:5000/api/contact/status/" + event.target.id,
+        data)
             .then(function(response) {
                 console.log(response);
                 window.location.reload(false);
             })
             .catch(function(err) {
-                console.log(err);
+                console.log(err.message);
+            })
+    }
+
+    handleChange = x => {
+        let data = {}
+        axios.put("http://localhost:5000/api/contact/" + x.target.id,
+        data)
+            .then(function(response) {
+                console.log(response);
+            })
+            .catch(function(err) {
+                console.log(err.message);
             })
     }
 
@@ -87,7 +100,7 @@ class ContactAdmin extends Component {
                                         </div>
                                     </td>
                                     <td id="statut">
-                                        <select id={request._id} onChange={this.handleChange} className="form-select" aria-label="Default select example">
+                                        <select id={request._id} onChange={this.handleChangeStatus} className="form-select" aria-label="Default select example">
                                             <option className="open-select" selected id="openSelect" value="open">Ouvert</option>
                                             <option className="close-select" id="closeSelect" value="close">Fermé</option>
                                         </select>
@@ -115,7 +128,7 @@ class ContactAdmin extends Component {
                                         </div>
                                     </td>
                                     <td id="statut">
-                                        <select id={request._id} onChange={this.handleChange} className="form-select" aria-label="Default select example">
+                                        <select id={request._id} onChange={this.handleChangeStatus} className="form-select" aria-label="Default select example">
                                             <option className="open-select" id="openSelect" value="open">Ouvert</option>
                                             <option selected className="close-select" id="closeSelect" value="close">Fermé</option>
                                         </select>

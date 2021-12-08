@@ -9,6 +9,9 @@ router.route('/')
 router.route('/:id')
       .put(contactController.updateRequest)
 
+router.route('/status/:id')
+      .put(contactController.updateStatusRequest)
+
 router.route('/open')
       .get(contactController.getOpenRequests)
 

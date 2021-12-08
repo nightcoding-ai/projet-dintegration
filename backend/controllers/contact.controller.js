@@ -45,6 +45,20 @@ const contactCtrl = {
         }catch(err){
             return res.status(500).json({msg: err.message})
         }
+    },
+    updateStatusRequest : async(req,res, next) =>{
+        try {
+            const {status} = req.body;
+
+            await ContactModel.findOneAndUpdate({_id : req.params.id}, {
+                status: status
+            })
+
+            res.json({msg: "Updated a request"})
+        }catch(err){
+            console.log(err);
+            return res.status(500).json({msg: err.message})
+        }
     }
 }
 
