@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server",
-    "test": "jest",
+    "start": "nodemon app",
+    "test": "jest --detectOpenHandles",
     "test:watch": "jest --watch"
   },
   "author": "",
