@@ -18,11 +18,17 @@ router.route('/:id')
 
 <<<<<<< refs/remotes/origin/develop
 <<<<<<< refs/remotes/origin/develop
+<<<<<<< refs/remotes/origin/develop
 router.route('/status/:id')
       .put(contactController.updateStatusRequest)
 
 =======
 >>>>>>> Contact user fini + contact admin get ok, reste a terminer le reste
+=======
+router.route('/status/:id')
+      .put(contactController.updateStatusRequest)
+
+>>>>>>> Put request pour changer le status ok
 router.route('/open')
       .get(contactController.getOpenRequests)
 

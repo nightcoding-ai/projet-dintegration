@@ -77,6 +77,7 @@ class ContactAdmin extends Component {
     }
 
 <<<<<<< refs/remotes/origin/develop
+<<<<<<< refs/remotes/origin/develop
     handleChangeStatus = event => {
         let stat;
         if(event.target.value == "open") stat = true;
@@ -92,12 +93,24 @@ class ContactAdmin extends Component {
         axios.post("http://localhost:5000/api/contact/" + event.target.id,
         {status: stat})
 >>>>>>> Contact user fini + contact admin get ok, reste a terminer le reste
+=======
+    handleChangeStatus = event => {
+        let stat;
+        if(event.target.value == "open") stat = true;
+        else stat = false;
+        let data = {status: stat};
+        axios.put("http://localhost:5000/api/contact/status/" + event.target.id,
+        data)
+>>>>>>> Put request pour changer le status ok
             .then(function(response) {
                 console.log(response);
                 window.location.reload(false);
             })
             .catch(function(err) {
 <<<<<<< refs/remotes/origin/develop
+<<<<<<< refs/remotes/origin/develop
+=======
+>>>>>>> Put request pour changer le status ok
                 console.log(err.message);
             })
     }
@@ -111,6 +124,7 @@ class ContactAdmin extends Component {
             })
             .catch(function(err) {
                 console.log(err.message);
+<<<<<<< refs/remotes/origin/develop
             })
     }
 
@@ -237,6 +251,8 @@ class ContactAdmin extends Component {
 >>>>>>> Correction du state
 =======
                 console.log(err);
+=======
+>>>>>>> Put request pour changer le status ok
             })
     }
 
@@ -267,7 +283,7 @@ class ContactAdmin extends Component {
                                         </div>
                                     </td>
                                     <td id="statut">
-                                        <select id={request._id} onChange={this.handleChange} className="form-select" aria-label="Default select example">
+                                        <select id={request._id} onChange={this.handleChangeStatus} className="form-select" aria-label="Default select example">
                                             <option className="open-select" selected id="openSelect" value="open">Ouvert</option>
                                             <option className="close-select" id="closeSelect" value="close">Fermé</option>
                                         </select>
@@ -295,7 +311,7 @@ class ContactAdmin extends Component {
                                         </div>
                                     </td>
                                     <td id="statut">
-                                        <select id={request._id} onChange={this.handleChange} className="form-select" aria-label="Default select example">
+                                        <select id={request._id} onChange={this.handleChangeStatus} className="form-select" aria-label="Default select example">
                                             <option className="open-select" id="openSelect" value="open">Ouvert</option>
                                             <option selected className="close-select" id="closeSelect" value="close">Fermé</option>
                                         </select>
