@@ -7,7 +7,6 @@ export default class SignUp extends Component {
         super(props);
 
         this.state = {
-            firstname: '',
             name: '',
             mail: '',
             password: '',
@@ -22,11 +21,9 @@ export default class SignUp extends Component {
     
     handleSubmit = e => {
     e.preventDefault();
-    console.log('le lien a été cliqué');
-    const { firstname, name, mail, password } = this.state;
+    const { name, mail, password } = this.state;
 
     const user = {
-      firstname,
       name,
       mail,
       password,
@@ -46,22 +43,12 @@ export default class SignUp extends Component {
                 <h3>Inscription</h3>
 
                 <div className="form-group">
-                    <label>Prénom</label>
-                    <input 
-                    type="text" 
-                    className="form-control" 
-                    name="firstname"
-                    placeholder="Prénom" 
-                    onChange={this.handleInputChange}/>
-                </div>
-
-                <div className="form-group">
                     <label>Nom</label>
                     <input 
                     type="text" 
                     className="form-control" 
                     name="name"
-                    placeholder="Nom" 
+                    placeholder="Nom"
                     onChange={this.handleInputChange}/>
                 </div>
 
@@ -71,7 +58,7 @@ export default class SignUp extends Component {
                     type="email" 
                     className="form-control" 
                     name="mail"
-                    placeholder="Votre email" 
+                    placeholder="Votre email"
                     onChange={this.handleInputChange}/>
                 </div>
 
@@ -81,7 +68,7 @@ export default class SignUp extends Component {
                     type="password" 
                     className="form-control" 
                     name="password"
-                    placeholder="Votre mot de passe" 
+                    placeholder="Votre mot de passe"
                     onChange={this.handleInputChange}/>
                 </div>
 

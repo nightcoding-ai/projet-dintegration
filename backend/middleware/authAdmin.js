@@ -6,11 +6,10 @@ const authAdmin = async (req, res, next) =>{
         const user = await UserModel.findOne({
             _id: req.user.id
         })
-        
-        if(user.role === 0){
-            return res.status(400).json({msg: "Admin ressources, access denied"})
-        }
-        else if(user.role === 1){
+        if(user.role === "user")
+            return res.status(400).json({msg: "Admin resources access denied"})
+
+
         next()
         }
         

@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const authController = require('../controllers/auth.controller');
 const auth = require('../middleware/auth');
+
 const authAdmin = require('../middleware/authAdmin');
 const authShop = require('../middleware/authShop');
+
 
 
 router.post('/register', authController.register)
@@ -19,7 +21,7 @@ router.get('/infor', auth, authController.getUser)
 router.get('/get_all_users',auth, authController.getAllUser)
 
 
-router.patch('/add_to_cart', auth, authController.addToCart)
+router.post('/add_to_cart', auth, authController.addToCart)
 
 
 router.patch('/add_points', auth, authController.addPoints)

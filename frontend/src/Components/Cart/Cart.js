@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import './Cart.css'
 import axios from 'axios'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import {Button} from 'react-bootstrap'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 class Cart extends Component {
     constructor(props) {
@@ -26,38 +27,54 @@ class Cart extends Component {
     }
     render() {
         const { items } = this.state;
+        const notifyBasket = (e) =>toast.error('L\'article : '+e.currentTarget.name+' a été supprimé du panier !', {
+                                        position: "top-right",
+                                        autoClose: 5000,
+                                        hideProgressBar: false,
+                                        closeOnClick: true,
+                                        pauseOnHover: false,
+                                        draggable: true,
+                                        progress: undefined,
+
+                                        });
         if (!this.state.isLoaded) {
           return <div>Chargement ... </div>;
         } else {
             return (
-                <div className="py-5 my-5">
-                    <h1 className='title'>Panier</h1>
-                    <table className="table table-image">
-                    <thead className="thead-dark">
-                        <tr className="text-center">
-                        <th>Photo</th>
-                        <th>Nom</th>
-                        <th>Prix</th>
-                        <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody id="productList">
-                    </tbody>
-                    {items.map((product) => (
-                        <tr className="text-center">
-                            <td>
-                                <div className="box">
-                                    <img className="product picture" src={product.image} alt={product.name}/>
+                <div class="container py-5 my-5">
+                    <div className="mb-5">
+                        <h1 className='title'>Panier</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-7 mx-auto">
+                        <ul className="list-group shadow">
+                        {items.map((product) => (
+                            <li className="list-group-item">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h3 className="mt-4 font-weight-bold mb-2">{product.name}</h3>
+                                        <p className="text-muted">{product.description}</p>
+                                        <p className="text-muted">Quantité : 1</p>
+                                        <h5 className="font-weight-bold my-2">{product.price}€</h5>
+                                    </div>
+                                    <div className="col-lg-6 text-center">
+                                        <div className='box "my-3'>
+                                            <img src={product.image} alt={product.name} width="150" className='picture'/>
+                                        </div>
+                                        <div className="my-3">
+                                             <Button type="button" name={product.name} id={product._id} variant="btn btn-outline-danger"  onClick={notifyBasket}>Supprimer</Button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </td>
-                            <td className="w-25">{product.name}</td>
-                            <td className="w-25">{product.price}€</td>
-                            <td className="w-25">{product.description}</td>
-                            <td className="w-25"><button id={product._id} onClick={this.deleteArticle}><FontAwesomeIcon icon={faTrashAlt} size="3x"/></button></td>
-                        </tr>
-                    ))}
-                    </table>
+                            </div>
+                        </li>
+                        ))}
+                        </ul>
+                        </div>
+                    </div>
                 </div>
+
             )
         }
     }

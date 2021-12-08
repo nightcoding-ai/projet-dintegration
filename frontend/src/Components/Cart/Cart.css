@@ -11,6 +11,20 @@ input[type="checkbox"] {
   height: 20px;
 }
 
-button {
-  border: none;
+.btn-outline-danger:hover {
+  background-color: #e74c3c;
 }
+
+.btn-outline-danger:active {
+  border-style:None;
+}
+
+.btn btn-outline-danger {
+  margin: 0 auto;
+}
+
+.Toastify__progress-bar-theme--light {
+    background:red;
+}
+
+

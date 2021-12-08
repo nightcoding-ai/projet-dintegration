@@ -25,3 +25,7 @@
 .navbar-collapse {
   align-items: baseline !important;
 }
+
+.nav-link {
+  color: black !important;
+}

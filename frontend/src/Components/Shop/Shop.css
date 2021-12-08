@@ -9,6 +9,10 @@
   background-color: #5db674;
 }
 
+.btn-outline-success:active {
+  border-style: None;
+}
+
 .btn btn-outline-success {
   margin: 0 auto;
 }
@@ -26,4 +30,13 @@
   max-height: 100%;
   object-fit: contain;
   display: block;
+}
+
+.Toastify__toast-container--top-right {
+  top: 5em;
+  right: 1.5em;
+}
+
+.Toastify__progress-bar-theme--light {
+  background: #5db674;
 }

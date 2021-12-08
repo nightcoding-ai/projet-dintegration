@@ -23,10 +23,9 @@ const userCtrl = {
 
             await newUser.save()
 
-
             //Token d'identification
 
-            const accesstoken = createAccessToken({id: newUser._id})
+            const accessToken = createAccessToken({id: newUser._id})
             const refreshtoken = createRefreshToken({id: newUser._id})
             
             res.cookie('refreshtoken', refreshtoken, {
@@ -35,7 +34,7 @@ const userCtrl = {
                 maxAge: 7*24*60*60*1000 // Equivalent à 7 jours
             })
 
-            res.json({accesstoken})
+            res.json({accessToken})
             // res.json({msg: "Register Success! "})
 
         } catch(err){
@@ -54,7 +53,7 @@ const userCtrl = {
             if(!isMatch) return res.status(400).json({msg: "Incorrect password."})
 
             //Si le login est bon, on créée les tokens.
-            const accesstoken = createAccessToken({id: user._id})
+            const accessToken = createAccessToken({id: user._id})
             const refreshtoken = createRefreshToken({id: user._id})
             
             res.cookie('refreshtoken', refreshtoken, {
@@ -63,7 +62,7 @@ const userCtrl = {
                 maxAge: 7*24*60*60*1000 // Equivalent à 7 jours
             })
 
-            res.json({accesstoken})
+            res.json({accessToken, user})
 
         }catch(err) {
             return res.status(500).json({msg: err.message})
@@ -146,9 +145,23 @@ const userCtrl = {
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
-    }
+    },
+    verifUser: async(req,res,next) =>{
+        try{
+            const user = await UserModel.findById(req.user.id)
+            if(!user) {return res.status(400).json({msg: "User does not exist."})}
+
+            if (user.role === "user"){
+                console.log("Role Ok");
+                res.json({role: "user"})
+            }
+        } catch(err) {
+            return res.status(500).json({msg : err.message})
+        }
     
     
+    
+}
 }
 
 

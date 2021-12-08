@@ -51,7 +51,7 @@ class Product extends Component {
         let data = {};
         data = this.getData();
       
-        if(this.verifyData(data) == false) {
+        if(this.verifyData(data) === false) {
             gid("warning").innerHTML = "A field is wrong or empty !";
             return false;
         }
