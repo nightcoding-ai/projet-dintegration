@@ -5,7 +5,6 @@
 #btnShow {
     margin-top: 1px;
     position: relative;
-<<<<<<< refs/remotes/origin/develop
 }
 
 #closeTable {
@@ -31,11 +30,6 @@ table {
 
 #btn {
     margin-left: 1%;
-<<<<<<< refs/remotes/origin/develop
-<<<<<<< refs/remotes/origin/develop
-}
-=======
-=======
 }
 
 #closeTable {
@@ -44,23 +38,15 @@ table {
 
 table {
     border: solid lightgray 2px;
->>>>>>> Change some css and js in contact page. And adding eslintcache to gitignore
 }
 
 .form-select  {
     background-color: antiquewhite;
 }
-<<<<<<< refs/remotes/origin/develop
 
 #textObjet {
     /*float: left;
     overflow: hidden;
     clear: both;
-    max-width: 60%;
-}*/
->>>>>>> add specification but not finished
-=======
->>>>>>> Change some css and js in contact page. And adding eslintcache to gitignore
-=======
+    max-width: 60%;*/
 }
->>>>>>> Avancement contact user front + back mais pas fini

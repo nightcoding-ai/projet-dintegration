@@ -31,21 +31,9 @@ class Contact extends Component {
         let data = this.getGid();
         if(this.verifyContact(data) == false) return false
         let mail, subject, message;
-<<<<<<< refs/remotes/origin/develop
-<<<<<<< refs/remotes/origin/develop
         mail = gid("email").value;
         subject = gid("msg_subject").value;
         message = gid("message").value;
-=======
-        mail = gid("email").ariaValueMax;
-        subject = gid("msg_subject").ariaValueMax;
-        message = gid("message").ariaValueMax;
->>>>>>> Avancement contact user front + back mais pas fini
-=======
-        mail = gid("email").value;
-        subject = gid("msg_subject").value;
-        message = gid("message").value;
->>>>>>> Contact user fini + contact admin get ok, reste a terminer le reste
 
         axios.post("http://localhost:5000/api/contact/",
         {mail: mail, subject: subject, message: message, status: true, response: ""})
@@ -105,14 +93,6 @@ class Contact extends Component {
     }
 }
 
-<<<<<<< refs/remotes/origin/develop
-<<<<<<< refs/remotes/origin/develop
 function gid(id) {return document.getElementById(id);}
 
-=======
->>>>>>> Change some css and js in contact page. And adding eslintcache to gitignore
-=======
-function gid(id) {return document.getElementById(id);}
-
->>>>>>> Avancement contact user front + back mais pas fini
 export default Contact;
