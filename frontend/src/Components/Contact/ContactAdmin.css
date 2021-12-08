@@ -1,0 +1,19 @@
+#openTable {
+    padding-top: 8%;
+}
+
+#closeTable {
+    padding-top: 10%;
+}
+
+table {
+    border: solid lightgray 1px;
+}
+
+#openSelect {
+    color: green;
+}
+
+#closeSelect {
+    color: red;
+}

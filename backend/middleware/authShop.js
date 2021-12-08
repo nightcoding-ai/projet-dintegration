@@ -10,6 +10,7 @@ const authShop = async (req,res,next) => {
             return res.status(400).json({msg: "Not authorized." })
         }
         else if(user.role === "seller"){
+
             next()
         }
     }

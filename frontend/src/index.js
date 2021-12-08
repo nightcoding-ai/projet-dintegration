@@ -18,6 +18,12 @@ import Profile from './Components/Profile/Profile';
 import BoardUser from "./Components/Boards/BoardUser";
 
 
+import userContext from './Components/Context/userContext';
+import Default from './Components/Default/Default';
+import Contact from './Components/Contact/Contact';
+import ContactAdmin from './Components/Contact/ContactAdmin';
+
+
 ReactDOM.render(
   <React.StrictMode>
       <Router>
@@ -27,12 +33,14 @@ ReactDOM.render(
           <Route path="/Marché" component={Home} />
           <Route path="/Boutique" component={Shop} />
           <Route path="/Vendeurs" component={Home} />
-          <Route path="/Contact" component={Home} />
+          <Route path="/Contact" component={Contact} />
           <Route path="/User" component={BoardUser} />
+
           <Route path="/GPU" component={GPU}/>
           <Route path="/Panier" component={Cart} />
           <Route path='/ListeCommerce' component={ListCommerce} />
           <Route path='/Produit' component={Product} />
+          <Route path='/ContactAdmin' component={ContactAdmin} />
           <div className="outer">
             <div className="inner">
               <Switch>
