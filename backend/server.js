@@ -1,6 +1,5 @@
 require('dotenv').config()
 const express = require('express')
-const mongoose = require('mongoose')
 const cors = require('cors')
 const fileUpload =  require('express-fileupload')
 const cookieParser = require('cookie-parser')
@@ -10,8 +9,8 @@ const MongoStore = require('connect-mongo');
 const userRoutes = require('./routes/user.routes');
 const productRoutes = require('./routes/product.routes');
 const cartRoutes = require('./routes/cart.routes');
-const verifRoutes = require('./routes/verif.routes');
 const offerRoutes = require('./routes/offers.routes');
+const verifRoutes = require('./routes/verif.routes');
 
 const app = express()
 app.use(express.json())
@@ -40,6 +39,7 @@ app.use(fileUpload({
 
 app.use('/api/user', userRoutes);
 app.use('/api/products', productRoutes);
-app.use('/api/offers', offerRoutes )
+app.use('/api/offers', offerRoutes);
+app.use('/api/verif', verifRoutes);
 
 module.exports = app

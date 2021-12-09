@@ -20,10 +20,6 @@ router.get('/infor', auth, authController.getUser)
 router.get('/get_all_users',auth, authController.getAllUser)
 
 
-router.post('/add_to_cart', auth, authController.addToCart)
-
-router.get('/get_all_users',auth,authAdmin, authController.getAllUser)
-
 router.patch('/add_points', auth, authController.addPoints)
 
 /*
