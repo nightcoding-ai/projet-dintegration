@@ -11,6 +11,7 @@ const userRoutes = require('./routes/user.routes');
 const productRoutes = require('./routes/product.routes');
 const cartRoutes = require('./routes/cart.routes');
 const verifRoutes = require('./routes/verif.routes');
+const offerRoutes = require('./routes/offers.routes');
 
 const app = express()
 app.use(express.json())
@@ -39,7 +40,6 @@ app.use(fileUpload({
 
 app.use('/api/user', userRoutes);
 app.use('/api/products', productRoutes);
-app.use('/api/cart', cartRoutes);
-app.use('/api/verif', verifRoutes);
+app.use('/api/offers', offerRoutes )
 
 module.exports = app
