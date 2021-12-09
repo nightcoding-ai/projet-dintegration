@@ -1,19 +1,45 @@
 #openTable {
-    padding-top: 8%;
+    padding-top: 9em;
+}
+
+#btnShow {
+    margin-top: 1px;
+    position: relative;
 }
 
 #closeTable {
-    padding-top: 10%;
+    padding-top: 10em;
 }
 
 table {
-    border: solid lightgray 1px;
+    border: solid lightgray 2px;
 }
 
-#openSelect {
-    color: green;
+.form-select  {
+    background-color: antiquewhite;
+    max-width: 100px;
 }
 
-#closeSelect {
-    color: red;
+.td-message {
+    padding-right: 2%;
+}
+
+#text1 {
+    max-width: 100%;
+}
+
+#btn {
+    margin-left: 1%;
+}
+
+#closeTable {
+    padding-top: 10em;
+}
+
+table {
+    border: solid lightgray 2px;
+}
+
+.form-select  {
+    background-color: antiquewhite;
 }

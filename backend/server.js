@@ -8,9 +8,13 @@ const MongoStore = require('connect-mongo');
 
 const userRoutes = require('./routes/user.routes');
 const productRoutes = require('./routes/product.routes');
+<<<<<<< HEAD
 const cartRoutes = require('./routes/cart.routes');
 const offerRoutes = require('./routes/offers.routes');
 const verifRoutes = require('./routes/verif.routes');
+=======
+const contactRoutes = require('./routes/contact.routes');
+>>>>>>> contact
 
 const app = express()
 app.use(express.json())
@@ -43,3 +47,4 @@ app.use('/api/offers', offerRoutes);
 app.use('/api/verif', verifRoutes);
 
 module.exports = app
+app.use('/api/contact', contactRoutes);
