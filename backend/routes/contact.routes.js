@@ -19,4 +19,10 @@ router.route('/open')
 router.route('/closed')
       .get(contactController.getClosedRequests)
 
+router.route('/request/:id')
+      .get(contactController.getRequest)
+
+router.route('/send')
+      .post(contactController.sendMail)
+
 module.exports = router;
