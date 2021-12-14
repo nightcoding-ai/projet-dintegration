@@ -16,10 +16,6 @@ import ListCommerce from './Components/Product/List';
 import Product from './Components/Product/Product';
 import Profile from './Components/Profile/Profile';
 import BoardUser from "./Components/Boards/BoardUser";
-
-
-import userContext from './Components/Context/userContext';
-import Default from './Components/Default/Default';
 import Contact from './Components/Contact/Contact';
 import ContactAdmin from './Components/Contact/ContactAdmin';
 

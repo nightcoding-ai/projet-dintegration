@@ -1,6 +1,5 @@
 module.exports = function Cart(initItems) {
     this.items = initItems;
-
     this.totalQty = 0;
     this.totalPrice = 0;
 

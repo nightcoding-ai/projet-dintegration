@@ -23,21 +23,21 @@ class Shop extends Component {
             });
         });
     }
+
+    add_to_cart = (e) =>{
+        toast('L\'article : '+e.currentTarget.name+' a été ajouté au panier !', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            });
+        axios.get('http://localhost:5000/api/cart/add-to-cart/'+e.currentTarget.id)
+    }
     render() {
         const { items } = this.state;
-
-        const notify = (e) =>{
-        console.log(e.currentTarget.id)
-        toast('L\'article : '+e.currentTarget.name+' a été ajouté au panier !', {
-                                        position: "top-right",
-                                        autoClose: 5000,
-                                        hideProgressBar: false,
-                                        closeOnClick: true,
-                                        pauseOnHover: false,
-                                        draggable: true,
-                                        progress: undefined,
-                                        });
-                                        }
 
         if (!this.state.isLoaded) {
           return <div>Chargement ... </div>;
@@ -64,7 +64,7 @@ class Shop extends Component {
                                         <img src={product.image} alt={product.name} width="150" className='picture'/>
                                     </div>
                                     <div className="my-3">
-                                        <Button type="button" name={product.name} id={product._id} variant="btn btn-outline-success"  onClick={notify}>Ajouter au panier</Button>                                    </div>
+                                        <Button type="button" name={product.name} id={product._id} variant="btn btn-outline-success"  onClick={this.add_to_cart}>Ajouter au panier</Button>                                    </div>
                                 </div>
                             </div>
                         </div>
