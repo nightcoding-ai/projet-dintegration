@@ -55,7 +55,7 @@ class ContactAdmin extends Component {
             })
             .catch((error) => {
                 console.log(error);
-                gid("waring").innerHTML = "Erreur !";
+                gid("warning").innerHTML = "Erreur !";
             })
     }
 
@@ -199,7 +199,6 @@ class ContactAdmin extends Component {
                         </table>
                     </div>
                 </div>
-                
             )
         }
     }
