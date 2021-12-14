@@ -92,6 +92,7 @@ const contactCtrl = {
 
         transport.transporter.sendMail(mailContent, (err, data) => {
             if (err) {
+                console.log(err.message)
               res.json({
                 msg: 'fail'
               })
