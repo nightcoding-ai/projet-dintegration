@@ -45,9 +45,10 @@ class ContactAdmin extends Component {
 
     //Récupération des informations pour le formulaire
     handleOpenForm = event => {
-        axios.get("http://localhost:5000/api/contact/request/" + event.target.id)
+        let id = event.target.id;
+        axios.get("http://localhost:5000/api/contact/request/" + id)
             .then((result) => {
-                gid("id-form").innerHTML = result.data._id;
+                gid("id-form").innerText = id;
                 gid("subject-form").innerHTML = result.data.subject;
                 gid("message-form").innerHTML = result.data.message;
                 gid("response-form-text").innerHTML = result.data.response;
@@ -85,13 +86,8 @@ class ContactAdmin extends Component {
         }
     }
 
-    //Envoie le formulaire afin de modifier la requête et envoyer un mail
-    handleSend = event => {
-        if(this.verifyResponse() == false) return false;
-        let response = gid("response-form").value;
-        let id = gid("id-form").innerText;
-        let data = {response: response};
-        console.log(event)
+    //Récupère le mail, le sujet et le message de la requête et puis appelle la fct sendMail si réussi
+    getRequest(id, response, data) {
         let mail, message, subject;
         axios.get("http://localhost:5000/api/contact/request/" + id)
             .then((result) => {
@@ -99,12 +95,18 @@ class ContactAdmin extends Component {
                 subject = result.data.subject;
                 message = result.data.message;
                 console.log("récupéré " + id);
+                let res = this.sendMail(mail, message, subject, response, data, id);
+                return res;
             })
             .catch((error) => {
                 console.log(error);
                 gid("warning").innerHTML = "Erreur !";
+                return false;
             })
-        
+    }
+
+    //Envoie le mail avec les infos reçues et appelle la fct putRequest si réussi
+    sendMail(mail, message, subject, response, data, id) {
         axios.post("http://localhost:5000/api/contact/send/", {
             mail: mail,
             subject: subject,
@@ -112,24 +114,40 @@ class ContactAdmin extends Component {
             response: response
         })
             .then((result) => {
-                console.log(result)
+                console.log(result);
                 console.log("mail envoyé");
+                this.putRequest(id, data);
+                return true;
             })
             .catch((error) => {
                 console.log(error);
                 this.handleShow();
                 return false;
             })
+    }
 
+    //Modifie les données dans la db
+    putRequest(id, data) {
         axios.put("http://localhost:5000/api/contact/" + id,
         data)
             .then(function(response) {
-                //console.log(response);
                 console.log("put réussi");
             })
             .catch(function(err) {
                 console.log(err.message);
             })
+    }
+
+    //Récupère les infos utiles et appelle la fct getRequest
+    handleSend = event => {
+        if(this.verifyResponse() == false) return false;
+        let response = gid("response-form").value;
+        let id = gid("id-form").innerText;
+        let data = {response: response};
+        console.log(event)
+        let mail, message, subject = this.getRequest(id, response);
+        
+        if(mail === "" || mail === undefined) {console.log('Get Failed !'); return false;}
     }
 
     render() {
@@ -185,7 +203,7 @@ class ContactAdmin extends Component {
                                     <td>
                                         <span className="float-start" id="textObjet">{request.subject}</span>
                                         <div >
-                                            <button id={request._id} className="btnShow float-end btn btn-dark text-right" onClick={this.handleShow}>Plus..</button>
+                                            <button id={request._id} className="btnShow float-end btn btn-dark text-right" onClick={this.handleOpenForm}>Plus..</button>
                                         </div>
                                     </td>
                                     <td id="statut">

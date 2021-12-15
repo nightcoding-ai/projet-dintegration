@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const contactController = require('../controllers/contact.controller');
-
+const sendMail = require('../mail/Config');
 
 
 router.route('/')
@@ -23,6 +23,6 @@ router.route('/request/:id')
       .get(contactController.getRequest)
 
 router.route('/send')
-      .post(contactController.sendMail)
+      .post(sendMail.sendMail)
 
 module.exports = router;

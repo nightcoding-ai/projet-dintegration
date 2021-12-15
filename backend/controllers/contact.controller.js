@@ -54,10 +54,10 @@ const contactCtrl = {
     },
     updateRequest : async(req,res, next) =>{
         try {
-            const {mail, subject, message, status, response} = req.body;
+            const {response} = req.body;
 
             await ContactModel.findOneAndUpdate({_id : req.params.id}, {
-                mail, subject, message, status, response
+                response
             })
 
             res.json({msg: "Updated a request"})
@@ -77,31 +77,6 @@ const contactCtrl = {
         }catch(err){
             return res.status(500).json({msg: err.message})
         }
-    },
-    sendMail : async(req, res, next) => {
-        const {mail, subject, message, response} = req.body;
-
-        let content = `Name: Bangoo \n Email: ${mail} \n Subject of your request: ${subject} \n Your message to us: ${message} \n Our response: ${response}`;
-
-        const mailContent = {
-            from: creds.USER,
-            to: mail,  //Change to email address that you want to receive messages on
-            subject: 'Response to your contact request',
-            text: content
-        }
-
-        transport.transporter.sendMail(mailContent, (err, data) => {
-            if (err) {
-                console.log(err.message)
-              res.json({
-                msg: 'fail'
-              })
-            } else {
-              res.json({
-                msg: 'success'
-              })
-            }
-          })
     }
 }
 
