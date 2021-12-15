@@ -94,7 +94,6 @@ class ContactAdmin extends Component {
                 mail = result.data.mail;
                 subject = result.data.subject;
                 message = result.data.message;
-                console.log("récupéré " + id);
                 let res = this.sendMail(mail, message, subject, response, data, id);
                 return res;
             })
@@ -114,8 +113,6 @@ class ContactAdmin extends Component {
             response: response
         })
             .then((result) => {
-                console.log(result);
-                console.log("mail envoyé");
                 this.putRequest(id, data);
                 return true;
             })
@@ -131,7 +128,7 @@ class ContactAdmin extends Component {
         axios.put("http://localhost:5000/api/contact/" + id,
         data)
             .then(function(response) {
-                console.log("put réussi");
+                window.location.reload(false);
             })
             .catch(function(err) {
                 console.log(err.message);
@@ -144,8 +141,7 @@ class ContactAdmin extends Component {
         let response = gid("response-form").value;
         let id = gid("id-form").innerText;
         let data = {response: response};
-        console.log(event)
-        let mail, message, subject = this.getRequest(id, response);
+        let mail, message, subject = this.getRequest(id, response, data);
         
         if(mail === "" || mail === undefined) {console.log('Get Failed !'); return false;}
     }

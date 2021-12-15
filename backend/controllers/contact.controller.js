@@ -13,7 +13,6 @@ const contactCtrl = {
     getOpenRequests : async(req, res, next) =>{
         try {
             const requests = await ContactModel.find({status: true})
-            console.log(requests)
             res.json(requests)
         } catch(err){
             console.log(err.message);
@@ -23,7 +22,6 @@ const contactCtrl = {
     getClosedRequests : async(req, res, next) =>{
         try {
             const requests = await ContactModel.find({status: false})
-            console.log(requests)
             res.json(requests)
         } catch(err){
             return res.status(500).json({msg : err.message})
@@ -31,11 +29,10 @@ const contactCtrl = {
     },
     getRequest : async(req, res, next) =>{
         try {
-            const request = await ContactModel.findOne({_id : req.params.id})
-            console.log(request);
+            const request = await ContactModel.findOne({_id : req.params.id});
             res.json(request);
         } catch(err){
-            return res.status(500).json({msg : err.message})
+            return res.status(500).json({msg : err.message});
         }
     },
     createRequest : async(req, res,next) =>{
