@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import './ContactAdmin.css';
+import Modal from './Form'; 
 
 class ContactAdmin extends Component {
     constructor(props) {
@@ -8,25 +9,22 @@ class ContactAdmin extends Component {
         this.state = {
             openItems: [],
             closedItems: [],
-            hidden: true,
-            isLoaded: false
+            isLoaded: false,
+            show: false
         };
+        this.handleSend = this.handleSend.bind(this);
     }
 
-    show = () => {
+    //Modifier l'état du formulaire (visible ou invisible)
+    handleShow = () => {
         this.setState((state) => {
-            return {hidden: this.state.hidden ? false : true}
+            return {show: this.state.show ? false : true}
         });
+        gid("warning").innerHTML = "";
+        gid("response-form").value = "";
     }
 
-    verifyContact() {
-        
-    }
-
-    handleSubmit() {
-
-    }
-
+    //Au chargement de la page, récupération des reqêtes ouvertes et fermées
     componentDidMount() {
         axios.get("http://localhost:5000/api/contact/open")
             .then((result) => {
@@ -45,7 +43,24 @@ class ContactAdmin extends Component {
         })
     }
 
+    //Récupération des informations pour le formulaire
+    handleOpenForm = event => {
+        let id = event.target.id;
+        axios.get("http://localhost:5000/api/contact/request/" + id)
+            .then((result) => {
+                gid("id-form").innerText = id;
+                gid("subject-form").innerHTML = result.data.subject;
+                gid("message-form").innerHTML = result.data.message;
+                gid("response-form-text").innerHTML = result.data.response;
+                this.handleShow();
+            })
+            .catch((error) => {
+                console.log(error);
+                gid("warning").innerHTML = "Erreur !";
+            })
+    }
 
+    //Change le status de la requête
     handleChangeStatus = event => {
         let stat;
         if(event.target.value == "open") stat = true;
@@ -62,16 +77,77 @@ class ContactAdmin extends Component {
             })
     }
 
-    handleChange = x => {
-        let data = {}
-        axios.put("http://localhost:5000/api/contact/" + x.target.id,
+    verifyResponse() {
+        gid('warning').innerHTML = "";
+        let data = gid("response-form").value;
+        if(!data || (data.length <= 1)) {
+            gid('warning').innerHTML = "La réponse est trop courte ou manquante !";
+            return false;
+        }
+    }
+
+    //Récupère le mail, le sujet et le message de la requête et puis appelle la fct sendMail si réussi
+    getRequest(id, response, data) {
+        let mail, message, subject;
+        axios.get("http://localhost:5000/api/contact/request/" + id)
+            .then((result) => {
+                mail = result.data.mail;
+                subject = result.data.subject;
+                message = result.data.message;
+                console.log("récupéré " + id);
+                let res = this.sendMail(mail, message, subject, response, data, id);
+                return res;
+            })
+            .catch((error) => {
+                console.log(error);
+                gid("warning").innerHTML = "Erreur !";
+                return false;
+            })
+    }
+
+    //Envoie le mail avec les infos reçues et appelle la fct putRequest si réussi
+    sendMail(mail, message, subject, response, data, id) {
+        axios.post("http://localhost:5000/api/contact/send/", {
+            mail: mail,
+            subject: subject,
+            message: message,
+            response: response
+        })
+            .then((result) => {
+                console.log(result);
+                console.log("mail envoyé");
+                this.putRequest(id, data);
+                return true;
+            })
+            .catch((error) => {
+                console.log(error);
+                this.handleShow();
+                return false;
+            })
+    }
+
+    //Modifie les données dans la db
+    putRequest(id, data) {
+        axios.put("http://localhost:5000/api/contact/" + id,
         data)
             .then(function(response) {
-                console.log(response);
+                console.log("put réussi");
             })
             .catch(function(err) {
                 console.log(err.message);
             })
+    }
+
+    //Récupère les infos utiles et appelle la fct getRequest
+    handleSend = event => {
+        if(this.verifyResponse() == false) return false;
+        let response = gid("response-form").value;
+        let id = gid("id-form").innerText;
+        let data = {response: response};
+        console.log(event)
+        let mail, message, subject = this.getRequest(id, response);
+        
+        if(mail === "" || mail === undefined) {console.log('Get Failed !'); return false;}
     }
 
     render() {
@@ -82,6 +158,8 @@ class ContactAdmin extends Component {
         } else {
             return (
                 <div>
+                    <Modal show={this.state.show} handleShow={this.handleShow} send={this.handleSend}>
+                    </Modal>
                     <div id="openTable">
                         <h3>Requêtes ouvertes</h3>
                         <table className="table 5p">
@@ -97,7 +175,7 @@ class ContactAdmin extends Component {
                                     <td>
                                         <span className="float-start" id="textObjet">{request.subject}</span>
                                         <div >
-                                            <button id="btnShow" className="float-end btn btn-dark text-right" onClick={this.show}>Plus..</button>
+                                            <button id={request._id} className="btnShow float-end btn btn-dark text-right" onClick={this.handleOpenForm}>Plus..</button>
                                         </div>
                                     </td>
                                     <td id="statut">
@@ -125,7 +203,7 @@ class ContactAdmin extends Component {
                                     <td>
                                         <span className="float-start" id="textObjet">{request.subject}</span>
                                         <div >
-                                            <button id="btnShow" className="float-end btn btn-dark text-right" onClick={this.show}>Plus..</button>
+                                            <button id={request._id} className="btnShow float-end btn btn-dark text-right" onClick={this.handleOpenForm}>Plus..</button>
                                         </div>
                                     </td>
                                     <td id="statut">
@@ -139,10 +217,12 @@ class ContactAdmin extends Component {
                         </table>
                     </div>
                 </div>
-                
             )
         }
     }
 }
+
+//Permet de récupérer l'élément ayant comme identifiant id
+function gid(id) {return document.getElementById(id);}
 
 export default ContactAdmin;
