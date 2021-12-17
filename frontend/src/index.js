@@ -18,6 +18,7 @@ import Profile from './Components/Profile/Profile';
 import BoardUser from "./Components/Boards/BoardUser";
 import Contact from './Components/Contact/Contact';
 import ContactAdmin from './Components/Contact/ContactAdmin';
+import Checkout from './Components/Cart/Checkout'
 
 
 ReactDOM.render(
@@ -31,6 +32,7 @@ ReactDOM.render(
           <Route path="/Vendeurs" component={Home} />
           <Route path="/Contact" component={Contact} />
           <Route path="/User" component={BoardUser} />
+          <Route path="/Checkout" component={Checkout}/>
 
           <Route path="/GPU" component={GPU}/>
           <Route path="/Panier" component={Cart} />
