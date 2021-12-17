@@ -5,6 +5,8 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
+
+
 class Checkout extends Component {
     constructor(props) {
         super(props);
@@ -12,7 +14,9 @@ class Checkout extends Component {
           items: [],
           isLoaded: false
         };
+        
     }
+    
     componentDidMount() {
         axios.get('http://localhost:5000/api/cart/shopping-cart',{
             withCredentials:true,
@@ -50,10 +54,15 @@ class Checkout extends Component {
 
             return(
                 <div className="cart">
+                    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+                    <script type="text/javascript" src="/check_out.js"></script>
                 <div class="py-5">
                 <div class="row py-5 p-4 bg-white rounded shadow-sm">
                 <div class="col-lg-6">
                         <h1>Checkout</h1>
+                        <div id="charge-error" class="alert alert-danger {{#if noError}}hidden{{/if}}">
+                            ça doit être rempli là
+                        </div>
 
 
                         <form action="/checkout" method="post" id="checkout-form">
@@ -119,7 +128,7 @@ class Checkout extends Component {
                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
                                 <h5 class="fw-bold">{items.totalPrice}€</h5>
                                 </li>
-                            </ul><a href="/Checkout" class="btn btn-dark rounded-pill py-3 d-md-block">Passer au paiement</a>
+                            </ul><a type="submit" class="btn btn-dark rounded-pill py-3 d-md-block">Payer ma commande</a>
                             </div>
                         </div>
                     </div>
@@ -128,6 +137,8 @@ class Checkout extends Component {
                 );
             }
         }
+        
     ;
+    
 
 export default Checkout;

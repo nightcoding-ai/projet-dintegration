@@ -37,11 +37,11 @@ router.get('/shopping-cart', function (req, res) {
 
 router.get('/checkout', function(req, res, next) {
     if (!req.session.cart) {
-        return res.redirect('/shopping-cart');
+        return res.json({products: null});
     }
     var cart = new Cart(req.session.cart);
     var errMsg = req.flash('error')[0];
-    res.render('shop/checkout', {total: cart.totalPrice, errMsg: errMsg, noError: !errMsg});
+    res.render({total: cart.totalPrice, errMsg: errMsg, noError: !errMsg});
 });
 
 router.get('/purge', function (req, res){
