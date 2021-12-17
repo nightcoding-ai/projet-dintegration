@@ -34,7 +34,10 @@ class Shop extends Component {
             draggable: true,
             progress: undefined,
             });
-        axios.get('http://localhost:5000/api/cart/add-to-cart/'+e.currentTarget.id)
+        axios.get('http://localhost:5000/api/cart/add-to-cart/'+e.currentTarget.id,{
+            withCredentials:true,
+            }
+        )
     }
     render() {
         const { items } = this.state;

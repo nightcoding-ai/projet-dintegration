@@ -14,15 +14,7 @@ router.get('/', function (req, res) {
         res.json({products: productChunks});
     });
 });
-router.get('/test', function(req, res, next) {
-    if(req.session.isFirst || req.cookies.isFirst) {
-        res.send("welcome to visit again");
-    }else {
-        req.session.isFirst = 1;
-        res.cookie('isFirst', 1, { maxAge: 60 * 1000, singed: true});
-        res.send ("welcome to visit for the first time.");
-    };
-});
+
 router.get('/add-to-cart/:id', function (req, res) {
     var productId = req.params.id;
     console.log(req.session.cart)
@@ -43,4 +35,8 @@ router.get('/shopping-cart', function (req, res) {
     res.json({products: cart.generateArray(), totalPrice: cart.totalPrice});
 });
 
+router.get('/purge', function (req, res){
+    req.session.destroy()
+    res.redirect("/")
+})
 module.exports = router;
