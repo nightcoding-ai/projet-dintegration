@@ -61,13 +61,14 @@ class Shop extends Component {
                                     <h3 className="mt-4 font-weight-bold mb-2">{product.name}</h3>
                                     <p className="text-muted">{product.description}</p>
                                     <h5 className="font-weight-bold my-2">{product.price}€</h5>
+                                    <h5 className="text-muted">Quantité : {product.stock}</h5>
                                 </div>
                                 <div className="col-lg-6 text-center">
                                     <div className='box "my-3'>
                                         <img src={product.image} alt={product.name} width="150" className='picture'/>
                                     </div>
                                     <div className="my-3">
-                                        <Button type="button" name={product.name} id={product._id} variant="btn btn-outline-success"  onClick={this.add_to_cart}>Ajouter au panier</Button>                                    </div>
+                                        <Button type="button" name={product.name} id={product._id} variant="btn btn-outline-success add"  onClick={this.add_to_cart}>Ajouter au panier</Button>                                    </div>
                                 </div>
                             </div>
                         </div>

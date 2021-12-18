@@ -102,7 +102,7 @@ export default class Login extends Component {
                 <input type="hidden" name="_token" ></input>
                 <button
                 //type="submit"
-                className="btn btn-dark btn-bg btn-block"
+                className="btn btn-dark btn-bg btn-block login"
                 //onClick={this.handleSubmit}
                 >
                     Se connecter
