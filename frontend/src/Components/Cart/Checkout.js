@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 
 
+
 class Checkout extends Component {
     constructor(props) {
         super(props);
@@ -14,10 +15,11 @@ class Checkout extends Component {
           items: [],
           isLoaded: false
         };
-        
+
     }
-    
+
     componentDidMount() {
+
         axios.get('http://localhost:5000/api/cart/shopping-cart',{
             withCredentials:true,
             })
@@ -27,15 +29,7 @@ class Checkout extends Component {
                 isLoaded:true
             });
         });
-        axios.get('http://localhost:5000/api/cart/Checkout',{
-            withCredentials:true,
-            })
-            .then((result) => {
-            this.setState({
-                items: result.data,
-                isLoaded:true
-            });
-        });
+
     }
     cleanUp(){
         axios.get('http://localhost:5000/api/cart/purge',{
@@ -53,24 +47,21 @@ class Checkout extends Component {
 
 
             return(
-                <div className="cart">
+                <div class="row">
                     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-                    <script type="text/javascript" src="/check_out.js"></script>
-                <div class="py-5">
-                <div class="row py-5 p-4 bg-white rounded shadow-sm">
-                <div class="col-lg-6">
+                    <script type="text/javascript" src="../../../public/javascript/checkout.js"></script>
+                    <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
                         <h1>Checkout</h1>
+                        <h4>Your Total: ${items.totalPrice}</h4>
                         <div id="charge-error" class="alert alert-danger {{#if noError}}hidden{{/if}}">
-                            ça doit être rempli là
+                            {items.errMsg}
                         </div>
-
-
                         <form action="/checkout" method="post" id="checkout-form">
                             <div class="row">
                                 <div class="col-xs-12">
                                     <div class="form-group">
                                         <label for="name">Name</label>
-                                        <input type="text" id="name" class="form-control" required name="name"></input>
+                                        <input type="text" id="name" class="form-control" required name="name"/>
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
@@ -79,7 +70,6 @@ class Checkout extends Component {
                                         <input type="text" id="address" class="form-control" required name="address"/>
                                     </div>
                                 </div>
-
                                 <div class="col-xs-12">
                                     <div class="form-group">
                                         <label for="card-name">Card Holder Name</label>
@@ -114,31 +104,12 @@ class Checkout extends Component {
                                         <input type="text" id="card-cvc" class="form-control" required/>
                                     </div>
                                 </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">Buy now</button>
+                        </form>
+                    </div>
 
-                            </div>
-                    </form>
-                    </div>
-                    <div class="col-lg-5">
-                            <div class="bg-light rounded-pill px-4 py-3 text-uppercase fw-bold">Résumé de commande</div>
-                            <div class="p-4">
-                            <p class="mb-4"><em>Les coûts supplémentaires sont calculés sur base du montant de votre commande.</em></p>
-                            <ul class="list-unstyled mb-4">
-                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Sous-total </strong><strong>{items.totalPrice}€</strong></li>
-                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Taxe</strong><strong>0€</strong></li>
-                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                                <h5 class="fw-bold">{items.totalPrice}€</h5>
-                                </li>
-                            </ul><a type="submit" class="btn btn-dark rounded-pill py-3 d-md-block">Payer ma commande</a>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    </div>
-                );
-            }
-        }
-        
-    ;
-    
+                </div>
+)}}
 
 export default Checkout;
