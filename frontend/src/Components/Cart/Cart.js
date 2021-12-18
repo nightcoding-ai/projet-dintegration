@@ -133,7 +133,7 @@ class Cart extends Component {
                             <Button type="button" variant="btn btn-outline-danger"  onClick={this.cleanUp}>Vider le panier</Button>
 
                             </div>
-                        
+
                         </div>
                         </div>
 
@@ -145,7 +145,7 @@ class Cart extends Component {
                             <div class="input-group mb-4 border rounded-pill p-2">
                                 <input type="text" placeholder="Code" aria-describedby="button-addon3" class="form-control border-0" />
                                 <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Appliquer code</button>
-                                
+
                             </div>
                             </div>
                         </div>
@@ -159,7 +159,7 @@ class Cart extends Component {
                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
                                 <h5 class="fw-bold">{items.totalPrice}€</h5>
                                 </li>
-                            </ul><button type="button" class="btn btn-dark rounded-pill py-2 d-md-block">Passer au paiement</button>
+                            </ul><a href="/Checkout" class="btn btn-dark rounded-pill py-2 d-md-block">Passer au paiement</a>
                             </div>
                         </div>
                         </div>

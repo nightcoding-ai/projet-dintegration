@@ -55,6 +55,15 @@ router.get('/shopping-cart', function (req, res) {
     res.json({products: cart.generateArray(), totalPrice: cart.totalPrice});
 });
 
+router.get('/checkout', function(req, res, next) {
+    if (!req.session.cart) {
+        return res.json({products: null});
+    }
+    var cart = new Cart(req.session.cart);
+    var errMsg = req.flash('error')[0];
+    res.render({total: cart.totalPrice, errMsg: errMsg, noError: !errMsg});
+});
+
 router.get('/purge', function (req, res){
     req.session.destroy()
     res.redirect("/")
