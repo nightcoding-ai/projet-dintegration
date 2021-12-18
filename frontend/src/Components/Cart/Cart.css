@@ -19,7 +19,7 @@ input[type="checkbox"] {
   border-style: None;
 }
 
-.btn btn-outline-danger {
+.delete {
   margin: 0 auto;
 }
 
@@ -28,4 +28,25 @@ input[type="checkbox"] {
   max-height: 100%;
   object-fit: contain;
   display: block;
+}
+
+.minus{
+  margin-right:10px;
+}
+
+.plus{
+    margin-left:10px;
+}
+
+.trash{
+  padding:5px;
+}
+
+td,
+th {
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #FFF;
 }

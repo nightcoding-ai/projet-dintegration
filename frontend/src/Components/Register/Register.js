@@ -82,7 +82,7 @@ export default class SignUp extends Component {
                 <button 
                 type="submit" 
                 onClick={this.handleSubmit} 
-                className="btn btn-dark btn-lg btn-block">
+                className="btn btn-dark btn-lg btn-block register">
                     S'inscrire
                 </button>
                 <p className="need-account text-right">

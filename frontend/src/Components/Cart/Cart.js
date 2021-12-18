@@ -4,7 +4,7 @@ import axios from 'axios'
 import {Button} from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faMinus, faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Cart extends Component {
@@ -27,6 +27,9 @@ class Cart extends Component {
             });
         });
     }
+
+    
+
     cleanUp(){
         axios.get('http://localhost:5000/api/cart/purge',{
             withCredentials:true,
@@ -34,6 +37,7 @@ class Cart extends Component {
         )
         window.location.reload(false);
     }
+
     deleteArticle = (e) => {
         console.log(e.currentTarget.id)
         axios.get('http://localhost:5000/api/cart/reduce/'+e.currentTarget.id, {
@@ -41,18 +45,27 @@ class Cart extends Component {
         })
         window.location.reload(false);
     }
+
+    removeArticle = (e) => {
+
+        console.log(e.currentTarget.id)
+        axios.get('http://localhost:5000/api/cart/remove/'+e.currentTarget.id, {
+            withCredentials:true
+        })
+        window.location.reload(false);
+
+    }
+
+    addArticle = (e) =>{
+        axios.get('http://localhost:5000/api/cart/add-to-cart/'+e.currentTarget.id,{
+            withCredentials:true,
+            })
+        window.location.reload(false);
+    }
+
     render() {
         const { items } = this.state;
         console.log(items)
-        const notifyBasket = (e) =>toast.error('L\'article : '+e.currentTarget.name+' a été supprimé du panier !', {
-                                        position: "top-right",
-                                        autoClose: 5000,
-                                        hideProgressBar: false,
-                                        closeOnClick: true,
-                                        pauseOnHover: false,
-                                        draggable: true,
-                                        progress: undefined,
-                                        });
             if(!this.state.isLoaded || items.products == null || items.products.length === 0){
                 return(
                     <div className="cart">
@@ -64,6 +77,9 @@ class Cart extends Component {
                                 <table class="table">
                                     <thead>
                                     <tr>
+                                        <th scope="col" class="border-0 bg-light">
+                                        <div class="p-2 px-3 text-uppercase">Image</div>
+                                        </th>
                                         <th scope="col" class="border-0 bg-light">
                                         <div class="p-2 px-3 text-uppercase">Produit</div>
                                         </th>
@@ -79,7 +95,7 @@ class Cart extends Component {
                                     </tr>
                                     </thead>
                                 </table>
-                                <h1>Votre panier est vide !</h1>
+
                                 </div>
                             </div>
                             </div>
@@ -99,6 +115,9 @@ class Cart extends Component {
                                 <thead>
                                 <tr>
                                     <th scope="col" class="border-0 bg-light">
+                                    <div class="p-2 px-3 text-uppercase">Image</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
                                     <div class="p-2 px-3 text-uppercase">Produit</div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
@@ -115,22 +134,28 @@ class Cart extends Component {
                                 <tbody>
                                 {items.products.map((product) => (
                                 <tr>
-                                    <th scope="row" class="border-0">
+                                     <th scope="row" class="border-0">
                                     <div class="p-2">
                                         <img src={product.item.image} alt={product.item.name} width="70" class="img-fluid rounded shadow-sm" />
-                                        <div class="ms-3 d-inline-block align-middle">
-                                        <h5 class="text-dark d-inline-block align-middle">{product.item.name}</h5>
-                                        </div>
                                     </div>
                                     </th>
+                                    <td class="border-0 align-middle"><strong>{product.item.name}</strong></td>
+
                                     <td class="border-0 align-middle"><strong>{product.item.price}€</strong></td>
-                                    <td class="border-0 align-middle"><strong>{product.qty}</strong></td>
-                                    <td class="border-0 align-middle"><Button  class="text-dark" id={product.item._id} onClick={this.deleteArticle}><FontAwesomeIcon icon={faTrashAlt} size="2x"/></Button></td>
+                                    <td class="border-0 align-middle">
+                                         <button  className="btn-dark minus" id={product.item._id} onClick={this.deleteArticle}><FontAwesomeIcon icon={faMinus} size="xs"/></button>
+                                        <strong id={product.item._id+'qty'}>{product.qty}</strong>
+                                        <button  className="btn-dark plus" id={product.item._id} onClick={this.addArticle}><FontAwesomeIcon icon={faPlus} size="xs"/></button>
+                                    </td>
+                                    <td class="border-0 align-middle">
+                                        <button  className="btn-dark trash" id={product.item._id} onClick={this.removeArticle}><FontAwesomeIcon icon={faTrashAlt} size="lg"/></button>
+                                    </td>
+
                                 </tr>
                                 ))}
                                 </tbody>
                             </table>
-                            <Button type="button" variant="btn btn-outline-danger"  onClick={this.cleanUp}>Vider le panier</Button>
+                            <Button type="button" variant="btn btn-outline-danger delete"  onClick={this.cleanUp}>Vider le panier</Button>
 
                             </div>
 
