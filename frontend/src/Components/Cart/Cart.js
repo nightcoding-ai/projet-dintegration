@@ -4,6 +4,8 @@ import axios from 'axios'
 import {Button} from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Cart extends Component {
     constructor(props) {
@@ -18,6 +20,7 @@ class Cart extends Component {
             withCredentials:true,
             })
             .then((result) => {
+                console.log(result)
             this.setState({
                 items: result.data,
                 isLoaded:true
@@ -32,7 +35,11 @@ class Cart extends Component {
         window.location.reload(false);
     }
     deleteArticle = (e) => {
-        alert("l'id du produit : "+ e.currentTarget.id);
+        console.log(e.currentTarget.id)
+        axios.get('http://localhost:5000/api/cart/reduce/'+e.currentTarget.id, {
+            withCredentials:true
+        })
+        window.location.reload(false);
     }
     render() {
         const { items } = this.state;
@@ -46,7 +53,7 @@ class Cart extends Component {
                                         draggable: true,
                                         progress: undefined,
                                         });
-            if(!this.state.isLoaded || items.products == null){
+            if(!this.state.isLoaded || items.products == null || items.products.length === 0){
                 return(
                     <div className="cart">
                     <div class="py-5">
@@ -118,12 +125,12 @@ class Cart extends Component {
                                     </th>
                                     <td class="border-0 align-middle"><strong>{product.item.price}€</strong></td>
                                     <td class="border-0 align-middle"><strong>{product.qty}</strong></td>
-                                    <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="bi bi-trash"></i></a></td>
+                                    <td class="border-0 align-middle"><Button  class="text-dark" id={product.item._id} onClick={this.deleteArticle}><FontAwesomeIcon icon={faTrashAlt} size="2x"/></Button></td>
                                 </tr>
                                 ))}
                                 </tbody>
                             </table>
-                            <Button type="button" variant="btn btn-outline-success"  onClick={this.cleanUp}>Vider le panier</Button>
+                            <Button type="button" variant="btn btn-outline-danger"  onClick={this.cleanUp}>Vider le panier</Button>
 
                             </div>
                         
@@ -152,7 +159,7 @@ class Cart extends Component {
                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
                                 <h5 class="fw-bold">{items.totalPrice}€</h5>
                                 </li>
-                            </ul><a href="#" class="btn btn-dark rounded-pill py-2 d-md-block">Passer au paiement</a>
+                            </ul><button type="button" class="btn btn-dark rounded-pill py-2 d-md-block">Passer au paiement</button>
                             </div>
                         </div>
                         </div>
