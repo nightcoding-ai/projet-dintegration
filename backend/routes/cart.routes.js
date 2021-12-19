@@ -26,8 +26,13 @@ router.get('/add-to-cart/:id', function(req, res, next) {
        }
         cart.add(product, product.id);
         req.session.cart = cart;
-        console.log(req.session.cart);
-        res.redirect('/');
+        if (req.session.cart.items[productId].qty > product.stock){
+            cart.reduceByOne(productId);
+            res.json({msg:"ERROR"})
+        }
+        else{
+            res.json({msg:"OK"})
+        }
     });
 });
 
@@ -37,7 +42,14 @@ router.get('/reduce/:id', function(req, res) {
 
     cart.reduceByOne(productId);
     req.session.cart = cart;
-    res.redirect('/shopping-cart');
+    if (req.session.cart.items[productId].qty == 0){
+        cart.removeItem(productId);
+        res.json({msg:"DELETED"});
+    }
+    else{
+        res.json({msg:"OK"})
+    }
+    
 });
 
 router.get('/remove/:id', function(req, res) {

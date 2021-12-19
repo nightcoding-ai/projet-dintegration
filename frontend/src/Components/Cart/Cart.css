@@ -30,16 +30,16 @@ input[type="checkbox"] {
   display: block;
 }
 
-.minus{
-  margin-right:10px;
+.minus {
+  margin-right: 10px;
 }
 
-.plus{
-    margin-left:10px;
+.plus {
+  margin-left: 10px;
 }
 
-.trash{
-  padding:5px;
+.trash {
+  padding: 5px;
 }
 
 td,
@@ -48,5 +48,9 @@ th {
 }
 
 .button:hover {
-  background-color: #FFF;
+  background-color: #fff;
+}
+
+.code {
+  z-index: inherit !important;
 }
