@@ -8,6 +8,7 @@ form.submit(function (event) {
     ('#charge-error').addClass('hidden');
     form.find('button').prop('disabled', true);
     stripe.card.createToken({
+        address: ('#address').val(),
         number: ('#card-number').val(),
         cvc: ('#card-cvc').val(),
         exp_month: ('#card-expiry-month').val(),

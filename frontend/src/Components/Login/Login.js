@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import './Login.css';
-//import axios from "axios";
 import AuthService from "../services/auth.service";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
@@ -55,7 +54,6 @@ export default class Login extends Component {
                 this.props.history.push("/Profile");
                 window.location.reload();
             })
-                //console.log(localStorage.getItem('user'))
       };
     };
 

@@ -89,26 +89,27 @@ router.get('/checkout', function(req, res, next) {
 
 router.post('/checkout', function(req, res, next) {
     if (!req.session.cart) {
-        return res.redirect('/shopping-cart');
+        console.log("panier vide");
+        res.json({msg:'panier vide'})
     }
+    console.log(req.body)
     var cart = new Cart(req.session.cart);
 
     var stripe = require("stripe")(
         "sk_test_51K7oKVAmHmiFCRWpZZqifR760cN7SAfI4aoP156dZfRJK9JPSIPsXVNV4yFnfA1IsorBsqkm3WhMz1PuJ06YFVC100HtJImrYx"
     );
-
     stripe.charges.create({
-        amount: cart.totalPrice * 100,
-        currency: "usd",
+        amount: cart.totalPrice,
+        currency: "eur",
         source: req.body.stripeToken, // obtained with Stripe.js
         description: "Test Charge"
     }, function(err, charge) {
         if (err) {
-            req.flash('error', err.message);
-            return res.redirect('/shopping-cart');
+            //req.flash('error', err.message);
+            return res.json({msg:'erreur'});
         }
         var order = new Order({
-            user: req.user,
+            user: req.body.name,
             cart: cart,
             address: req.body.address,
             name: req.body.name,

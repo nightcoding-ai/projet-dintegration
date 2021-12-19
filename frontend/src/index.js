@@ -19,6 +19,7 @@ import BoardUser from "./Components/Boards/BoardUser";
 import Contact from './Components/Contact/Contact';
 import ContactAdmin from './Components/Contact/ContactAdmin';
 import Checkout from './Components/Cart/Checkout'
+import Checkout_test from './Components/Cart/checkout_test'
 
 
 ReactDOM.render(
@@ -33,7 +34,7 @@ ReactDOM.render(
           <Route path="/Contact" component={Contact} />
           <Route path="/User" component={BoardUser} />
           <Route path="/Checkout" component={Checkout}/>
-
+          <Route path="/Checkout_test" component={Checkout_test}/>
           <Route path="/GPU" component={GPU}/>
           <Route path="/Panier" component={Cart} />
           <Route path='/ListeCommerce' component={ListCommerce} />
