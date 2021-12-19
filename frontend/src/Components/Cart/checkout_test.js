@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import './Register.css';
 import axios from 'axios';
 import Stripe from "stripe";
 import {loadStripe} from "@stripe/stripe-js"
+
 export default class SignUp extends Component {
 
     constructor(props) {
