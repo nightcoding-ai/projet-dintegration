@@ -5,6 +5,7 @@ const fileUpload =  require('express-fileupload')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const MongoStore = require('connect-mongo');
+const flash = require('connect-flash');
 
 const userRoutes = require('./routes/user.routes');
 const productRoutes = require('./routes/product.routes');
@@ -14,7 +15,7 @@ const verifRoutes = require('./routes/verif.routes');
 const contactRoutes = require('./routes/contact.routes');
 
 const app = express()
-
+app.use(flash());
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
@@ -47,6 +48,6 @@ app.use('/api/offers', offerRoutes);
 app.use('/api/verif', verifRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/cart', cartRoutes);
-app.use('/api/checkout', cartRoutes)
+
 
 module.exports = app

@@ -8,12 +8,14 @@ import 'react-toastify/dist/ReactToastify.css'
 
 
 
+
+
 class Checkout extends Component {
     constructor(props) {
         super(props);
         this.state = {
           items: [],
-          isLoaded: false
+
         };
 
     }
@@ -26,9 +28,15 @@ class Checkout extends Component {
             .then((result) => {
             this.setState({
                 items: result.data,
-                isLoaded:true
+
             });
         });
+        axios
+            .post('http://localhost:5000/api/user/checkout')
+            .then(() => console.log('User Created'))
+            .catch(err => {
+                console.error(err);
+            });
 
     }
     cleanUp(){
@@ -47,6 +55,7 @@ class Checkout extends Component {
 
 
             return(
+
                 <div class="row">
                     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
                     <script type="text/javascript" src="../../../public/javascript/checkout.js"></script>
@@ -107,9 +116,127 @@ class Checkout extends Component {
                             </div>
                             <button type="submit" class="btn btn-success">Buy now</button>
                         </form>
+
                     </div>
 
                 </div>
 )}}
 
 export default Checkout;
+/**
+    /**
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            name: '',
+            adress: '',
+            nameCard: '',
+            numberCard:'',
+            mExpCard :'',
+            yExpCard :'',
+        };
+    }
+
+    handleInputChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    handleSubmit = e => {
+    e.preventDefault();
+    const { name, mail, nameCard, numberCard, mExpCard, yExpCard } = this.state;
+
+    const order = {
+      name,
+      mail,
+      nameCard,
+     numberCard,
+      mExpCard,
+      yExpCard
+    };
+    console.log(order);
+    axios
+      .post('http://localhost:5000/api/checkout', order)
+      .then(() => console.log('Order Created'))
+      .catch(err => {
+        console.error(err);
+      });
+  };
+
+    render() {
+        return (
+            <form>
+                <h3>Paiement</h3>
+
+                <div className="form-group">
+                    <label>Nom</label>
+                    <input
+                    type="text"
+                    className="form-control"
+                    name="name"
+                    placeholder="Nom"
+                    onChange={this.handleInputChange}/>
+                </div>
+
+                <div className="form-group">
+                    <label>Adresse</label>
+                    <input
+                    type="text"
+                    className="form-control"
+                    name="adress"
+                    placeholder="Votre adresse"
+                    onChange={this.handleInputChange}/>
+                </div>
+
+                <div className="form-group">
+                    <label></label>
+                    <input
+                    type="text"
+                    className="form-control"
+                    name="nameCard"
+                    placeholder="Le nom sur la carte bancaire"
+                    onChange={this.handleInputChange}/>
+                </div>
+
+                <div className="form-group">
+                    <label></label>
+                    <input
+                    type="number"
+                    className="form-control"
+                    name="numberCard"
+                    placeholder="Le numéro de compte sur la carte bancaire"
+                    onChange={this.handleInputChange}/>
+                </div>
+                <div className="form-group">
+                    <label></label>
+                    <input
+                    type="number"
+                    className="form-control"
+                    name="yExpCard"
+                    placeholder="année d'expiration"
+                    onChange={this.handleInputChange}/>
+                </div>
+                <div className="form-group">
+                    <label></label>
+                    <input
+                    type="number"
+                    className="form-control"
+                    name="mExpCard"
+                    placeholder="mois d'expiration"
+                    onChange={this.handleInputChange}/>
+                </div>
+
+                <button
+                type="submit"
+                onClick={this.handleSubmit}
+                className="btn btn-dark btn-lg btn-block register">
+                    Payer
+                </button>
+
+            </form>
+        );
+    }
+}
+*/
