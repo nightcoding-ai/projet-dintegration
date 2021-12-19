@@ -25,20 +25,39 @@ class Shop extends Component {
     }
 
     add_to_cart = (e) =>{
-        toast('L\'article : '+e.currentTarget.name+' a été ajouté au panier !', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-            });
+        let name = e.currentTarget.name
         axios.get('http://localhost:5000/api/cart/add-to-cart/'+e.currentTarget.id,{
             withCredentials:true,
+            })
+        .then(res => {
+                let msg = res.data.msg
+            if (msg === "OK"){
+              toast('L\'article : '+name+' a été ajouté au panier !', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                });
+               }
+
+
+            else if (msg === "ERROR"){
+                    toast.error('Vous avez atteint la limite des stocks', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: false,
+                        draggable: true,
+                        progress: undefined,
+                        });
             }
-        )
+        })
     }
+
     render() {
         const { items } = this.state;
 

@@ -1,16 +1,11 @@
+
 import React, { Component } from 'react'
-
 import axios from 'axios'
-
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-
-
-
-
-
 class Checkout extends Component {
+    /**
     constructor(props) {
         super(props);
         this.state = {
@@ -31,12 +26,15 @@ class Checkout extends Component {
 
             });
         });
-        axios
-            .post('http://localhost:5000/api/user/checkout')
-            .then(() => console.log('User Created'))
-            .catch(err => {
-                console.error(err);
+        axios.get('http://localhost:5000/api/cart/checkout',{
+            withCredentials:true,
+            })
+            .then((result) => {
+            this.setState({
+                items: result.data,
+
             });
+        });
 
     }
     cleanUp(){
@@ -122,14 +120,14 @@ class Checkout extends Component {
                 </div>
 )}}
 
-export default Checkout;
-/**
-    /**
+*/
+
     constructor(props) {
         super(props);
 
         this.state = {
             name: '',
+            mail:'',
             adress: '',
             nameCard: '',
             numberCard:'',
@@ -146,11 +144,12 @@ export default Checkout;
 
     handleSubmit = e => {
     e.preventDefault();
-    const { name, mail, nameCard, numberCard, mExpCard, yExpCard } = this.state;
+    const { name, mail, adress, nameCard, numberCard, mExpCard, yExpCard } = this.state;
 
     const order = {
       name,
       mail,
+      adress,
       nameCard,
      numberCard,
       mExpCard,
@@ -168,10 +167,11 @@ export default Checkout;
     render() {
         return (
             <form>
+                <hr></hr>
                 <h3>Paiement</h3>
-
+                    <hr></hr>
                 <div className="form-group">
-                    <label>Nom</label>
+
                     <input
                     type="text"
                     className="form-control"
@@ -181,12 +181,21 @@ export default Checkout;
                 </div>
 
                 <div className="form-group">
-                    <label>Adresse</label>
+
                     <input
                     type="text"
                     className="form-control"
                     name="adress"
                     placeholder="Votre adresse"
+                    onChange={this.handleInputChange}/>
+                </div>
+                <div className="form-group">
+
+                    <input
+                    type="text"
+                    className="form-control"
+                    name="mail"
+                    placeholder="Votre mail"
                     onChange={this.handleInputChange}/>
                 </div>
 
@@ -239,4 +248,5 @@ export default Checkout;
         );
     }
 }
-*/
+
+export default Checkout;
