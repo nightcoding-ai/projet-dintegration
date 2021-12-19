@@ -49,6 +49,13 @@ export default function DrawerContainer(props) {
             navigation.closeDrawer();
           }}
         />
+        <MenuButton
+          title="My List"
+          onPress={() => {
+            navigation.navigate("MyList");
+            navigation.closeDrawer();
+          }}
+        />
       </View>
     </View>
   );

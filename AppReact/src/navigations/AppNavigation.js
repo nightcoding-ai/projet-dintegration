@@ -13,6 +13,7 @@ import ProductsScreen from '../screens/Products/ProductsScreen';
 import SearchScreen from '../screens/Search/SearchScreen';
 import LogRegScreen from '../screens/LogRegScreen/LogRegScreen'
 import CartScreen from '../screens/Cart/Cart';
+import MyList from '../screens/MyShop/MyList';
 
 const Stack = createStackNavigator();
 
@@ -34,7 +35,8 @@ function MainNavigator() {
       <Stack.Screen name='ProductList' component={ProductListScreen} />
       <Stack.Screen name='Search' component={SearchScreen} />
       <Stack.Screen name='LoginRegister' component={LogRegScreen} />
-      <Stack.Screen name='Cart' component={CartScreen}/>
+      <Stack.Screen name='Cart' component={CartScreen} />
+      <Stack.Screen name='MyList' component={MyList} />
     </Stack.Navigator>
   )
 }
