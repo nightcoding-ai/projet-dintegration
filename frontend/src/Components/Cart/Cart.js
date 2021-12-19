@@ -75,7 +75,7 @@ class Cart extends Component {
 
     addArticle = (e) =>{
         let id = e.currentTarget.id
-        axios.get('http://localhost:5000/api/cart/add-to-cart/'+e.currentTarget.id,{
+        axios.get('http://localhost:5000/api/cart/add-to-cart/'+id,{
             withCredentials:true,
             })
             .then(res => {
@@ -202,8 +202,8 @@ class Cart extends Component {
                                 {items.products.map((product) => (
                                 <tr>
                                      <th scope="row" className="border-0">
-                                    <div className="p-2">
-                                        <img src={product.item.image} alt={product.item.name} width="100" className="img-fluid rounded shadow-sm" />
+                                    <div className='box "my-3'>
+                                        <img src={product.item.image} alt={product.item.name} width="150" className="picture" />
                                     </div>
                                     </th>
                                     <td className="border-0 align-middle"><strong>{product.item.name}</strong></td>
