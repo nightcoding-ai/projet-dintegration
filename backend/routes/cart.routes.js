@@ -92,22 +92,20 @@ router.get('/checkout', function(req, res, next) {
 router.post('/checkout', function(req, res, next) {
 
     console.log(req.session)
-    //console.log(req.session)
-
-    //var cart = new Cart(req.session.cart);
-    //console.log(cart)
+    var cart = new Cart(req.session.cart);
+    console.log(cart)
     var stripe = require("stripe")(
         "sk_test_51K7oKVAmHmiFCRWpZZqifR760cN7SAfI4aoP156dZfRJK9JPSIPsXVNV4yFnfA1IsorBsqkm3WhMz1PuJ06YFVC100HtJImrYx"
     );
     stripe.charges.create({
-        //amount: cart.totalPrice,
+        amount: cart.totalPrice,
         currency: "eur",
         source: req.body.token, // obtained with Stripe.js
         description: "Test Charge"
     }, function(err) {
-        //var cart = new Cart(req.session.cart);
+        var cart = new Cart(req.session.cart);
         var order = new Order({
-            //cart: cart,
+            cart: cart,
             name: req.body.name,
             paymentId: req.body.token
         });
