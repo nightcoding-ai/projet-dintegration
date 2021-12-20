@@ -5,14 +5,17 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 const URI = process.env.MONGODB_URL
 
- 
-describe("requests", () => {  
-    let connection;
-    beforeAll(async () => {
-        connection = await mongoose.connect(URI, {
-            useNewUrlParser: true,
-        })
-    });
+beforeEach((done) => {
+    mongoose.connect(
+        URI,
+        { useNewUrlParser: true },
+        () => done()
+    )
+})
+afterEach((done) => {
+    mongoose.connection.close(() => done())
+})
+describe("login tests", () => {  
     it("POST /api/user/login", async () => {
         const user = {
             mail: "delete@gmail.com",
@@ -33,8 +36,5 @@ describe("requests", () => {
             .post("/api/user/login")
             .send(wrong)
             .expect(400)
-    });
-    afterAll(async () => {
-        await mongoose.disconnect();
     });
 })
