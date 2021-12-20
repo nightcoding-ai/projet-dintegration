@@ -1,8 +1,12 @@
+/* CSS pour le panier */
 .title {
   text-align: center;
 }
 .product {
   width: 150px;
+}
+.cart {
+  margin-top: 3em;
 }
 
 input[type="checkbox"] {
@@ -61,16 +65,18 @@ th {
   object-fit: contain;
   display: block;
 }
-
+/* CSS pour Stripe*/
 .StripeElement {
-  margin-top:500px;
-  margin-left:500px;
+  margin-top:1em;
+  margin-left:0.5em;
+  margin-right : 32em;
+  position: relative;
   height: 40px;
-  padding: 10px 12px;
+  padding: 10px;
   width: 100%;
   color: #32325d;
   background-color: white;
-  border: 1px solid transparent;
+  border: 2px  gray;
   border-radius: 4px;
   box-shadow: 0 1px 3px 0 #e6ebf1;
   -webkit-transition: box-shadow 150ms ease;
@@ -84,4 +90,48 @@ th {
 }
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
+}
+
+/* CSS pour le form */
+#btnPay {
+padding-left : 7em;
+padding-right : 7em;
+margin-left: 7em;
+}
+
+label {
+  margin-left: 2em;
+
+}
+.input-wrapper {
+  position: relative;
+  margin: 20px auto;
+  margin-top : 1em;
+}
+.form-control {
+  display: block;
+  line-height: 2em;
+  margin: 1em;
+  padding-left: 10px;
+  width: 100%;
+  font-size: medium;
+  border: 1px solid #f4f4f4;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+.form-control:focus {
+  border: 1px solid #2c7ac9;
+}
+.control-label {
+  display: block;
+  position: absolute;
+  opacity: 0;
+  bottom: 1.9rem;
+  color: #5d5d5d;
+  transition: 0.2s ease-in-out transform;
+  font-size: 12px;
 }

@@ -8,9 +8,11 @@ const stripePromise = loadStripe('pk_test_51K7oKVAmHmiFCRWpil7DYPSOJC6ZRUd7UNXs0
 
 function Checkout() {
   return (
+
     <Elements stripe={stripePromise}>
       <CheckoutForm />
     </Elements>
+
   );
 };
 
