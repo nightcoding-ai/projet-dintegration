@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { CardElement } from '@stripe/react-stripe-js';
 import './Cart.css';
 
+
 import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
 
@@ -10,9 +11,7 @@ const CARD_ELEMENT_OPTIONS = {
   hidePostalCode: true,
   style: {
     base: {
-
       color: "#32325d",
-
       fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
       fontSmoothing: "antialiased",
       fontSize: "20px",
@@ -35,12 +34,18 @@ class Cart extends Component {
       isLoaded: false,
       Name : this.name,
       Email : this.email,
+
+
       CARD_ELEMENT_OPTIONS : this.CARD_ELEMENT_OPTIONS
     };
   }
   componentDidMount() {
     axios.get('http://localhost:5000/api/cart/shopping-cart', {
       withCredentials: true,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
     })
       .then((result) => {
         this.setState({
@@ -120,7 +125,7 @@ class Cart extends Component {
               <p className="mb-4"><em>Les paiements sont réalisés via Stripe</em></p>
               <ul className="list-unstyled mb-4">
                 <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Total</strong>
-                  <h5 className="fw-bold"><span id='totalPrice'>{items.totalPrice}</span>€</h5>
+                  <h5 name="amount" className="fw-bold"><span id='totalPrice'>{items.totalPrice}</span>€</h5>
                 </li>
               </ul>
 
@@ -129,18 +134,22 @@ class Cart extends Component {
           </div>
           <div className="col-lg-6">
             <div id="sectionInfo">
+            <div className="errorSection"></div>
             <div className="bg-light rounded-pill px-4 py-3 text-uppercase fw-bold">Information de paiement</div>
               <div class="input-wrapper">
-                <input name="name" type="text" id="input" class="form-control" placeholder="Name" />
+                <input name="name" type="text" id="input" className=" form-control" placeholder="Name" />
                 <label for="input" class="control-label">Full name</label>
-                <input name="email"type="text" id="input" class="form-control" placeholder="Email" />
+                <input name="email"type="text" id="input" className="form-control" placeholder="Email" />
                 <label for="input" class="control-label">Email</label>
+
+
                 <label>
                   <CardElement options={CARD_ELEMENT_OPTIONS} />
                 </label>
+                <button id="btnPay" type="submit" className="btn btn-dark btn-lg btn-block" name="totalPrice">Payer <span name="amount" id='totalPrice'>{items.totalPrice}</span> €</button>
+
 
               </div>
-              <button id="btnPay" type="submit" className="btn btn-dark btn-lg btn-block">Payer {items.totalPrice} €</button>
 
             </div>
 

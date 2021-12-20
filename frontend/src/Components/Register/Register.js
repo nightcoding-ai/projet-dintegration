@@ -27,12 +27,13 @@ export default class SignUp extends Component {
             errorMessage: '',
         };
     }
-    
+
     handleInputChange = e => {
         this.setState({
             [e.target.name]: e.target.value,
         });
     };
+
 
   handleSubmit = e => {
     e.preventDefault();
@@ -54,6 +55,7 @@ export default class SignUp extends Component {
         }) 
     };
 };
+
     render() {
         return (
             <div className="container-fluid">
@@ -70,6 +72,7 @@ export default class SignUp extends Component {
                     type="text"
                     className="form-control"
                     placeholder="Votre nom"
+
                     name="name"
                     value={this.state.name}
                     onChange={this.handleInputChange}
@@ -80,6 +83,7 @@ export default class SignUp extends Component {
                     <Input
                     type="email"
                     className="form-control"
+
                     placeholder="Votre email"
                     name="mail"
                     value={this.state.mail}
@@ -92,6 +96,7 @@ export default class SignUp extends Component {
                     <Input type="password"
                     className="form-control"
                     placeholder="Votre mot de passe"
+
                     name="password"
                     value={this.state.password}
                     onChange={this.handleInputChange}
@@ -118,6 +123,7 @@ export default class SignUp extends Component {
                 <input type="hidden" name="_token" ></input>
 
                 <button 
+
                 className="btn btn-dark btn-lg btn-block register">
                     S'inscrire
                 </button>
@@ -129,7 +135,7 @@ export default class SignUp extends Component {
                 }}/>
             </Form>
             <p className="need-account text-right">
-                    Vous avez déjà un compte ? Connectez-vous <a href="./Login">ici</a>
+                Vous avez déjà un compte ? Connectez-vous <a href="./Login">ici</a>
             </p>
             </div>
         );

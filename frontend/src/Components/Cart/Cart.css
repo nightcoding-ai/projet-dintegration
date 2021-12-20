@@ -9,7 +9,7 @@
   margin-top: 3em;
 }
 
-input[type="checkbox"] {
+.form-control input[type="checkbox"] {
   vertical-align: middle;
   width: 20px;
   height: 20px;
@@ -94,21 +94,19 @@ th {
 
 /* CSS pour le form */
 #btnPay {
+margin-top:1em;
 padding-left : 7em;
 padding-right : 7em;
 margin-left: 7em;
 }
 
-label {
-  margin-left: 2em;
 
-}
 .input-wrapper {
   position: relative;
   margin: 20px auto;
   margin-top : 1em;
 }
-.form-control {
+.form-control cardSection {
   display: block;
   line-height: 2em;
   margin: 1em;
