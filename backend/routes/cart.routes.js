@@ -67,6 +67,7 @@ router.get('/shopping-cart', function (req, res) {
         return res.json({products: null});
     }
     var cart = new Cart(req.session.cart);
+    console.log(req.session)
     res.json({products: cart.generateArray(), totalPrice: cart.totalPrice});
 });
 
@@ -78,49 +79,42 @@ router.get('/purge', function (req, res){
 });
 
 /** Routes pour le paiement */
-
+/*
 router.get('/checkout', function(req, res, next) {
     if (!req.session.cart) {
-        return res.redirect('/shopping-cart');
+        return res.json({products: null});
     }
     var cart = new Cart(req.session.cart);
     var errMsg = req.flash('error')[0];
     res.render('shop/checkout', {total: cart.totalPrice, errMsg: errMsg, noError: !errMsg});
-});
+});*/
 
 router.post('/checkout', function(req, res, next) {
-    if (!req.session.cart) {
-        console.log("panier vide");
-        res.json({msg:'panier vide'})
-    }
-    console.log(req.body)
-    var cart = new Cart(req.session.cart);
 
+    console.log(req.session)
+    //console.log(req.session)
+
+    //var cart = new Cart(req.session.cart);
+    //console.log(cart)
     var stripe = require("stripe")(
         "sk_test_51K7oKVAmHmiFCRWpZZqifR760cN7SAfI4aoP156dZfRJK9JPSIPsXVNV4yFnfA1IsorBsqkm3WhMz1PuJ06YFVC100HtJImrYx"
     );
     stripe.charges.create({
-        amount: cart.totalPrice,
+        //amount: cart.totalPrice,
         currency: "eur",
-        source: req.body.stripeToken, // obtained with Stripe.js
+        source: req.body.token, // obtained with Stripe.js
         description: "Test Charge"
-    }, function(err, charge) {
-        if (err) {
-            //req.flash('error', err.message);
-            return res.json({msg:'erreur'});
-        }
+    }, function(err) {
+        //var cart = new Cart(req.session.cart);
         var order = new Order({
-            user: req.body.name,
-            cart: cart,
-            address: req.body.address,
+            //cart: cart,
             name: req.body.name,
-            paymentId: charge.id
+            paymentId: req.body.token
         });
-        order.save(function(err, result) {
-            req.flash('success', 'Successfully bought product!');
-            req.session.cart = null;
-            res.redirect('/');
-        });
+        console.log(req.body)
+        order.save();
+        
+
     });
 });
 

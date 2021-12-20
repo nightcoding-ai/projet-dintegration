@@ -27,9 +27,6 @@ class Cart extends Component {
             });
     }
 
-    componentWillUnmount(){
-        clearInterval(this.interval);
-    }
 
     cleanUp(){
         axios.get('http://localhost:5000/api/cart/purge',{

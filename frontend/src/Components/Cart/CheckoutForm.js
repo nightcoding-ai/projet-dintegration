@@ -56,7 +56,6 @@ function CheckoutForm() {
     }
     state.name = payload.paymentMethod.billing_details.name
     state.email = payload.paymentMethod.billing_details.email
-    console.log(state.name, state.email)
     const order = {name: state.name, email: state.email, token: state.token}
     console.log(order)
     axios.post('http://localhost:5000/api/cart/checkout', order)

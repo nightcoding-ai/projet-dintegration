@@ -42,19 +42,6 @@ class Cart extends Component {
   componentDidMount() {
     axios.get('http://localhost:5000/api/cart/shopping-cart', {
       withCredentials: true,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((result) => {
-        this.setState({
-          items: result.data,
-          isLoaded: true
-        });
-      });
-      axios.post('http://localhost:5000/api/cart/checkout', {
-      withCredentials: true,
     })
       .then((result) => {
         this.setState({
@@ -63,18 +50,6 @@ class Cart extends Component {
         });
       });
 
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
-  cleanUp() {
-    axios.get('http://localhost:5000/api/cart/purge', {
-      withCredentials: true,
-    }
-    )
-    window.location.reload(false);
   }
 
   render() {
