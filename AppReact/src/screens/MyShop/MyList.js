@@ -4,26 +4,9 @@ import axios from "axios";
 
 export default function MyList(props) {
     const navigation = props;
-    const items = [];
 
-    componentDidMount(() => {
-        axios.get("http://localhost:5000/api/products")
-            .then((response) => {
-                items = response.data;
-            })
-            .catch((err) => {
-                console.log(err.message)
-            })
-    });
-
-    useLayoutEffect(() => {
-        navigation.setOptions({
-          title: "MyList"
-        });
-      });
-    
     renderProducts = ({ items }) => (
-        <TouchableHighlight underlayColor="rgba(73,182,77,0.9)" onPress={() => onPressProduct(items)}>
+        <TouchableHighlight underlayColor="rgba(73,182,77,0.9)" onPress={() => onEnterPage()}>
           <View>
             <Image>{items.image}</Image>
             <Text>{items.name}</Text>
@@ -34,10 +17,27 @@ export default function MyList(props) {
     
     return (
         <View>
-            <FlatList vertical showsVerticalScrollIndicator={false} numColumns={2} data={productsArray} renderItem={renderProducts} keyExtractor={(item) => `${item.productsId}`} />
+          <Image>{items.image}</Image>
+            <Text>{items.name}</Text>
+            <Text>{"Produit"}</Text>
+            <FlatList vertical data={items} renderItem={({items}) => <Text>{items.title}</Text>} />
         </View>
       );
 }
+
+const items = [];
+
+function onEnterPage() {
+        axios.get("http://localhost:5000/api/products")
+            .then((response) => {
+                items = response.data;
+            })
+            .catch((err) => {
+                console.log(err.message)
+            })
+}
+
+onEnterPage();
 
 const styles = StyleSheet.create({
     partnersItemContainer: {
