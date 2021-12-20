@@ -1,6 +1,19 @@
 import React, { Component } from "react";
 import './Register.css';
-import axios from 'axios';
+import AuthService from "../services/auth.service";
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
+import CheckButton from "react-validation/build/button";
+
+const required = value => {
+    if (!value) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          Veuillez remplir ce champ!
+        </div>
+      );
+    }
+  };
 export default class SignUp extends Component {
 
     constructor(props) {
@@ -10,6 +23,8 @@ export default class SignUp extends Component {
             name: '',
             mail: '',
             password: '',
+            password2: '',
+            errorMessage: '',
         };
     }
 
@@ -19,76 +34,110 @@ export default class SignUp extends Component {
         });
     };
 
-    handleSubmit = e => {
+
+  handleSubmit = e => {
     e.preventDefault();
-    const { name, mail, password } = this.state;
-
-    const user = {
-      name,
-      mail,
-      password,
+    this.form.validateAll();
+    if (this.state.password !== this.state.password2){
+        this.setState({errorMessage:"Veuillez entrer le même mot de passe"})
+    }
+    else if (this.checkBtn.context._errors.length === 0) {
+        AuthService.register(this.state.name, this.state.mail, this.state.password)
+        .then(() => {
+            this.props.history.push("/Login");
+            window.location.reload();
+        })
+        .catch((err) =>{
+            if (err.response) {
+                //console.log(err.response.data.msg);
+                this.setState({errorMessage:err.response.data.msg})
+              }        
+        }) 
     };
-
-    axios
-      .post('http://localhost:5000/api/user/register', user)
-      .then(() => console.log('User Created'))
-      .catch(err => {
-
-      });
-  };
+};
 
     render() {
         return (
-            <form>
+            <div className="container-fluid">
+            <Form
+            onSubmit={this.handleSubmit}
+            ref={c => {
+                this.form = c;
+              }}>
                 <h3>Inscription</h3>
 
                 <div className="form-group">
                     <label>Nom</label>
-                    <input
+                    <Input
                     type="text"
                     className="form-control"
-                    name="name"
-                    placeholder="Nom"
-                    onChange={this.handleInputChange}/>
-                </div>
+                    placeholder="Votre nom"
 
+                    name="name"
+                    value={this.state.name}
+                    onChange={this.handleInputChange}
+                    validations={[required]}/>
+                </div>
                 <div className="form-group">
                     <label>Email</label>
-                    <input
+                    <Input
                     type="email"
                     className="form-control"
-                    name="mail"
+
                     placeholder="Votre email"
-                    onChange={this.handleInputChange}/>
+                    name="mail"
+                    value={this.state.mail}
+                    onChange={this.handleInputChange}
+                    validations={[required]}/>
                 </div>
 
                 <div className="form-group">
                     <label>Mot de passe</label>
-                    <input
-                    type="password"
+                    <Input type="password"
                     className="form-control"
-                    name="password"
                     placeholder="Votre mot de passe"
-                    onChange={this.handleInputChange}/>
+
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleInputChange}
+                    validations={[required]}/>
+                </div>
+                <div className="form-group">
+                    <label>Confirmer votre mot de passe</label>
+                    <Input type="password"
+                    className="form-control"
+                    placeholder="Votre mot de passe"
+                    name="password2"
+                    value={this.state.password2}
+                    onChange={this.handleInputChange}
+                    validations={[required]}/>
+                    { this.state.errorMessage &&<p className="error"> { this.state.errorMessage } </p> }
                 </div>
 
                 <div className="form-group">
                     <div className="custom-control custom-checkbox">
-                        <input type="checkbox" className="custom-control-input" id="customCheck1" />
+                        <Input type="checkbox" className="custom-control-input" id="customCheck1" required/>
                         <label className="custom-control-label" htmlFor="customCheck1">En cliquant ici, vous acceptez notre <a href="/GPU">GPU</a> </label>
                     </div>
                 </div>
+                <input type="hidden" name="_token" ></input>
 
-                <button
-                type="submit"
-                onClick={this.handleSubmit}
+                <button 
+
                 className="btn btn-dark btn-lg btn-block register">
                     S'inscrire
                 </button>
-                <p className="need-account text-right">
-                    Vous avez déjà un compte ? Connectez-vous <a href="./Login">ici</a>
-                </p>
-            </form>
+
+                <CheckButton
+                    style={{ display: "none" }}
+                    ref={c => {
+                        this.checkBtn = c;
+                }}/>
+            </Form>
+            <p className="need-account text-right">
+                Vous avez déjà un compte ? Connectez-vous <a href="./Login">ici</a>
+            </p>
+            </div>
         );
     }
 }

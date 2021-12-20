@@ -7,8 +7,10 @@ const userCtrl = {
         try{
             const{name, mail, password} = req.body;
 
-            const user = await UserModel.findOne({mail})
-            if(user) return res.status(400).json({msg: "This email already exists."})
+            const userMail = await UserModel.findOne({mail})
+            if(userMail) return res.status(400).json({msg: "Cet email est déjà pris."})
+            const userName = await UserModel.findOne({name})
+            if(userName) return res.status(400).json({msg: "Ce nom d'utilisateur existe déjà."})
 
             if(password.length <6) return res.status(400).json({msg : "Password must be at least 6 caracters"}) 
 
