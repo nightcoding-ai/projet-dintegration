@@ -12,13 +12,13 @@ export default class SignUp extends Component {
             password: '',
         };
     }
-    
+
     handleInputChange = e => {
         this.setState({
             [e.target.name]: e.target.value,
         });
     };
-    
+
     handleSubmit = e => {
     e.preventDefault();
     const { name, mail, password } = this.state;
@@ -28,15 +28,15 @@ export default class SignUp extends Component {
       mail,
       password,
     };
-    console.log(user);
+
     axios
       .post('http://localhost:5000/api/user/register', user)
       .then(() => console.log('User Created'))
       .catch(err => {
-        console.error(err);
+
       });
   };
-    
+
     render() {
         return (
             <form>
@@ -44,9 +44,9 @@ export default class SignUp extends Component {
 
                 <div className="form-group">
                     <label>Nom</label>
-                    <input 
-                    type="text" 
-                    className="form-control" 
+                    <input
+                    type="text"
+                    className="form-control"
                     name="name"
                     placeholder="Nom"
                     onChange={this.handleInputChange}/>
@@ -54,9 +54,9 @@ export default class SignUp extends Component {
 
                 <div className="form-group">
                     <label>Email</label>
-                    <input 
-                    type="email" 
-                    className="form-control" 
+                    <input
+                    type="email"
+                    className="form-control"
                     name="mail"
                     placeholder="Votre email"
                     onChange={this.handleInputChange}/>
@@ -64,9 +64,9 @@ export default class SignUp extends Component {
 
                 <div className="form-group">
                     <label>Mot de passe</label>
-                    <input 
-                    type="password" 
-                    className="form-control" 
+                    <input
+                    type="password"
+                    className="form-control"
                     name="password"
                     placeholder="Votre mot de passe"
                     onChange={this.handleInputChange}/>
@@ -79,9 +79,9 @@ export default class SignUp extends Component {
                     </div>
                 </div>
 
-                <button 
-                type="submit" 
-                onClick={this.handleSubmit} 
+                <button
+                type="submit"
+                onClick={this.handleSubmit}
                 className="btn btn-dark btn-lg btn-block register">
                     S'inscrire
                 </button>

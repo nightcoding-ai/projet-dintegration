@@ -3,16 +3,38 @@ import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js';
 import CardSection from './CardSection';
 import './Cart.css';
 
+
 function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
+  const state = {
+    token:'',
+    name:'',
+    address:'',
+    cardHolder:'',
+    cardNumber:'',
+    expiMonth:'',
+    expiYear:'',
+    CVC:'',
+    items:[],
+    totalPrice : ''}
+
    function stripeTokenHandler (token) {
       const paymentData = {token: token.id};
-      console.log(paymentData)
+      state.token = paymentData;
+      console.log(state.token)
    }
 
+
+
   const handleSubmit = async (event) => {
+
+     /**
+     state.email = email;
+     state.totalPrice = totalPrice;
+     state.items = items;
+     state.cardHolder = cardHolder;*/
     // We don't want to let default form submission happen here,
     // which would refresh the page.
     event.preventDefault();
@@ -27,10 +49,15 @@ function CheckoutForm() {
       card: elements.getElement(CardElement),
       billing_details: {
         name: event.target.name.value,
-        email: event.target.email.value
-      }
+        email: event.target.email.value,
+
+
+      },
 
     });
+    state.name = Object.keys(payload);
+    console.log(state.name)
+
     console.log(payload)
     const card = elements.getElement(CardElement);
     const result = await stripe.createToken(card);
@@ -46,8 +73,10 @@ function CheckoutForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="checkout-form">
-      <CardSection />
+
+    <form onSubmit={handleSubmit} className="checkout-form" >
+      <CardSection
+      />
     </form>
   );
 }

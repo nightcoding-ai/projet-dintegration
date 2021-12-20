@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import axios from 'axios';
 import Stripe from "stripe";
 import {loadStripe} from "@stripe/stripe-js"
@@ -9,15 +9,15 @@ export default class SignUp extends Component {
         super(props);
 
         this.state = {
-            name: '',
-            address: '',
-            cardHolder: '',
-            cardNumber: '',
-            expiMonth:'',
-            expiYear:'',
-            CVC:'',
-            items:[],
-            token: '',
+            name: useState,
+            address: useState,
+            cardHolder: useState,
+            cardNumber: useState,
+            expiMonth:useState,
+            expiYear:useState,
+            CVC:useState,
+            items:useState,
+            token: useState,
         };
     }
     componentDidMount() {
