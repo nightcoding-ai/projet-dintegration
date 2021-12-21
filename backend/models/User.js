@@ -27,6 +27,11 @@ const userSchema = new mongoose.Schema({
     required: false,
     default: 0
   },
+  userOffers: {
+    type: String,
+    required: false,
+    default: "offre boutique"
+  },
   role: {
     type: String,
     default: 'user',

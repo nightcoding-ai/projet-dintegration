@@ -15,6 +15,6 @@ router.post('/', auth,authShop, productController.createProduct)
 router.route('/:id')
       .get(productController.getProduct)
       .delete(productController.deleteProduct)
-      .put(auth,authShop, productController.updateProduct)
+      .put(auth, productController.updateProduct)
 
 module.exports = router;
