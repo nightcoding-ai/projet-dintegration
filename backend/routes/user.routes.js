@@ -18,7 +18,7 @@ router.get('/logout', authController.logout)
 router.get('/infos', authController.infos)
 router.get('/removeCurrentUser', authController.removeCurrentUser)
 router.get('/infor', auth, authController.getUser)
-router.get('/get_all_users',auth, authController.getAllUser)
+router.get('/get_all_users',auth,authAdmin,  authController.getAllUser)
 
 
 router.patch('/add_points', auth, authController.addPoints)

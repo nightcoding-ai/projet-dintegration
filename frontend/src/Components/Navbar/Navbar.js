@@ -62,10 +62,10 @@ export default class BarNav extends Component {
                     <Navbar.Collapse>
                         <Nav className="me-auto">
                         <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/"}>Accueil</NavLink></Nav.Item>
-                        <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/Boutique"}>Articles</NavLink></Nav.Item>
+                        <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/Articles"}>Articles</NavLink></Nav.Item>
                         
                         <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/Vendeurs"}>Partenaires</NavLink></Nav.Item>
-                        <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/Contact"}>Contact</NavLink></Nav.Item>
+                        <Nav.Item><NavLink activeClassName="active" className="text-dark nav-link px-5" exact to={"/Boutique"}>Boutique</NavLink></Nav.Item>
                         </Nav>
                         <Nav className="mx-5">
                         <Nav.Item><NavLink activeClassName="active" className="nav-link" exact to={"/Panier"} ><img src={basket} width="37px" alt="basket" className="mx-5"/></NavLink></Nav.Item>
