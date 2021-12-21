@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app",
+
     "test": "jest --forceExit",
+
     "test:watch": "jest --watch"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.7.0",
+    "@stripe/stripe-js": "^1.22.0",
     "argon2": "^0.28.2",
     "body-parser": "^1.19.0",
     "connect-mongo": "^4.6.0",
@@ -19,6 +23,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
+    "express-flash": "^0.0.2",
     "express-session": "^1.17.2",
     "install": "^0.13.0",
     "jest": "^27.4.3",
@@ -27,7 +32,10 @@
     "mongoose": "^6.0.11",
     "nodemailer": "^6.7.2",
     "nodemon": "^2.0.14",
+    "passport": "^0.5.0",
+    "react-stripe-checkout": "^2.6.3",
     "start": "^5.1.0",
+    "stripe": "^8.194.0",
     "supertest": "^6.1.6",
     "validator": "^13.6.0"
   },

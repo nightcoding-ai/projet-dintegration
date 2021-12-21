@@ -15,7 +15,8 @@ router.post('/login', authController.login)
 
 router.get('/logout', authController.logout)
 
-
+router.get('/infos', authController.infos)
+router.get('/removeCurrentUser', authController.removeCurrentUser)
 router.get('/infor', auth, authController.getUser)
 router.get('/get_all_users',auth,authAdmin,  authController.getAllUser)
 

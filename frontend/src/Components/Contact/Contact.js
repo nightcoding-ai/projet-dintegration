@@ -29,7 +29,7 @@ class Contact extends Component {
 
     handleSubmit() {
         let data = this.getGid();
-        if(this.verifyContact(data) == false) return false
+        if(this.verifyContact(data) === false) return false
         let mail, subject, message;
         mail = gid("email").value;
         subject = gid("msg_subject").value;
@@ -55,13 +55,13 @@ class Contact extends Component {
                             <p>Nos équipes travaillent du mieux qu'il peuvent afin de régler vos problèmes ou de répondre à vos questions.</p>
 
                             <div class="find-widget">
-                            Entreprise:  <a href="">Bangoo</a>
+                            Entreprise:  <a href="/">Bangoo</a>
                             </div>
                             <div class="find-widget">
-                            Adresse: <a href="#">Rue du Bercaille 18, 1300 Wavre</a>
+                            Adresse: <a href="/">Rue du Bercaille 18, 1300 Wavre</a>
                             </div>
                             <div class="find-widget">
-                                Téléphone:  <a href="">+32 471/28.21.70</a>
+                                Téléphone:  <a href="/">+32 471/28.21.70</a>
                             </div>
                         </div>
                         <div class="col-md-6 wow animated fadeInRight" data-wow-delay=".2s">

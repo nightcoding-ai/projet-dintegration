@@ -63,7 +63,7 @@ class ContactAdmin extends Component {
     //Change le status de la requête
     handleChangeStatus = event => {
         let stat;
-        if(event.target.value == "open") stat = true;
+        if(event.target.value === "open") stat = true;
         else stat = false;
         let data = {status: stat};
         axios.put("http://localhost:5000/api/contact/status/" + event.target.id,

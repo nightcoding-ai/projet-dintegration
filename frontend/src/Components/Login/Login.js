@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import './Login.css';
-//import axios from "axios";
 import AuthService from "../services/auth.service";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
@@ -51,11 +50,10 @@ export default class Login extends Component {
         if (this.checkBtn.context._errors.length === 0) {
             AuthService.login(this.state.mail, this.state.password)
             .then(() => {
-                console.log(JSON.parse(localStorage.getItem('user')));
+                //console.log(JSON.parse(localStorage.getItem('user')));
                 this.props.history.push("/Profile");
                 window.location.reload();
             })
-                //console.log(localStorage.getItem('user'))
       };
     };
 
@@ -93,17 +91,9 @@ export default class Login extends Component {
                     validations={[required]}/>
                 </div>
 
-                <div className="form-group">
-                    <div className="custom-control custom-checkbox">
-                        <Input type="checkbox" className="custom-control-input" id="customCheck1" />
-                        <label className="custom-control-label" htmlFor="customCheck1">Se souvenir de moi</label>
-                    </div>
-                </div>
                 <input type="hidden" name="_token" ></input>
                 <button
-                //type="submit"
-                className="btn btn-dark btn-bg btn-block"
-                //onClick={this.handleSubmit}
+                className="btn btn-dark btn-bg btn-block login"
                 >
                     Se connecter
                 </button>

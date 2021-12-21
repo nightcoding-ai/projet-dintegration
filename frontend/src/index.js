@@ -13,15 +13,16 @@ import Footer from './Components/Footer/Footer';
 import Cart from './Components/Cart/Cart';
 import Shop from './Components/Shop/Shop';
 import ListCommerce from './Components/Product/List';
-import Product from './Components/Product/Product';
+import Product from './Components/Product/List';
 import Profile from './Components/Profile/Profile';
 import BoardUser from "./Components/Boards/BoardUser";
-
 import Contact from "./Components/Contact/Contact";
 import Boutique from "./Components/Boutique/Boutique";
 import userContext from './Components/Context/userContext';
 import Default from './Components/Default/Default';
 import ContactAdmin from './Components/Contact/ContactAdmin';
+import Checkout from './Components/Cart/Checkout'
+import Checkout_test from './Components/Cart/checkout_test'
 
 
 ReactDOM.render(
@@ -35,8 +36,9 @@ ReactDOM.render(
           <Route path="/Boutique" component={Boutique} />
           <Route path="/Vendeurs" component={Home} />
           <Route path="/User" component={BoardUser} />
+          <Route path="/Checkout" component={Checkout}/>
+          <Route path="/Checkout_test" component={Checkout_test}/>
           <Route path="/Contact" component={Contact} />
-
           <Route path="/GPU" component={GPU}/>
           <Route path="/Panier" component={Cart} />
           <Route path='/ListeCommerce' component={ListCommerce} />

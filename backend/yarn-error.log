@@ -1,0 +1,71 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add react-strike-checkout
+
+PATH: 
+  /Library/Frameworks/Python.framework/Versions/3.9/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  14.16.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/react-strike-checkout: Not found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:67029:18)
+      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140883:22)
+      at Request.emit (events.js:315:20)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141855:10)
+      at Request.emit (events.js:315:20)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141777:12)
+      at Object.onceWrapper (events.js:421:28)
+      at IncomingMessage.emit (events.js:327:22)
+      at endReadableNT (internal/streams/readable.js:1327:12)
+      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+
+npm manifest: 
+  {
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "nodemon app",
+      "test": "jest --detectOpenHandles",
+      "test:watch": "jest --watch"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "argon2": "^0.28.2",
+      "body-parser": "^1.19.0",
+      "connect-mongo": "^4.6.0",
+      "cookie-parser": "^1.4.5",
+      "cors": "^2.8.5",
+      "dotenv": "^10.0.0",
+      "express": "^4.17.1",
+      "express-fileupload": "^1.2.1",
+      "express-flash": "^0.0.2",
+      "express-session": "^1.17.2",
+      "install": "^0.13.0",
+      "jest": "^27.4.3",
+      "jsonwebtoken": "^8.5.1",
+      "mockgoose": "^8.0.4",
+      "mongoose": "^6.0.11",
+      "nodemon": "^2.0.14",
+      "passport": "^0.5.0",
+      "start": "^5.1.0",
+      "supertest": "^6.1.6",
+      "validator": "^13.6.0"
+    },
+    "proxy": "http://localhost:5000"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

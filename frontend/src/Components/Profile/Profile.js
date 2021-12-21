@@ -7,51 +7,66 @@ export default class Profile extends Component {
     super(props);
 
     this.state = {
-      currentUser: AuthService.getCurrentUser()
+      currentUser: {}
     };
   }
-
+  componentDidMount() {
+    AuthService.getCurrentUser()
+        .then((result) => {
+            this.setState({
+                currentUser: result.data,
+            });
+        });
+  }
   disconnect() {
-    localStorage.clear()
-    window.location.href = "/";
+    AuthService.deleteCurrentUser()
+      .then(() => {
+        window.location.href = "/Login";
+      })
   }
 
   render() {
     const { currentUser } = this.state;
-
     return (
+      <>
       <div className="container">
         <header className="jumbotron">
           <h3>
-            <strong>{currentUser.user.name}</strong> Profile
+            <strong>{currentUser.name}</strong>
           </h3>
         </header>
         <p>
-          <strong>Token:</strong>{" "}
-          {currentUser.accessToken.substring(0, 20)} ...{" "}
-          {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
-        </p>
-        <p>
-          <strong>Id:</strong>{" "}
-          {currentUser.user._id}
-        </p>
-        <p>
           <strong>Email:</strong>{" "}
-          {currentUser.user.mail}
+          {currentUser.mail}
         </p>
         <p>
           <strong>Role:</strong>{" "}
-          {currentUser.user.role}
+          {currentUser.role}
         </p>
-         <button
+        <p>
+          <strong>Points client:</strong>{" "}
+          {currentUser.points} 
+        </p>
+      </div>
+      <div className="d-flex justify-content-around">
+        <button
                 //type="submit"
                 className="btn btn-dark btn-bg"
                 id="Déconnexion"
                 onClick={this.disconnect}
                 >
                     Déconnexion
-                </button>
-      </div>
+          </button>
+          <button
+                //type="submit"
+                className="btn btn-dark btn-bg"
+                id="Historique"
+                onClick={this.disconnect}
+                >
+                    Historique des commandes
+          </button>
+        </div>
+      </>
     );
   }
 }
