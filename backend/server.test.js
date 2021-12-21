@@ -4,6 +4,7 @@ const request = supertest(app)
 const mongoose = require('mongoose')
 require('dotenv').config()
 const URI = process.env.MONGODB_URL
+const UserModel = require('./models/User');
 
 
 
@@ -169,7 +170,7 @@ describe("Inscription", () => {
             .send(newUser)
             .expect(200)
 
-        await UserModel.findOneAndDelete(newUser.mail)
+        await UserModel.findOneAndDelete({mail : newUser.mail})
     
         
     });
