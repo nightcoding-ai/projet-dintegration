@@ -3,6 +3,8 @@ import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js';
 import CardSection from './CardSection';
 import './Cart.css';
 import axios from 'axios';
+import {useHistory} from 'react-router-dom'
+
 
 
 function CheckoutForm() {
@@ -20,6 +22,8 @@ function CheckoutForm() {
     CVC:'',
     items:[],
     totalPrice : ''}
+
+    const history = useHistory()
 
    function stripeTokenHandler (token) {
       const paymentData = {token: token.id};
@@ -58,11 +62,17 @@ function CheckoutForm() {
     state.email = payload.paymentMethod.billing_details.email
     const order = {name: state.name, email: state.email, token: state.token}
     console.log(order)
+    axios.get('http://localhost:5000/api/cart/purge',{
+            withCredentials:true,
+            }
+        )
+      .then((res) => console.log('Order posted'),
+      )
+      .catch(err => {});
     axios.post('http://localhost:5000/api/cart/checkout', order,{
       withCredentials: true,
-    })
-      .then(() => console.log('Order posted'))
-      .catch(err => {});
+    });
+    history.push('/')
   };
 
   return (

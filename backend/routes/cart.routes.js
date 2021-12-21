@@ -111,7 +111,10 @@ router.post('/checkout', function(req, res, next) {
         });
         console.log(req.body)
         order.save();
-        
+        res.redirect('/Panier')
+
+
+
 
     });
 });
