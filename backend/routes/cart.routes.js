@@ -26,7 +26,6 @@ router.get('/add-to-cart/:id', function(req, res, next) {
        }
         cart.add(product, product.id);
         req.session.cart = cart;
-        console.log(req.session.cart)
         if (req.session.cart.items[productId].qty > product.stock){
             cart.reduceByOne(productId);
             res.json({msg:"ERROR"})
@@ -59,7 +58,7 @@ router.get('/remove/:id', function(req, res) {
 
     cart.removeItem(productId);
     req.session.cart = cart;
-    res.redirect('/shopping-cart');
+    res.redirect('/');
 });
 
 router.get('/shopping-cart', function (req, res) {
@@ -67,33 +66,20 @@ router.get('/shopping-cart', function (req, res) {
         return res.json({products: null});
     }
     var cart = new Cart(req.session.cart);
-    console.log(req.session)
     res.json({products: cart.generateArray(), totalPrice: cart.totalPrice});
 });
 
 
 
 router.get('/purge', function (req, res){
-    req.session.destroy()
+    req.session.cart = {}
     res.redirect("/")
 });
 
 /** Routes pour le paiement */
-/*
-router.get('/checkout', function(req, res, next) {
-    if (!req.session.cart) {
-        return res.json({products: null});
-    }
-    var cart = new Cart(req.session.cart);
-    var errMsg = req.flash('error')[0];
-    res.render('shop/checkout', {total: cart.totalPrice, errMsg: errMsg, noError: !errMsg});
-});*/
 
 router.post('/checkout', function(req, res, next) {
-
-    console.log(req.session)
     var cart = new Cart(req.session.cart);
-    console.log(cart)
     var stripe = require("stripe")(
         "sk_test_51K7oKVAmHmiFCRWpZZqifR760cN7SAfI4aoP156dZfRJK9JPSIPsXVNV4yFnfA1IsorBsqkm3WhMz1PuJ06YFVC100HtJImrYx"
     );
@@ -109,11 +95,8 @@ router.post('/checkout', function(req, res, next) {
             name: req.body.name,
             paymentId: req.body.token
         });
-        console.log(req.body)
+        req.session.cart = {}
         order.save();
-        res.redirect('/Panier')
-
-
 
 
     });

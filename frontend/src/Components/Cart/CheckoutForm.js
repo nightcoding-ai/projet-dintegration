@@ -71,7 +71,9 @@ function CheckoutForm() {
       .catch(err => {});
     axios.post('http://localhost:5000/api/cart/checkout', order,{
       withCredentials: true,
-    });
+    },
+    );
+
     history.push('/')
   };
 
