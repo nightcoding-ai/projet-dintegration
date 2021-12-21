@@ -19,6 +19,7 @@ export default class BarNav extends Component {
         this.state = {
             currentUser: undefined,
             currentAdmin: undefined,
+            isLogged:false,
         };
     }
         
@@ -28,11 +29,13 @@ export default class BarNav extends Component {
                 if(result.data.role === "user"){
                     this.setState({
                         currentUser: result.data.role,
+                        isLogged:true,
                     });
                 }
                 else if(result.data.role === "admin"){
                     this.setState({
                         currentAdmin: result.data.role,
+                        isLogged:true,
                     });
                 }
             });
@@ -46,7 +49,7 @@ export default class BarNav extends Component {
     }
     
     render() {
-        const { currentUser, currentAdmin } = this.state;
+        const { currentUser, currentAdmin, isLogged } = this.state;
         return (
             <div>
                 <Navbar bg="white" variant="light" fixed="top" expand="lg">
@@ -87,7 +90,8 @@ export default class BarNav extends Component {
                                 </a>
                             </li>
                             </div>
-                        )} : {(
+                        )} 
+                        {isLogged === false &&(
                             <div className="navbar-nav ml-auto">
                                 <Nav.Item><NavLink activeClassName="active" className="nav-link" exact to={"/Login"} ><img src={account} width="37px" alt="account" className="mx-5"/></NavLink></Nav.Item>
                                 <Nav.Item><NavLink activeClassName="active" className="nav-link" exact to={"/Register"}><img src={registerForm} width="37px" alt="account" className="mx-5"/></NavLink></Nav.Item>
