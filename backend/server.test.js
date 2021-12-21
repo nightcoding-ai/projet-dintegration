@@ -168,6 +168,8 @@ describe("Inscription", () => {
             .post("/api/user/register")
             .send(newUser)
             .expect(200)
+
+        await UserModel.findOneAndDelete(newUser.mail)
     
         
     });
