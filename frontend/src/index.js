@@ -17,10 +17,10 @@ import Product from './Components/Product/Product';
 import Profile from './Components/Profile/Profile';
 import BoardUser from "./Components/Boards/BoardUser";
 
-
+import Contact from "./Components/Contact/Contact";
+import Boutique from "./Components/Boutique/Boutique";
 import userContext from './Components/Context/userContext';
 import Default from './Components/Default/Default';
-import Contact from './Components/Contact/Contact';
 import ContactAdmin from './Components/Contact/ContactAdmin';
 
 
@@ -31,10 +31,11 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/Marché" component={Home} />
-          <Route path="/Boutique" component={Shop} />
+          <Route path="/Articles" component={Shop} />
+          <Route path="/Boutique" component={Boutique} />
           <Route path="/Vendeurs" component={Home} />
-          <Route path="/Contact" component={Contact} />
           <Route path="/User" component={BoardUser} />
+          <Route path="/Contact" component={Contact} />
 
           <Route path="/GPU" component={GPU}/>
           <Route path="/Panier" component={Cart} />
