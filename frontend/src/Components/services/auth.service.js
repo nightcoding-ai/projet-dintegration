@@ -8,18 +8,9 @@ class AuthService {
       .post(API_URL + "login", {
         mail,
         password
+      }, {
+        withCredentials:true,
       })
-      .then(response => {
-        if (response.data.accessToken) {
-          localStorage.setItem("user", JSON.stringify(response.data));
-        }
-
-        return response.data;
-      });
-  }
-
-  logout() {
-    localStorage.removeItem("user");
   }
 
   register(name, mail, password) {
@@ -31,7 +22,15 @@ class AuthService {
   }
 
   getCurrentUser() {
-    return JSON.parse(localStorage.getItem('user'));;
+    return axios.get(API_URL + "infos", {
+      withCredentials:true,
+    });
+  }
+
+  deleteCurrentUser() {
+    return axios.get(API_URL + "removeCurrentUser", {
+      withCredentials:true,
+    });
   }
 }
 

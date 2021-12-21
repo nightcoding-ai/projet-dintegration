@@ -91,12 +91,6 @@ export default class Login extends Component {
                     validations={[required]}/>
                 </div>
 
-                <div className="form-group">
-                    <div className="custom-control custom-checkbox">
-                        <Input type="checkbox" className="custom-control-input" id="customCheck1" required/>
-                        <label className="custom-control-label" htmlFor="customCheck1">Se souvenir de moi</label>
-                    </div>
-                </div>
                 <input type="hidden" name="_token" ></input>
                 <button
                 className="btn btn-dark btn-bg btn-block login"

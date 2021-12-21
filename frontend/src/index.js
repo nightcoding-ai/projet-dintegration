@@ -13,7 +13,7 @@ import Footer from './Components/Footer/Footer';
 import Cart from './Components/Cart/Cart';
 import Shop from './Components/Shop/Shop';
 import ListCommerce from './Components/Product/List';
-import Product from './Components/Product/Product';
+import Product from './Components/Product/List';
 import Profile from './Components/Profile/Profile';
 import BoardUser from "./Components/Boards/BoardUser";
 import Contact from './Components/Contact/Contact';

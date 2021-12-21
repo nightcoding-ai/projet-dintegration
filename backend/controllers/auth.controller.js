@@ -45,6 +45,8 @@ const userCtrl = {
     },
     login : async(req,res,next) =>{
         try{
+            req.session.userToken ? req.session.userToken : {}
+            req.session.user ? req.session.user : {}
             const {mail, password} = req.body;
             
 
@@ -63,7 +65,8 @@ const userCtrl = {
                 path: 'api/user/refresh_token',
                 maxAge: 7*24*60*60*1000 // Equivalent à 7 jours
             })
-
+            req.session.userToken = accessToken
+            req.session.user = user
             res.json({accessToken, user})
 
         }catch(err) {
@@ -144,10 +147,26 @@ const userCtrl = {
         } catch(err) {
             return res.status(500).json({msg : err.message})
         }
-    
-    
-    
-}
+    },
+    infos: async(req,res,next) =>{
+        try{
+            let user = req.session.user
+            return res.json(user)
+        } catch(err) {
+            return res.status(500).json({msg : err.message})
+        }
+    },
+    removeCurrentUser: async(req,res,next) =>{
+        try{
+            console.log(req.session.user)
+            delete req.session.user; 
+            delete req.session.userToken
+            return res.json({msg:"utilisateur déconnecté"})
+
+        } catch(err) {
+            return res.status(500).json({msg : err.message});
+        }
+    },
 }
 
 
