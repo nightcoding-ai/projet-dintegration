@@ -53,3 +53,10 @@
 #Déconnexion {
 margin-left:0;
 }
+
+#Suppression { 
+position: absolute;
+margin-top: 4px;
+justify-content: center;
+background-color: rgb(194, 22, 22);
+}

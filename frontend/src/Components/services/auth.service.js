@@ -32,6 +32,13 @@ class AuthService {
       withCredentials:true,
     });
   }
+
+  deleteUser() {
+    return axios.delete(API_URL + "forget", {
+      withCredentials: true,
+    })
+    .then(() => console.log("Account deleted."));
+  }
 }
 
 export default new AuthService();

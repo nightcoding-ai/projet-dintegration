@@ -23,6 +23,14 @@ export default class Profile extends Component {
       .then(() => {
         window.location.href = "/Login";
       })
+  
+  }
+  delete() {
+    AuthService.deleteUser()
+      .then(() => {
+       
+        window.location.href = "/Articles";
+      })
   }
 
   render() {
@@ -48,7 +56,7 @@ export default class Profile extends Component {
           {currentUser.points} 
         </p>
       </div>
-      <div className="d-flex justify-content-around">
+      <div className="d-flex justify-content-around buttons">
         <button
                 //type="submit"
                 className="btn btn-dark btn-bg"
@@ -65,7 +73,16 @@ export default class Profile extends Component {
                 >
                     Historique des commandes
           </button>
-        </div>
+          </div>
+          <button
+                //type="submit"
+                className="btn btn-dark btn-bg"
+                id="Suppression"
+                onClick={this.delete}
+                >
+                    Supprimer mon compte
+          </button>
+        
       </>
     );
   }

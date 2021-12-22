@@ -112,6 +112,19 @@ const userCtrl = {
             return res.status(500).json({msg: err.message})
         }
     },
+    delUser: async(req,res,next) =>{
+        try{
+            console.log( "Votre id : " + req.user.id);
+            const user = await UserModel.findByIdAndDelete(req.session.user._id);
+            
+            if(!user) return res.statuts(400).json({msg :  "User does not exist."})
+            req.session.destroy()
+            return res.status(200).json({msg : "Account deleted"})
+
+        }catch(err){
+            return res.status(500).json({msg: err.message})
+        }
+    },
     getAllUser : async(req,res,next) =>{
         try{
             const users = await UserModel.find().select('-password')
