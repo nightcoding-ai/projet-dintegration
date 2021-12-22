@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d78243dd-f71e-455f-8e9f-cad76b8aa92b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/cart.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/cart.routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Components/Cart/CheckoutForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Cart/CheckoutForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Components/Cart/checkoutForm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/Cart/CardSection.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Cart/CardSection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/Cart/Cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Cart/Cart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/Cart/confirmPayment.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Cart/ConfirmPayment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

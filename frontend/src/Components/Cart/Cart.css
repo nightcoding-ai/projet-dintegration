@@ -85,26 +85,22 @@ th {
 .StripeElement--focus {
   box-shadow: 0 1px 3px 0 #cfd7df;
 }
+
 .StripeElement--invalid {
   border-color: #fa755a;
+
 }
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
 
 /* CSS pour le form */
-#btnPay {
-margin-top:1em;
-padding-left : 7em;
-padding-right : 7em;
-margin-left: 7em;
-}
-
 
 .input-wrapper {
   position: relative;
   margin: 20px auto;
   margin-top : 1em;
+
 }
 .form-control cardSection {
   display: block;
@@ -121,9 +117,11 @@ margin-left: 7em;
   box-sizing: border-box;
   font-weight: 500;
 }
+
 .form-control:focus {
   border: 1px solid #2c7ac9;
 }
+
 .control-label {
   display: block;
   position: absolute;
@@ -137,6 +135,16 @@ margin-left: 7em;
 .la {
   text-align: center;
   background: #ffffff;
- 
   display: flex;
+}
+
+#btnPay, #Back {
+  margin-top: 10px;
+}
+#btnPay {
+   float:right;
+}
+
+#input {
+  margin-top: 20px;
 }

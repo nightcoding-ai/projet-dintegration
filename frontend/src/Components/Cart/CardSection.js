@@ -87,7 +87,6 @@ class Cart extends Component {
       <div className="cart py-5">
         <div className="container px-4 px-lg-5 mb-5">
           <div className="row">
-
           <div className="col-lg-6">
             <div className="bg-light rounded-pill px-4 py-3 text-uppercase fw-bold">Résumé de commande</div>
             <div className="p-4">
@@ -98,39 +97,34 @@ class Cart extends Component {
                   <h5 name="amount" className="fw-bold"><span id='totalPrice'>{items.totalPrice}</span>€</h5>
                 </li>
               </ul>
-
             </div>
-
           </div>
           <div className="col-lg-6">
             <div id="sectionInfo">
             <div className="errorSection"></div>
             <div className="bg-light rounded-pill px-4 py-3 text-uppercase fw-bold">Information de paiement</div>
               <div class="input-wrapper">
-                <input name="name" type="text" id="input" className=" form-control" placeholder="Name" />
+                <input name="name" type="text" id="input" className="form-control" placeholder="Name" />
                 <label for="input" class="control-label">Full name</label>
                 <input name="email" type="text" id="input" className="form-control" placeholder="Email" />
                 <label for="input" class="control-label">Email</label>
-
-
                 <label>
                   <CardElement options={CARD_ELEMENT_OPTIONS} />
                 </label>
-                <button id="btnPay" type="submit" className="btn btn-dark btn-lg btn-block" name="totalPrice">Payer <span name="amount" id='totalPrice'>{items.totalPrice}</span> €</button>
+                <div className="row">
+                    <div className="col">
+                        <a href="/Panier" id="Back" className="btn btn-dark btn-lg btn-block">Retour</a>
+                    </div>
+                    <div className="col">
+                        <button id="btnPay" type="submit" className="btn btn-dark btn-lg btn-block" name="totalPrice">Payer <span name="amount" id='totalPrice'>{items.totalPrice}</span> €</button>
+                    </div>
+                </div>
               </div>
-              <a href="/Panier" className="btn btn-dark btn-lg btn-block">Retour</a>
             </div>
-
           </div>
-
         </div>
-
-
       </div>
-
       </div>
-
-
     )
   }
 }

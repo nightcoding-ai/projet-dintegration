@@ -106,8 +106,7 @@ router.post('/checkout', function(req, res, next) {
             let stock = article.item.stock;
             let qty = article.qty;
             console.log("voici l'item " + i, article.item._id)
-            console.log("1    " + article)
-            console.log("3     " + qty)
+            console.log('test' + article)
             Product.findByIdAndUpdate(
                 article.item._id, {
                     stock : stock - qty

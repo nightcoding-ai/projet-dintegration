@@ -38,7 +38,6 @@ ReactDOM.render(
           <Route path="/User" component={BoardUser} />
           <Route path="/Checkout" component={Checkout}/>
           <Route path='/Success' component={ConfirmPayment}/>
-
           <Route path="/Contact" component={Contact} />
           <Route path="/GPU" component={GPU}/>
           <Route path="/Panier" component={Cart} />
