@@ -68,14 +68,14 @@ function CheckoutForm() {
             withCredentials:true,
             }
         )
-      .then((res) => console.log('Order posted'),
-      )
+
       .catch(err => {});
     axios.post('http://localhost:5000/api/cart/checkout', order,{
       withCredentials: true,
-    },
+    }
 
-    );
+
+    )
     /**
     axios.update('http://localhost:5000/api/cart/product', id {
       withCredentials: true,
@@ -83,9 +83,9 @@ function CheckoutForm() {
       // else delete produit
 
     }
-    )*/;
+    )*/
 
-    history.push('/')
+    history.push('/Success')
   };
 
   return (

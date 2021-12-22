@@ -3,9 +3,10 @@ var router = express.Router();
 var Product = require('../models/Product');
 var Cart = require('../models/Cart');
 var Order = require('../models/order');
-flash = require('express-flash')
+flash = require('express-flash');
 
 router.get('/', function (req, res) {
+
     Product.find(function (err, docs) {
         var productChunks = [];
         var chunkSize = 3;
@@ -66,6 +67,7 @@ router.get('/shopping-cart', function (req, res) {
         return res.json({products: null});
     }
     var cart = new Cart(req.session.cart);
+
     res.json({products: cart.generateArray(), totalPrice: cart.totalPrice, totalPoints: cart.totalPoints});
 });
 
@@ -78,8 +80,11 @@ router.get('/purge', function (req, res){
 
 /** Routes pour le paiement */
 
+
 router.post('/checkout', function(req, res, next) {
+
     var cart = new Cart(req.session.cart);
+
     var stripe = require("stripe")(
         "sk_test_51K7oKVAmHmiFCRWpZZqifR760cN7SAfI4aoP156dZfRJK9JPSIPsXVNV4yFnfA1IsorBsqkm3WhMz1PuJ06YFVC100HtJImrYx"
     );
@@ -96,31 +101,33 @@ router.post('/checkout', function(req, res, next) {
             paymentId: req.body.token,
             email: req.body.email,
         });
-
+        for(let i in req.session.cart.items) {
+            let article = req.session.cart.items[i];
+            let stock = article.item.stock;
+            let qty = article.qty;
+            console.log("voici l'item " + i, article.item._id)
+            console.log("1    " + article)
+            console.log("3     " + qty)
+            Product.findByIdAndUpdate(
+                article.item._id, {
+                    stock : stock - qty
+                }
+                ,
+                function (err, docs) {
+                    if (err){
+                        console.log(err)
+                    }
+                    else{
+                        console.log("Updated User : ", docs);
+                    }
+                });
+        }
         req.session.cart = {}
         order.save();
     });
 });
 
-router.post('product', function(req,res,next) {
-    var cart = new Cart(req.session.cart ? req.session.cart : {});
 
-
-    Product.findById(productId, function(err, product) {
-       if (err) {
-           return res.redirect('/');
-       }
-        cart.update(product, product.id);
-        req.session.cart = cart;
-        if ( product.stock <= 1){
-            product.stock(productId) - req.session.cart.items[productId].qty;
-
-        }
-        else{
-            res.json({msg:"OK"})
-        }
-    });
-})
 
 
 

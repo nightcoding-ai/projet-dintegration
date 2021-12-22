@@ -21,8 +21,8 @@ import Boutique from "./Components/Boutique/Boutique";
 import userContext from './Components/Context/userContext';
 import Default from './Components/Default/Default';
 import ContactAdmin from './Components/Contact/ContactAdmin';
-import Checkout from './Components/Cart/Checkout'
-import Checkout_test from './Components/Cart/checkout_test'
+import Checkout from './Components/Cart/Checkout';
+import ConfirmPayment from './Components/Cart/ConfirmPayment';
 
 
 ReactDOM.render(
@@ -37,7 +37,8 @@ ReactDOM.render(
           <Route path="/Vendeurs" component={Home} />
           <Route path="/User" component={BoardUser} />
           <Route path="/Checkout" component={Checkout}/>
-          <Route path="/Checkout_test" component={Checkout_test}/>
+          <Route path='/Success' component={ConfirmPayment}/>
+
           <Route path="/Contact" component={Contact} />
           <Route path="/GPU" component={GPU}/>
           <Route path="/Panier" component={Cart} />

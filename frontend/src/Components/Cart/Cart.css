@@ -133,3 +133,10 @@ margin-left: 7em;
   transition: 0.2s ease-in-out transform;
   font-size: 12px;
 }
+
+.la {
+  text-align: center;
+  background: #ffffff;
+ 
+  display: flex;
+}

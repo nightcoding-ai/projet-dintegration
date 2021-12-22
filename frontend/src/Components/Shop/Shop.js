@@ -42,8 +42,6 @@ class Shop extends Component {
                 progress: undefined,
                 });
                }
-
-
             else if (msg === "ERROR"){
                     toast.error('Vous avez atteint la limite des stocks', {
                         position: "top-right",
@@ -90,20 +88,15 @@ class Shop extends Component {
                                         <Button type="button" name={product.name} id={product._id} variant="btn btn-outline-success add"  onClick={this.add_to_cart}>Ajouter au panier</Button>                                    </div>
                                 </div>
                             </div>
-
                         </div>
-
                     </li>
                     ))}
-
                     </ul>
-
+                    <div className='box my-3'>
+                        <a href="/Panier" id="goToCart" className="col-lg-7 text-center btn btn-outline-success ">Aller au panier</a>
                     </div>
-                    <a href="/Panier" id="goToCart" className="col-lg-7 btn btn-outline-success add">Aller au panier</a>
-
-
+                    </div>
                 </div>
-
             </div>
           );
         }

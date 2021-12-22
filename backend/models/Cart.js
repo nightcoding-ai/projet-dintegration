@@ -3,6 +3,7 @@ module.exports = function Cart(oldCart) {
     this.totalQty = oldCart.totalQty || 0;
     this.totalPrice = oldCart.totalPrice || 0;
     this.totalPoints = oldCart.totalPoints || 0;
+    this.proId = oldCart.proId || 0;
 
     this.add = function(item, id) {
         var storedItem = this.items[id];
@@ -17,6 +18,7 @@ module.exports = function Cart(oldCart) {
         this.totalPrice = Math.round(this.totalPrice * 100) / 100;
         let points = (storedItem.item.price/100) * 6;
         this.totalPoints += Math.round(points * 100)/100;
+
     };
 
     this.reduceByOne = function(id) {
@@ -48,7 +50,7 @@ module.exports = function Cart(oldCart) {
         let points = (this.totalPrice/100) * 6;
         this.totalPoints = Math.round(points * 100)/100;
     };
-    
+
     this.generateArray = function() {
         var arr = [];
         for (var id in this.items) {
