@@ -2,8 +2,10 @@ var express = require('express');
 var router = express.Router();
 var Product = require('../models/Product');
 var Cart = require('../models/Cart');
-var Order = require('../models/order');
-flash = require('express-flash');
+
+var Order = require('../models/Order');
+flash = require('express-flash')
+
 
 router.get('/', function (req, res) {
 

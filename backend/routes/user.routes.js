@@ -20,8 +20,11 @@ router.get('/removeCurrentUser', authController.removeCurrentUser)
 router.get('/infor', auth, authController.getUser)
 router.get('/get_all_users',auth,authAdmin,  authController.getAllUser)
 
+router.delete('/forget',auth,  authController.delUser)
+
 
 router.patch('/add_points', auth, authController.addPoints)
+router.get('/add_offer/:id',auth , authController.addOfferToUser)
 
 /*
 router.get('/history', auth, authController.history)
