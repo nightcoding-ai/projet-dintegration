@@ -48,13 +48,18 @@ class Cart extends Component {
           items: result.data,
           isLoaded: true
         });
+
       });
+
 
   }
 
   render() {
     const { items } = this.state;
+
+
     if (!this.state.isLoaded || items.products == null || items.products.length === 0) {
+      items.totalPrice = items.totalPrice*100;
       return (
         <>
           <div className="cart">
@@ -62,17 +67,7 @@ class Cart extends Component {
           </div>
 
           <div className="row py-5 p-4 bg-white rounded shadow-sm">
-            <div className="col-lg-6">
-              <div className="bg-light rounded-pill px-4 py-3 text-uppercase fw-bold">Code promo</div>
-              <div className="p-4">
-                <p className="mb-4"><em>Si vous avez un code de réduction, utilisez le ci-dessous.</em></p>
-                <div className="input-group mb-4 border rounded-pill p-2">
-                  <input type="text" placeholder="Code" aria-describedby="button-addon3" className="form-control border-0" />
-                  <button id="button-addon3" type="button" className="btn btn-dark px-4 rounded-pill"><i className="fa fa-gift mr-2"></i>Appliquer code</button>
 
-                </div>
-              </div>
-            </div>
             <div className="col-lg-6">
               <div className="bg-light rounded-pill px-4 py-3 text-uppercase fw-bold">Résumé de commande</div>
               <div className="p-4">
@@ -114,7 +109,7 @@ class Cart extends Component {
               <div class="input-wrapper">
                 <input name="name" type="text" id="input" className=" form-control" placeholder="Name" />
                 <label for="input" class="control-label">Full name</label>
-                <input name="email"type="text" id="input" className="form-control" placeholder="Email" />
+                <input name="email" type="text" id="input" className="form-control" placeholder="Email" />
                 <label for="input" class="control-label">Email</label>
 
 
@@ -122,16 +117,17 @@ class Cart extends Component {
                   <CardElement options={CARD_ELEMENT_OPTIONS} />
                 </label>
                 <button id="btnPay" type="submit" className="btn btn-dark btn-lg btn-block" name="totalPrice">Payer <span name="amount" id='totalPrice'>{items.totalPrice}</span> €</button>
-
-
               </div>
-
+              <a href="/Panier" className="btn btn-dark btn-lg btn-block">Retour</a>
             </div>
 
           </div>
+
         </div>
 
+
       </div>
+
       </div>
 
 

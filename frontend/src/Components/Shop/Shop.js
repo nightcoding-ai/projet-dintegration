@@ -90,12 +90,20 @@ class Shop extends Component {
                                         <Button type="button" name={product.name} id={product._id} variant="btn btn-outline-success add"  onClick={this.add_to_cart}>Ajouter au panier</Button>                                    </div>
                                 </div>
                             </div>
+
                         </div>
+
                     </li>
                     ))}
+
                     </ul>
+
                     </div>
+                    <a href="/Panier" id="goToCart" className="col-lg-7 btn btn-outline-success add">Aller au panier</a>
+
+
                 </div>
+
             </div>
           );
         }

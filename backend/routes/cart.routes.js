@@ -84,7 +84,7 @@ router.post('/checkout', function(req, res, next) {
         "sk_test_51K7oKVAmHmiFCRWpZZqifR760cN7SAfI4aoP156dZfRJK9JPSIPsXVNV4yFnfA1IsorBsqkm3WhMz1PuJ06YFVC100HtJImrYx"
     );
     stripe.charges.create({
-        amount: cart.totalPrice,
+        amount: cart.totalPrice*100,
         currency: "eur",
         source: req.body.token, // obtained with Stripe.js
         description: "Test Charge"
@@ -93,13 +93,35 @@ router.post('/checkout', function(req, res, next) {
         var order = new Order({
             cart: cart,
             name: req.body.name,
-            paymentId: req.body.token
+            paymentId: req.body.token,
+            email: req.body.email,
         });
+
         req.session.cart = {}
         order.save();
-
-
     });
 });
+
+router.post('product', function(req,res,next) {
+    var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+
+    Product.findById(productId, function(err, product) {
+       if (err) {
+           return res.redirect('/');
+       }
+        cart.update(product, product.id);
+        req.session.cart = cart;
+        if ( product.stock <= 1){
+            product.stock(productId) - req.session.cart.items[productId].qty;
+
+        }
+        else{
+            res.json({msg:"OK"})
+        }
+    });
+})
+
+
 
 module.exports = router;

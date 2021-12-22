@@ -42,6 +42,7 @@ function CheckoutForm() {
       billing_details: {
         name: event.target.name.value,
         email: event.target.email.value,
+
       },
 
     });
@@ -61,7 +62,8 @@ function CheckoutForm() {
     state.name = payload.paymentMethod.billing_details.name
     state.email = payload.paymentMethod.billing_details.email
     const order = {name: state.name, email: state.email, token: state.token}
-    console.log(order)
+
+
     axios.get('http://localhost:5000/api/cart/purge',{
             withCredentials:true,
             }
@@ -72,7 +74,16 @@ function CheckoutForm() {
     axios.post('http://localhost:5000/api/cart/checkout', order,{
       withCredentials: true,
     },
+
     );
+    /**
+    axios.update('http://localhost:5000/api/cart/product', id {
+      withCredentials: true,
+      // if stock => 1 alors Update
+      // else delete produit
+
+    }
+    )*/;
 
     history.push('/')
   };
