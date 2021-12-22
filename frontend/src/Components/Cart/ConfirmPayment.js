@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-
-import logo from '../../img/Bangoo.png';
+import '../../Components/Home/Home.css'
 
 export default class ConfirmPayment extends Component {
 
@@ -8,7 +7,9 @@ export default class ConfirmPayment extends Component {
         return (
             <>
                 <div className='home'>
-                    <div className='hello'>Commande passée !! </div>
+                    <div className='container'>
+                        <h1 id="h1">Commande acceptée</h1>
+                    </div>
                 </div>
 
             </>

@@ -148,3 +148,37 @@ th {
 #input {
   margin-top: 20px;
 }
+
+.home {
+  text-align: left;
+  background: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  background-image: url("../../img/femme.jpg");
+  background-size: cover;
+  
+
+}
+
+.container {
+  background-color: rgb(160, 233, 178);
+  margin-top: 10%;
+  margin-bottom: 10%;
+  border-radius: 10px;
+  overflow: hidden;
+  width: fit-content;
+  height: fit-content;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 1.2em;
+  border: solid 1px rgb(36, 34, 34)
+  
+}
+
+.center{
+  text-align: center;
+}
+
+#h1 {
+  text-align: center;
+  margin-top: ;
+}
