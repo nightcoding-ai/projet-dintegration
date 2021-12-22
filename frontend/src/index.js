@@ -23,6 +23,7 @@ import Default from './Components/Default/Default';
 import ContactAdmin from './Components/Contact/ContactAdmin';
 import Checkout from './Components/Cart/Checkout'
 import Checkout_test from './Components/Cart/checkout_test'
+import Vendeurs from './Components/Vendeurs/Vendeurs';
 
 
 ReactDOM.render(
@@ -31,10 +32,9 @@ ReactDOM.render(
         <App />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/Marché" component={Home} />
           <Route path="/Articles" component={Shop} />
           <Route path="/Boutique" component={Boutique} />
-          <Route path="/Vendeurs" component={Home} />
+          <Route path="/Vendeurs" component={Vendeurs} />
           <Route path="/User" component={BoardUser} />
           <Route path="/Checkout" component={Checkout}/>
           <Route path="/Checkout_test" component={Checkout_test}/>

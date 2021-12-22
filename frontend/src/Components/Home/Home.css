@@ -1,19 +1,23 @@
+
 .home {
-  text-align: center;
+  text-align: left;
   background: #ffffff;
   min-height: 100vh;
   display: flex;
+  background-image: url("../../img/femme.jpg");
+  background-size: cover;
+
 }
 
-.hello {
-  font-size: 3rem;
-  font-family: 'Oswald', sans-serif;
-  color : black;
-  margin: auto;
-  display: inline-flex;
+.container {
+  background-color: white;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  border-radius: 10px;
+  overflow: hidden;
+  
 }
 
-.img {
-  max-width: 100%;
-  min-width: 100%;
+.center{
+  text-align: center;
 }
