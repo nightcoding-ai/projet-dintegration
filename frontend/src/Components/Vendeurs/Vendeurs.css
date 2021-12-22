@@ -1,0 +1,8 @@
+.partenaires {
+    text-align: left;
+  background: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  background-image: url("../../img/bangoo_no_partner.png");
+  background-size: cover;
+}
