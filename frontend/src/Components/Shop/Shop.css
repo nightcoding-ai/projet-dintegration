@@ -40,3 +40,9 @@
 .Toastify__progress-bar-theme--light {
   background: #5db674;
 }
+
+#goToCart {
+  margin-top : 25px;
+  width : 150px;
+  height: 40px;
+}
