@@ -12,7 +12,7 @@ const UserModel = require('./models/User');
 //  Tests de Simon Périquet 
 
 // GET : Récupérer la liste des produits
-/*
+
 describe("Liste des produits", () => {  
     let connection;
     beforeAll(async () => {
@@ -38,7 +38,7 @@ describe("Liste des produits", () => {
 })
 
 // POST : Ajouter un produit
-
+/*
 describe("Ajouter un produit", () => {  
     let connection;
     beforeAll(async () => {
