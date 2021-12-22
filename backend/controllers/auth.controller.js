@@ -1,4 +1,5 @@
 const UserModel = require('../models/User');
+const OfferModel = require('../models/Offers');
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
 
@@ -180,6 +181,37 @@ const userCtrl = {
             return res.status(500).json({msg : err.message});
         }
     },
+    addOfferToUser: async(req,res,next) =>{
+        try{
+            user = await UserModel.findById(req.user.id)
+            console.log( "Le user : " + user)
+            offer = await OfferModel.findById(req.params.id)
+            console.log( "L'offre : " + offer)
+
+
+            if(!user) return res.status(400).json({msg : "User does not exist."})
+            if(!offer) return res.status(400).json({msg :"Offer does not exist."})
+
+            if(user.points >= offer.price){
+                await UserModel.findOneAndUpdate({_id: req.user.id}, {
+                    $push: {userOffers : {name : offer.name, description: offer.description}},
+                    points: (user.points - offer.price)
+                
+                })
+
+                return res.json({msg : "OK", points : user.points})
+            }
+            else{
+                return res.json({msg : "ERROR"})
+            }
+
+            
+
+        }
+        catch(err) {
+            return res.status(500).json({msg : err.message});
+        }
+    }
 }
 
 

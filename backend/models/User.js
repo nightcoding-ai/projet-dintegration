@@ -28,9 +28,9 @@ const userSchema = new mongoose.Schema({
     default: 0
   },
   userOffers: {
-    type: String,
+    type: Array,
     required: false,
-    default: "offre boutique"
+    default: []
   },
   role: {
     type: String,

@@ -21,10 +21,10 @@ const offersCtrl = {
     },
     createOffer : async(req, res,next) =>{
         try {
-            const {name, description, price} = req.body;
+            const {name, description, price, value} = req.body;
 
             const newOffer = new OffersModel({
-                name, description: description.toLowerCase(), price
+                name, description: description.toLowerCase(), price, value
             })
             await newOffer.save()
             res.json({msg: "Created an offer."})

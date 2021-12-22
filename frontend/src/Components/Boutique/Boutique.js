@@ -5,12 +5,15 @@ import './Boutique.css'
 import {Button} from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import AuthService from "../services/auth.service";
+
 
 class Boutique extends Component {
     constructor(props) {
         super(props);
         this.state = {
           items: [],
+          userPoints : 0.0,
           isLoaded: false,
         };
     }
@@ -22,12 +25,58 @@ class Boutique extends Component {
                 items: result.data
             });
         });
+        
+        AuthService.getCurrentUser() 
+                .then((result) => {
+                    this.setState({
+                        userPoints: result.data.points,
+                    });
+                });
+        
     }
+
+    add_to_user = (e) =>{
+        let nameOffer = e.currentTarget.name
+        console.log(nameOffer, e.currentTarget.id)
+        axios.get('http://localhost:5000/api/user/add_offer/'+e.currentTarget.id,{
+            withCredentials:true,
+            })
+        .then(res => {
+                let msg = res.data.msg
+                let points = res.data.points
+            if (msg === "OK"){
+              toast('Le cadeau : '+ nameOffer +' a été ajouté à votre compte !', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                });
+                document.getElementById("vosPoints").innerHTML = points;
+               }
+
+
+            else if (msg === "ERROR"){
+                    toast.error("Vous n'avez pas assez de points", {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: false,
+                        draggable: true,
+                        progress: undefined,
+                        });
+            }
+            
+        })
+    }
+    
     render() {
         const { items } = this.state;
 
         const notify = (e) =>{
-        console.log(e.currentTarget.id)
         toast('L\'offre  '+e.currentTarget.name+' a été ajoutée à votre compte !', {
                                         position: "top-right",
                                         autoClose: 5000,
@@ -46,7 +95,9 @@ class Boutique extends Component {
             <div class="container py-5 my-5">
                 <div className="mb-5">
                     <h1 className='title'>Notre boutique</h1>
+                    <h2 className='title' >Votre nombre de points : <span id="vosPoints">{this.state.userPoints}</span></h2>
                 </div>
+                
                 <div class="row">
                     <div class="col-lg-7 mx-auto">
                     <ul className="list-group shadow">
@@ -63,7 +114,7 @@ class Boutique extends Component {
                                     <div className='box "my-3'>
                                     </div>
                                     <div className="my-3">
-                                        <Button type="button" name={offer.name} id={offer._id} variant="btn btn-outline-success"  onClick={notify}>Ajouter au compte</Button>                                    </div>
+                                        <Button type="button" name={offer.name} id={offer._id} variant="btn btn-outline-success"  onClick={this.add_to_user}>Ajouter au compte</Button>                                    </div>
                                 </div>
                             </div>
                         </div>
