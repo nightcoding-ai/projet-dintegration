@@ -323,6 +323,10 @@ describe("Liste des offres", () => {
     });
 })
 
+// DELETE : Suppression de l'utilisateur connecté 
+
+
+
 
 // Test de Christopher Fauconnier 
 
