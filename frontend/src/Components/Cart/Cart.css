@@ -160,7 +160,7 @@ th {
 
 }
 
-.container {
+.container-success {
   background-color: rgb(160, 233, 178);
   margin-top: 10%;
   margin-bottom: 10%;
@@ -170,7 +170,8 @@ th {
   height: fit-content;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 1.2em;
-  border: solid 1px rgb(36, 34, 34)
+  border: solid 1px rgb(36, 34, 34);
+  
   
 }
 

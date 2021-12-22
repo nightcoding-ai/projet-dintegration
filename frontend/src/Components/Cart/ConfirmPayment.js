@@ -7,7 +7,7 @@ export default class ConfirmPayment extends Component {
         return (
             <>
                 <div className='home'>
-                    <div className='container'>
+                    <div className='container-success  container'>
                         <h1 id="h1">Commande acceptée</h1>
                     </div>
                 </div>
