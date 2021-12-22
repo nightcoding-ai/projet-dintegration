@@ -55,10 +55,11 @@ class Product extends Component {
             gid("warning").innerHTML = "A field is wrong or empty !";
             return false;
         }
+
       
         axios.post('http://localhost:5000/api/products/', data)
             .then(function (response) {
-                console.log(response);
+                window.location.reload(false);
             })
             .catch(function (error) {
                 console.log(error);
@@ -71,7 +72,7 @@ class Product extends Component {
                 <Modal show={this.state.show} handleClose={this.hideModal} send={this.sendProduct}>
                 </Modal>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_Product" onClick={this.showModal}>
-                    Add product
+                    Ajouter produit
                 </button>
             </div>
         );

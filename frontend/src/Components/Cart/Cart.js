@@ -24,6 +24,10 @@ class Cart extends Component {
                     items: result.data,
                     isLoaded:true
                 });
+                if (result.data.totalPrice){
+                    document.getElementById('totalPoints').innerHTML = Math.round(result.data.totalPoints*100)/100;
+                    document.getElementById('totalPrice').innerHTML = Math.round(result.data.totalPrice*100)/100;
+                }
             });
     }
 
@@ -53,7 +57,8 @@ class Cart extends Component {
                     withCredentials:true,
                     })
                     .then((result) => {
-                        document.getElementById('totalPrice').innerHTML = result.data.totalPrice
+                        document.getElementById('totalPrice').innerHTML = result.data.totalPrice;
+                        document.getElementById('totalPoints').innerHTML = Math.round(result.data.totalPoints*100)/100;
                     });
             }
             else if (msg === "DELETED"){
@@ -85,7 +90,8 @@ class Cart extends Component {
                     withCredentials:true,
                     })
                     .then((result) => {
-                        document.getElementById('totalPrice').innerHTML = result.data.totalPrice
+                        document.getElementById('totalPrice').innerHTML = result.data.totalPrice;
+                        document.getElementById('totalPoints').innerHTML = Math.round(result.data.totalPoints*100)/100;
                     });
                 }
                 else if (msg === "ERROR"){
@@ -159,7 +165,7 @@ class Cart extends Component {
                         <p className="mb-4"><em>Les coûts supplémentaires sont calculés sur base du montant de votre commande.</em></p>
                         <ul className="list-unstyled mb-4">
                             <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Total</strong>
-                            <h5 className="fw-bold">{items.totalPrice}€</h5>
+                            <h5 className="fw-bold">Votre panier est vide</h5>                            
                             </li>
                         </ul>
                         </div>
@@ -241,11 +247,12 @@ class Cart extends Component {
                         <div className="col-lg-6">
                             <div className="bg-light rounded-pill px-4 py-3 text-uppercase fw-bold">Résumé de commande</div>
                             <div className="p-4">
-                            <p className="mb-4"><em>Les coûts supplémentaires sont calculés sur base du montant de votre commande.</em></p>
+                            <p className="mb-4"><em>Les points client sont calculés sur base du montant de votre commande.</em></p>                            
                             <ul className="list-unstyled mb-4">
-                                <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Total</strong>
+                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Points obtenus après achat</strong><strong id='totalPoints'>{items.totalPoints}</strong></li> 
+                            <li class="d-flex justify-content-between py-3 border-bottom"> <strong className="text-muted">Total</strong>                       
                                 <h5 className="fw-bold"><span id='totalPrice'>{items.totalPrice}</span>€</h5>
-                                </li>
+                            </li>
                             </ul><a href="/Checkout" className="btn btn-dark rounded-pill py-2 d-md-block">Passer au paiement</a>
                             </div>
                         </div>

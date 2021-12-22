@@ -9,6 +9,8 @@
 div#product {
     text-align: right;
     padding-right: 2%;
+    margin-top: 7%;
+    margin-bottom: 2%;
 }
 
 .deleteButton {
