@@ -12,7 +12,7 @@ const UserModel = require('./models/User');
 //  Tests de Simon Périquet 
 
 // GET : Récupérer la liste des produits
-
+/*
 describe("Liste des produits", () => {  
     let connection;
     beforeAll(async () => {
@@ -121,7 +121,7 @@ describe("Modifier un produit", () => {
 */
 
 // DELETE : Retirer un produit 
-
+/*
 describe("Retirer un produit", () => {  
     let connection;
     beforeAll(async () => {
@@ -150,7 +150,7 @@ describe("Retirer un produit", () => {
 
 
 // POST : Inscription d'un nouvel utilisateur 
-
+/*
 describe("Inscription", () => {  
     let connection;
     beforeAll(async () => {
@@ -180,7 +180,7 @@ describe("Inscription", () => {
 })
 
 // GET : Récupérer la liste des utilisateurs 
-
+/*
 describe("Liste des users", () => {  
     let connection;
     beforeAll(async () => {
@@ -295,7 +295,7 @@ describe("Modifier une offre", () => {
         await mongoose.disconnect();
     });
 })
-*/
+
 
 // GET : Liste de toutes les offres 
 
@@ -325,7 +325,7 @@ describe("Liste des offres", () => {
 
 // DELETE : Suppression de l'utilisateur connecté 
 
-
+*/
 
 
 // Test de Christopher Fauconnier 
