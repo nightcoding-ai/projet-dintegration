@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken')
 
 const auth = (req,res,next) =>{
     try{
+        console.log(req.session)
          const token = req.session.userToken;
          if(!token) return res.status(500).json({msg: "Invalid Authentication"})
 

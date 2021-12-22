@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import AuthService from "../services/auth.service";
-import '../Login/Login.css';
+import '../Profile/Profil.css';
 
 export default class Profile extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currentUser: {}
+      currentUser: {},
+      isLoaded: false
     };
   }
   componentDidMount() {
@@ -15,7 +16,9 @@ export default class Profile extends Component {
         .then((result) => {
             this.setState({
                 currentUser: result.data,
+                isLoaded: true,
             });
+          
         });
   }
   disconnect() {
@@ -35,9 +38,15 @@ export default class Profile extends Component {
 
   render() {
     const { currentUser } = this.state;
+    console.log(currentUser.userOffers);
+    if(!this.state.isLoaded){
+      return (
+        <div>chargement...</div>
+      )
+    }
     return (
-      <>
-      <div className="container">
+      <div className="profil">
+      <div className="container ">
         <header className="jumbotron">
           <h3>
             <strong>{currentUser.name}</strong>
@@ -54,6 +63,17 @@ export default class Profile extends Component {
         <p>
           <strong>Points client:</strong>{" "}
           {currentUser.points} 
+        </p>
+        <p>
+          <strong>Mes cadeaux</strong>{" "}
+          <div>
+          {currentUser.userOffers.map((offer) => (
+            <div>
+            <div>{offer.name}</div>
+            <div>{offer.description}</div>
+            </div>
+          ))}
+          </div>
         </p>
       </div>
       <div className="d-flex justify-content-around buttons">
@@ -83,7 +103,7 @@ export default class Profile extends Component {
                     Supprimer mon compte
           </button>
         
-      </>
+      </div>
     );
   }
 }
